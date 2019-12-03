@@ -5633,7 +5633,7 @@
   {
     "id": 252,
     "name": "Running",
-    "description": "null\nStart with a walk and gradually speed up until you are moving at a fast, steady pace.",
+    "description": "Start with a walk and gradually speed up until you are moving at a fast, steady pace.",
     "equipments": [
       "machine"
     ],

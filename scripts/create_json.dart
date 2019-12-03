@@ -104,8 +104,9 @@ Future<void> createJsonData() async {
     jsonMap.forEach((key, info) {
       final name = key;
       final descriptionMap = info['exerciseDescription'];
-      final description =
-          '${descriptionMap['1_Preparation']}\n${descriptionMap['2_Execution']}';
+      final description = descriptionMap['1_Preparation'] == null
+          ? descriptionMap['2_Execution']
+          : '${descriptionMap['1_Preparation']}\n${descriptionMap['2_Execution']}';
       final muscles = [];
       final type = info['exerciseType'];
       final variationMap = info['exerciseOptionsDic'] ?? {};
