@@ -1,4 +1,4 @@
-import 'package:gymlab/src/models/exercise.dart';
+import 'package:gymlab/src/models/exercise_summary.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '_db_helper.dart';
@@ -12,15 +12,17 @@ class ExerciseProvider {
   static Database _database;
 
   Future<Database> get database async {
-    if (_database != null) {
-      return _database;
+    if (_database == null) {
+      _database = await initDB();
     }
 
-    return await initDB();
+    return _database;
   }
 
   Future<Database> initDB() async {
-    final dbPath = await DbHelper.dbPath;
+    await DbHelper.setupDbFile();
+
+    final dbPath = await DbHelper.getDbPath();
 
     return await openDatabase(
       dbPath,
@@ -30,19 +32,20 @@ class ExerciseProvider {
     );
   }
 
-  Future<Exercise> getById(int id) async {
+  Future<ExerciseSummary> getSummaryById(int id) async {
     final db = await database;
     final res = await db.query(tableName, where: 'id = ?', whereArgs: [id]);
 
-    return res.isNotEmpty ? Exercise.fromJson(res.first) : null;
+    return res.isNotEmpty ? ExerciseSummary.fromJson(res.first) : null;
   }
 
-  Future<List<Exercise>> getAll() async {
+  Future<ExerciseSummaries> getAllSummaries() async {
     final db = await database;
     final List<Map> res = await db.query(tableName);
 
-    return res.isNotEmpty
-        ? res.map((c) => Exercise.fromJson(c)).toList()
-        : <Exercise>[];
+    return ExerciseSummaries(
+        exercises: res.isNotEmpty
+            ? res.map((c) => ExerciseSummary.fromJson(c)).toList()
+            : <ExerciseSummary>[]);
   }
 }

@@ -2,6 +2,8 @@
 // flutter test scripts/create_json.dart
 // https://stackoverflow.com/questions/53605763/run-a-dart-file-for-experimenting-vs-code
 //
+// TODO: convert this script to python. running this script via `flutter test` command is too slow
+//
 // What it does: Convert the raw data json from the Gym Workout app to the
 // compatible json structure of this app
 

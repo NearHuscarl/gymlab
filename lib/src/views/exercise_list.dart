@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:gymlab/src/blocs/exercise_bloc.dart';
-import 'package:gymlab/src/models/exercise.dart';
+import 'package:gymlab/src/blocs/exercise_list_bloc.dart';
+import 'package:gymlab/src/models/exercise_summary.dart';
+import 'package:provider/provider.dart';
 
 class ExerciseList extends StatelessWidget {
-  Widget buildList(AsyncSnapshot<List<Exercise>> snapshot) {
-    final exercises = snapshot.data;
+  Widget buildList(AsyncSnapshot<ExerciseSummaries> snapshot) {
+    final data = snapshot.data;
     return GridView.builder(
-        itemCount: exercises.length,
+        itemCount: data.totalResults,
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
@@ -14,12 +15,12 @@ class ExerciseList extends StatelessWidget {
             child: InkResponse(
               enableFeedback: true,
               child: Image.asset(
-                'assets/images/exercise_small_${exercises[index].id}.jpg',
+                'assets/images/exercise_small_${data.exercises[index].id}.jpg',
                 fit: BoxFit.cover,
               ),
               onTap: () => Scaffold.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(exercises[index].name),
+                  content: Text(data.exercises[index].name),
                 ),
               ),
             ),
@@ -29,9 +30,11 @@ class ExerciseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of<ExerciseListBloc>(context);
+
     return StreamBuilder(
-      stream: exerciseBloc.stream,
-      builder: (context, AsyncSnapshot<List<Exercise>> snapshot) {
+      stream: bloc.stream,
+      builder: (context, AsyncSnapshot<ExerciseSummaries> snapshot) {
         if (snapshot.hasData) {
           return buildList(snapshot);
         } else if (snapshot.hasError) {

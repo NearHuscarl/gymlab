@@ -2,36 +2,12 @@ import 'dart:convert';
 
 import 'package:gymlab/src/helpers/enum.dart';
 
+import 'exercise_summary.dart';
 import 'muscle_info.dart';
 import 'variation.dart';
 
-enum Equipment {
-  none,
-  bodyOnly,
-  bands,
-  foamRoll,
-  barbell,
-  ezBar,
-  kettleBell,
-  dumbbell,
-  machine,
-  cable,
-  weightPlate,
-  medicineBall,
-  exerciseBall,
-  bar,
-  other,
-}
-
-enum ExerciseType {
-  weight,
-  bodyweight,
-  timeBased,
-  timeBasedLong,
-}
-
-class Exercise {
-  Exercise({
+class ExerciseDetail {
+  ExerciseDetail({
     this.id,
     this.name,
     this.description,
@@ -55,17 +31,16 @@ class Exercise {
   final Variation variation;
   final List<String> keywords;
 
-  factory Exercise.fromJson(Map<String, dynamic> map) {
-    return Exercise(
+  factory ExerciseDetail.fromJson(Map<String, dynamic> map) {
+    return ExerciseDetail(
       id: map['id'],
       name: map['name'],
       description: map['description'],
-      equipments: EnumHelper.fromStrings(
-          Equipment.values, map['equipments']),
+      equipments: EnumHelper.fromStrings(Equipment.values, map['equipments']),
       imageCount: map['imageCount'],
       thumbnailImageIndex: map['thumbnailImageIndex'],
       muscles: List<MuscleInfo>.from(
-          map['muscles']?.map((m) => MuscleInfo.fromJson(m)) ?? []),
+          map['muscles']?.map((m) => MuscleInfo.fromJson(m))),
       type: EnumHelper.fromString(ExerciseType.values, map['type']),
       variation: Variation.fromJson(json.decode(map['variation'])),
       keywords: List<String>.from(json.decode(map['keywords']) ?? []),

@@ -6,6 +6,7 @@ enum Muscle {
   abductors,
   adductors,
   biceps,
+  cardio,
   calves,
   chest,
   forearm,

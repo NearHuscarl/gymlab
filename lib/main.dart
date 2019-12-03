@@ -12,7 +12,7 @@ class GymLabApp extends StatelessWidget {
     return MaterialApp(
       title: 'RxDart Github Search',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.pink,
         accentColor: Colors.indigo,
       ),
       home: HomeScreen(),
