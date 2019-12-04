@@ -9,7 +9,7 @@ enum Muscle {
   cardio,
   calves,
   chest,
-  forearm,
+  forearms,
   hamstrings,
   glutes,
   lats,

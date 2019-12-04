@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../blocs/exercise_list_bloc.dart';
-import 'muscle_options.dart';
-import 'exercise_list.dart';
+import '../components/muscle_options.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -17,12 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (_selectedIndex) {
       case 0:
         return MuscleOptions();
-      case 1:
-        return Provider<ExerciseListBloc>(
-          create: (context) => ExerciseListBloc()..getAll(),
-          dispose: (context, bloc) => bloc.dispose(),
-          child: ExerciseList(),
-        );
       default:
         return null;
     }

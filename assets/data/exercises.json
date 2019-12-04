@@ -114,7 +114,7 @@
         "target": "primary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       }
     ],
@@ -1281,7 +1281,7 @@
         "target": "primary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       }
     ],
@@ -2776,7 +2776,7 @@
         "target": "secondary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       },
       {
@@ -3267,7 +3267,7 @@
     "thumbnailImageIndex": 0,
     "muscles": [
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "primary"
       },
       {
@@ -3901,7 +3901,7 @@
         "target": "primary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       }
     ],
@@ -4694,7 +4694,7 @@
     "thumbnailImageIndex": 1,
     "muscles": [
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "primary"
       },
       {
@@ -5959,7 +5959,7 @@
     "thumbnailImageIndex": 1,
     "muscles": [
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "primary"
       }
     ],
@@ -6073,7 +6073,7 @@
         "target": "primary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       }
     ],
@@ -6360,7 +6360,7 @@
     "thumbnailImageIndex": 1,
     "muscles": [
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "primary"
       },
       {
@@ -6793,7 +6793,7 @@
         "target": "primary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       }
     ],
@@ -7143,7 +7143,7 @@
         "target": "primary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       }
     ],
@@ -7455,7 +7455,7 @@
         "target": "secondary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       },
       {
@@ -7799,7 +7799,7 @@
     "thumbnailImageIndex": 0,
     "muscles": [
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "primary"
       }
     ],
@@ -8477,7 +8477,7 @@
     "thumbnailImageIndex": 1,
     "muscles": [
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "primary"
       }
     ],
@@ -8689,7 +8689,7 @@
     "thumbnailImageIndex": 0,
     "muscles": [
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "primary"
       }
     ],
@@ -10216,7 +10216,7 @@
         "target": "primary"
       },
       {
-        "muscle": "lower back",
+        "muscle": "lowerBack",
         "target": "secondary"
       }
     ],

@@ -7,6 +7,7 @@ import 'package:path/path.dart';
 
 class DbHelper {
   static final String exerciseTable = 'Exercise';
+  static final String exerciseMuscleTable = 'Exercise_Muscle';
 
   static Future<void> setupDbFile() async {
     final dbPath = await getDbPath();

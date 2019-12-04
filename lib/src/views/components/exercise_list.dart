@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gymlab/src/blocs/exercise_list_bloc.dart';
-import 'package:gymlab/src/models/exercise_summary.dart';
 import 'package:provider/provider.dart';
+import '../../blocs/exercise_list_bloc.dart';
+import '../../models/exercise_summary.dart';
 
 class ExerciseList extends StatelessWidget {
   Widget buildList(AsyncSnapshot<ExerciseSummaries> snapshot) {
@@ -33,7 +33,7 @@ class ExerciseList extends StatelessWidget {
     final bloc = Provider.of<ExerciseListBloc>(context);
 
     return StreamBuilder(
-      stream: bloc.stream,
+      stream: bloc.summaries,
       builder: (context, AsyncSnapshot<ExerciseSummaries> snapshot) {
         if (snapshot.hasData) {
           return buildList(snapshot);

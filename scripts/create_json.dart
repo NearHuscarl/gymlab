@@ -128,7 +128,7 @@ Future<void> createJsonData() async {
 
       info['musclesCategoriesArray'].asMap().forEach(
             (index, val) => muscles.add({
-              'muscle': val,
+              'muscle': toCamelCase(val),
               'target': index == 0 ? 'primary' : 'secondary',
             }),
           );

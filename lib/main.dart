@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gymlab/src/views/home_screen.dart';
-import './src/z_rxdart_example/github_api.dart';
-import './src/z_rxdart_example/search_widget.dart';
+import 'src/views/screens/home_screen.dart';
+import 'src/z_rxdart_example/github_api.dart';
+import 'src/z_rxdart_example/search_widget.dart';
 
 void main() {
   runApp(GymLabApp());
