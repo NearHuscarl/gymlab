@@ -11,17 +11,18 @@ class ExerciseListBloc {
 
   Observable<ExerciseSummaries> get summaries => _exercises.stream;
 
-  getAll() async {
+  Future<void> getAll() async {
     final exercises = await _repository.getAllSummaries();
     _exercises.sink.add(exercises);
   }
 
-  getByMuscleCategory(Muscle muscle) async {
-    final exercises = await _repository.getSummaryByMuscleCategory(EnumHelper.parse(muscle));
+  Future<void> getByMuscleCategory(Muscle muscle) async {
+    final exercises = await _repository
+        .getSummariesByMuscleCategory(EnumHelper.parse(muscle));
     _exercises.sink.add(exercises);
   }
 
-  dispose() {
+  void dispose() {
     _exercises.close();
   }
 }

@@ -25,6 +25,7 @@ EXERCISE_EQUIPMENT_TABLE = 'Exercise_Equipment'
 EQUIPMENT_TABLE = 'Equipment'
 MUSCLE_TABLE = 'Muscle'
 EXERCISE_MUSCLE_TABLE = 'Exercise_Muscle'
+FAVORITE_TABLE = 'Favorite'
 CONNECTION = None
 CURSOR = None
 
@@ -34,7 +35,8 @@ def setup_db():
         try:  # delete file if exist only
             os.remove(DB_PATH)
         except PermissionError:
-            print('Cannot delete old db file because it is being used by another process.')
+            print(
+                'Cannot delete old db file because it is being used by another process.')
             sys.exit()
     connect_db()
 
@@ -102,6 +104,13 @@ def create_table_if_not_exists():
         CONSTRAINT pk_{0} PRIMARY KEY ([exerciseId], [equipmentId])
       )'''.format(EXERCISE_EQUIPMENT_TABLE, EXERCISE_TABLE, EQUIPMENT_TABLE))
 
+    CURSOR.execute('''
+      CREATE TABLE IF NOT EXISTS {0} (
+        [exerciseId] INTEGER REFERENCES {1}(id),
+        [favorite] BIT,
+        CONSTRAINT pk_{0} PRIMARY KEY ([exerciseId])
+      )'''.format(FAVORITE_TABLE, EXERCISE_TABLE))
+
 
 def create_db():
     create_table_if_not_exists()
@@ -130,6 +139,9 @@ def create_db():
                            uglify(exercise['variation']),
                            uglify(exercise['keywords'])
                        ))
+
+        CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
+                       .format(FAVORITE_TABLE), (exercise['id'], False))
 
         for muscle_info in exercise['muscles']:
             CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'

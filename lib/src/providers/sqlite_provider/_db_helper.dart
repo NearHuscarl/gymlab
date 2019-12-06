@@ -4,18 +4,25 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
+import '../../helpers/logger.dart';
 
 class DbHelper {
   static final String exerciseTable = 'Exercise';
   static final String exerciseMuscleTable = 'Exercise_Muscle';
-
+  static final String favoriteTable = 'Favorite';
+  // /data/user/0/com.example.gymlab/app_flutter/data.sqlite
   static Future<void> setupDbFile() async {
     final dbPath = await getDbPath();
 
+    L.debug('init database');
+
     if (kDebugMode) {
       try {
-        File(dbPath).deleteSync();
-      } catch (e) {}
+        L.warning('detele database');
+        await File(dbPath).delete();
+      } catch (e) {
+        L.error(e);
+      }
     }
 
     // move the database file from assets/ folder to app document directory
@@ -31,7 +38,7 @@ class DbHelper {
   /// Get the path to the local database stored on the device
   static Future<String> getDbPath() async {
     final documentsDirectory = await getApplicationDocumentsDirectory();
-    final dbPath = join(documentsDirectory.path, "data.sqlite");
+    final dbPath = join(documentsDirectory.path, 'data.sqlite');
 
     return dbPath;
   }

@@ -8,6 +8,7 @@ class ExerciseSummary {
     this.imageCount,
     this.thumbnailImageIndex,
     this.keywords,
+    this.favorite,
   });
 
   final int id;
@@ -16,6 +17,7 @@ class ExerciseSummary {
   final int imageCount;
   final int thumbnailImageIndex;
   final List<String> keywords;
+  final bool favorite;
 
   factory ExerciseSummary.fromJson(Map<String, dynamic> map) {
     return ExerciseSummary(
@@ -25,6 +27,7 @@ class ExerciseSummary {
       imageCount: map['imageCount'],
       thumbnailImageIndex: map['thumbnailImageIndex'],
       keywords: List<String>.from(json.decode(map['keywords']) ?? []),
+      favorite: map['favorite'] == 1 ? true : false,
     );
   }
 
@@ -35,6 +38,7 @@ class ExerciseSummary {
         'imageCount': imageCount,
         'thumbnailImageIndex': thumbnailImageIndex,
         'keywords': keywords,
+        'favorite': favorite,
       };
 }
 

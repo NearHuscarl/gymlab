@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/gym_icons.dart';
 import '../components/muscle_options.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,18 +29,18 @@ class _HomeScreenState extends State<HomeScreen> {
         child: _buildOptions(),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
+            icon: Icon(GymIcons.dumbbell),
+            title: Text('Exercises'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Business'),
+            icon: Icon(Icons.timer),
+            title: Text('Timer'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Icons.settings),
+            title: Text('Settings'),
           ),
         ],
         currentIndex: _selectedIndex,

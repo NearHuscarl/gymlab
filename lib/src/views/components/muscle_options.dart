@@ -69,10 +69,10 @@ class _MuscleOptionsState extends State<MuscleOptions>
 
   @override
   void dispose() {
-    super.dispose();
-
     _rippleController.dispose();
     _switchController.dispose();
+
+    super.dispose();
   }
 
   void _handleSwitchSide() {
@@ -92,119 +92,119 @@ class _MuscleOptionsState extends State<MuscleOptions>
         child: IndicatorButton(
           sizeFactor: [.26, .07],
           fractionaloffsets: [.95, .13],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.cardio),
+          onPressed: () => Router.exerciseOverview(context, Muscle.cardio),
         ),
       ),
       Muscle.shoulders: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.32, .08],
           fractionaloffsets: [.05, .18],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.shoulders),
+          onPressed: () => Router.exerciseOverview(context, Muscle.shoulders),
         ),
       ),
       Muscle.chest: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.43, .07],
           fractionaloffsets: [.05, .27],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.chest),
+          onPressed: () => Router.exerciseOverview(context, Muscle.chest),
         ),
       ),
       Muscle.forearms: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.28, .07],
           fractionaloffsets: [.05, .365],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.forearms),
+          onPressed: () => Router.exerciseOverview(context, Muscle.forearms),
         ),
       ),
       Muscle.obliques: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.42, .09],
           fractionaloffsets: [.06, .46],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.obliques),
+          onPressed: () => Router.exerciseOverview(context, Muscle.obliques),
         ),
       ),
       Muscle.quads: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.42, .08],
           fractionaloffsets: [.06, .575],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.quads),
+          onPressed: () => Router.exerciseOverview(context, Muscle.quads),
         ),
       ),
       Muscle.biceps: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.32, .07],
           fractionaloffsets: [.95, .3],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.biceps),
+          onPressed: () => Router.exerciseOverview(context, Muscle.biceps),
         ),
       ),
       Muscle.abs: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.48, .07],
           fractionaloffsets: [.95, .39],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.abs),
+          onPressed: () => Router.exerciseOverview(context, Muscle.abs),
         ),
       ),
       Muscle.abductors: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.38, .06],
           fractionaloffsets: [.95, .58],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.abductors),
+          onPressed: () => Router.exerciseOverview(context, Muscle.abductors),
         ),
       ),
       Muscle.adductors: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.47, .075],
           fractionaloffsets: [.95, .68],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.adductors),
+          onPressed: () => Router.exerciseOverview(context, Muscle.adductors),
         ),
       ),
       Muscle.traps: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.4, .075],
           fractionaloffsets: [.05, .19],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.traps),
+          onPressed: () => Router.exerciseOverview(context, Muscle.traps),
         ),
       ),
       Muscle.triceps: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.3, .07],
           fractionaloffsets: [.05, .3],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.triceps),
+          onPressed: () => Router.exerciseOverview(context, Muscle.triceps),
         ),
       ),
       Muscle.lats: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.41, .07],
           fractionaloffsets: [.95, .29],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.lats),
+          onPressed: () => Router.exerciseOverview(context, Muscle.lats),
         ),
       ),
       Muscle.lowerBack: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.52, .075],
           fractionaloffsets: [.06, .415],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.lowerBack),
+          onPressed: () => Router.exerciseOverview(context, Muscle.lowerBack),
         ),
       ),
       Muscle.glutes: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.44, .07],
           fractionaloffsets: [.95, .51],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.glutes),
+          onPressed: () => Router.exerciseOverview(context, Muscle.glutes),
         ),
       ),
       Muscle.hamstrings: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.44, .075],
           fractionaloffsets: [.06, .61],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.hamstrings),
+          onPressed: () => Router.exerciseOverview(context, Muscle.hamstrings),
         ),
       ),
       Muscle.calves: SizedBox.expand(
         child: IndicatorButton(
           sizeFactor: [.42, .075],
           fractionaloffsets: [.06, .78],
-          onPressed: () => Router.exerciseOverviewScreen(context, Muscle.calves),
+          onPressed: () => Router.exerciseOverview(context, Muscle.calves),
         ),
       ),
     };
@@ -220,6 +220,7 @@ class _MuscleOptionsState extends State<MuscleOptions>
     final primaryColor = theme.primaryColor;
 
     return Stack(
+      alignment: Alignment.center,
       children: <Widget>[
         AnimatedBuilder(
           animation: _switchAnimation,
