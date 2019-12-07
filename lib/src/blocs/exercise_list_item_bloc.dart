@@ -12,13 +12,9 @@ class ExerciseListItemBloc {
   final bool initialFavorite;
 
   final _repository = ExerciseRepository();
-  final _playGif = BehaviorSubject<bool>();
   final _favorite = BehaviorSubject<bool>();
 
   Observable<bool> get favorite => _favorite.startWith(initialFavorite);
-  Observable<bool> get playGif => _playGif.startWith(false);
-
-  Function(bool) get setPlayGif => _playGif.sink.add;
 
   Future<void> updateFavorite(bool favorite) async {
     await _repository.updateFavorite(exerciseId, favorite);
@@ -27,6 +23,5 @@ class ExerciseListItemBloc {
 
   void dispose() {
     _favorite.close();
-    _playGif.close();
   }
 }

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'src/helpers/logger.dart';
 import 'src/views/screens/home_screen.dart';
 import 'src/z_rxdart_example/github_api.dart';
 import 'src/z_rxdart_example/search_widget.dart';
 
 void main() {
-  L.verbose('run main');
   runApp(GymLabApp());
 }
 

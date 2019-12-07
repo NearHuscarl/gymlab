@@ -34,11 +34,12 @@ class EnumHelper {
         orElse: () => null);
   }
 
-  static List<T> fromStrings<T>(List<T> enumValues, List<dynamic> values) {
+  static List<T> fromStrings<T>(List<T> enumValues, Iterable<dynamic> values) {
     if (values == null || enumValues == null) return <T>[];
 
-    return List<T>.from(
-      values.cast<String>().map((x) => EnumHelper.fromString(enumValues, x)),
-    );
+    return values
+        .cast<String>()
+        .map((x) => EnumHelper.fromString(enumValues, x))
+        .toList();
   }
 }

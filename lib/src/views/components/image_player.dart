@@ -10,16 +10,14 @@ class ImagePlayer extends StatefulWidget {
     this.controller,
     this.defaultIndex,
     this.onTap,
-    this.autoPlay = false,
     this.playInterval = const Duration(milliseconds: 1000),
   }) : super(key: key);
 
   final List<ImageProvider<dynamic>> images;
-  final ValueNotifier controller;
+  final ImageController controller;
   final int defaultIndex;
   final Duration playInterval;
   final VoidCallback onTap;
-  final bool autoPlay;
 
   @override
   _ImagePlayerState createState() => _ImagePlayerState();
@@ -34,14 +32,19 @@ class _ImagePlayerState extends State<ImagePlayer> {
     super.initState();
 
     _currentIndex = widget.defaultIndex;
-    widget.controller.addListener(() {
-      final playGif = widget.controller.value;
-      if (playGif) {
-        _timer = _getTimer();
-      } else {
-        _timer?.cancel();
-      }
-    });
+
+    widget.controller.addListener(_updateTimer);
+    _updateTimer();
+  }
+
+  void _updateTimer() {
+    final controller = widget.controller;
+
+    if (controller.isPlaying) {
+      _timer = _getTimer();
+    } else {
+      _timer?.cancel();
+    }
   }
 
   Timer _getTimer() {
@@ -57,7 +60,7 @@ class _ImagePlayerState extends State<ImagePlayer> {
   @override
   void dispose() {
     super.dispose();
-    _timer?.cancel();
+    _timer.cancel();
   }
 
   @override
@@ -83,5 +86,23 @@ class _ImagePlayerState extends State<ImagePlayer> {
         ),
       ],
     );
+  }
+}
+
+class ImageController extends ValueNotifier<bool> {
+  ImageController({bool autoPlay}) : super(autoPlay);
+
+  bool get isPlaying => value;
+
+  void play() {
+    value = true;
+  }
+
+  void pause() {
+    value = false;
+  }
+
+  void togglePlay() {
+    value = !value;
   }
 }

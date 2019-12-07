@@ -80,7 +80,7 @@ class Variation {
           weightType:
               EnumHelper.fromStrings(WeightType.values, json['weightType']),
           repetitionsSpeed: EnumHelper.fromStrings(
-              RepetitionsSpeed.values, json['repetitionsSpeed']),
+              RepetitionsSpeed.values, json['repetitionsSpeed']?.map((x) => 'k$x')),
         );
 
   Map<String, dynamic> toJson() => {

@@ -18,6 +18,7 @@ class ExerciseDetail {
     this.type,
     this.variation,
     this.keywords,
+    this.favorite,
   });
 
   final int id;
@@ -30,20 +31,22 @@ class ExerciseDetail {
   final ExerciseType type;
   final Variation variation;
   final List<String> keywords;
+  final bool favorite;
 
   factory ExerciseDetail.fromJson(Map<String, dynamic> map) {
     return ExerciseDetail(
       id: map['id'],
       name: map['name'],
       description: map['description'],
-      // equipments: EnumHelper.fromStrings(Equipment.values, map['equipments']),
-      // imageCount: map['imageCount'],
-      // thumbnailImageIndex: map['thumbnailImageIndex'],
-      // muscles: List<MuscleInfo>.from(
-      //     map['muscles']?.map((m) => MuscleInfo.fromJson(m))),
-      // type: EnumHelper.fromString(ExerciseType.values, map['type']),
-      // variation: Variation.fromJson(json.decode(map['variation'])),
-      // keywords: List<String>.from(json.decode(map['keywords']) ?? []),
+      equipments: EnumHelper.fromStrings(Equipment.values, map['equipments']),
+      imageCount: map['imageCount'],
+      thumbnailImageIndex: map['thumbnailImageIndex'],
+      muscles: List<MuscleInfo>.from(
+          map['muscles']?.map((m) => MuscleInfo.fromJson(m))),
+      type: EnumHelper.fromString(ExerciseType.values, map['type']),
+      variation: Variation.fromJson(json.decode(map['variation'])),
+      keywords: List<String>.from(json.decode(map['keywords']) ?? []),
+      favorite: map['favorite'] == 1 ? true : false,
     );
   }
 
@@ -51,13 +54,14 @@ class ExerciseDetail {
         'id': id,
         'name': name,
         'description': description,
-        // 'equipments':
-        //     List<dynamic>.from(equipments.map((x) => EnumHelper.parse(x))),
-        // 'imageCount': imageCount,
-        // 'thumbnailImageIndex': thumbnailImageIndex,
-        // 'muscles': List<dynamic>.from(muscles.map((x) => x.toJson())),
-        // 'type': EnumHelper.parse(type),
-        // 'variation': variation.toJson(),
-        // 'keywords': keywords,
+        'equipments':
+            List<dynamic>.from(equipments.map((x) => EnumHelper.parse(x))),
+        'imageCount': imageCount,
+        'thumbnailImageIndex': thumbnailImageIndex,
+        'muscles': List<dynamic>.from(muscles.map((x) => x.toJson())),
+        'type': EnumHelper.parse(type),
+        'variation': variation.toJson(),
+        'keywords': keywords,
+        'favorite': favorite,
       };
 }

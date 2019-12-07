@@ -20,10 +20,10 @@ class Router {
     );
   }
 
-  static void exerciseDetail(BuildContext context, int id, String name) {
+  static void exerciseDetail(BuildContext context, int id) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ExerciseDetailScreen(id, name)),
+      MaterialPageRoute(builder: (context) => ExerciseDetailScreen(id)),
     );
   }
 }

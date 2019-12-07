@@ -9,7 +9,51 @@ import '../../helpers/logger.dart';
 class DbHelper {
   static final String exerciseTable = 'Exercise';
   static final String exerciseMuscleTable = 'Exercise_Muscle';
+  static final String exerciseEquipmentTable = 'Exercise_Equipment';
   static final String favoriteTable = 'Favorite';
+
+  static final String selectSummariesByMuscleQuery = '''
+SELECT id, name, description, imageCount, thumbnailImageIndex, keywords, favorite
+FROM $exerciseTable
+
+INNER JOIN $exerciseMuscleTable
+ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+AND Exercise_Muscle.muscleId = ?
+
+INNER JOIN $favoriteTable
+ON $exerciseTable.id = $favoriteTable.exerciseId
+''';
+
+  static final String selectAllByExerciseIdQuery = '''
+SELECT id, name, description, imageCount, thumbnailImageIndex, type, variation, keywords, favorite
+FROM $exerciseTable
+
+INNER JOIN $favoriteTable
+ON $exerciseTable.id = $favoriteTable.exerciseId
+
+WHERE id = ?
+''';
+
+  static final String selectMusclesByExerciseIdQuery = '''
+SELECT muscleId as muscle, target
+FROM $exerciseTable
+
+INNER JOIN $exerciseMuscleTable -- 208
+ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+
+WHERE id = ?
+''';
+
+  static final String selectEquipmentsByExerciseIdQuery = '''
+SELECT equipmentId
+FROM $exerciseTable
+
+INNER JOIN $exerciseEquipmentTable -- 311
+ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
+
+WHERE id = ?
+''';
+
   // /data/user/0/com.example.gymlab/app_flutter/data.sqlite
   static Future<void> setupDbFile() async {
     final dbPath = await getDbPath();

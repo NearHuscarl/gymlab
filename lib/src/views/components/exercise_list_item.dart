@@ -19,7 +19,7 @@ class ExerciseListItem extends StatefulWidget {
 class _ExerciseListItemState extends State<ExerciseListItem>
     with SingleTickerProviderStateMixin {
   AnimationController _playPauseController;
-  ValueNotifier _imageController;
+  ImageController _imageController;
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _ExerciseListItemState extends State<ExerciseListItem>
       duration: const Duration(milliseconds: 200),
     );
     // dont play exercise gif by default;
-    _imageController = ValueNotifier(false);
+    _imageController = ImageController(autoPlay: false);
   }
 
   @override
@@ -44,15 +44,17 @@ class _ExerciseListItemState extends State<ExerciseListItem>
   Widget _buildFavoriteButton(ExerciseListItemBloc bloc) {
     return StreamBuilder(
       stream: bloc.favorite,
+      initialData: false,
       builder: (context, AsyncSnapshot<bool> snapshot) {
-        final favorite = snapshot.hasData ? snapshot.data : false;
+        final favorite = snapshot.data;
+        final newFavorite = !favorite;
         return IconButton(
           alignment: Alignment.centerLeft,
           padding: EdgeInsets.zero,
-          icon: favorite
-              ? Icon(Icons.star, size: 17.5)
-              : Icon(Icons.star_border, size: 17.5),
-          onPressed: () => bloc.updateFavorite(!favorite),
+          icon: newFavorite
+              ? Icon(Icons.star_border, size: 17.5)
+              : Icon(Icons.star, size: 17.5),
+          onPressed: () => bloc.updateFavorite(newFavorite),
           color: Colors.black54,
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
@@ -61,34 +63,28 @@ class _ExerciseListItemState extends State<ExerciseListItem>
     );
   }
 
-  // TODO: fix play button only run onPress callback the second times
   Widget _buildPlayButton(ExerciseListItemBloc bloc) {
-    return StreamBuilder(
-        stream: bloc.playGif,
-        builder: (context, AsyncSnapshot<bool> snapshot) {
-          final playGif = snapshot.data;
-          return IconButton(
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.zero,
-            icon: AnimatedIcon(
-              progress: _playPauseController,
-              icon: AnimatedIcons.play_pause,
-            ),
-            onPressed: () {
-              if (playGif) {
-                _playPauseController.forward();
-                _imageController.value = true;
-              } else {
-                _playPauseController.reverse();
-                _imageController.value = false;
-              }
-              bloc.setPlayGif(!playGif);
-            },
-            color: Colors.black54,
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-          );
-        });
+    return IconButton(
+      alignment: Alignment.centerRight,
+      padding: EdgeInsets.zero,
+      icon: AnimatedIcon(
+        progress: _playPauseController,
+        icon: AnimatedIcons.play_pause,
+      ),
+      onPressed: () {
+        final willPlayGif = !_imageController.isPlaying;
+        if (willPlayGif) {
+          _playPauseController.forward();
+          _imageController.play();
+        } else {
+          _playPauseController.reverse();
+          _imageController.pause();
+        }
+      },
+      color: Colors.black54,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+    );
   }
 
   @override
@@ -110,22 +106,15 @@ class _ExerciseListItemState extends State<ExerciseListItem>
           ],
         ),
       ),
-      child: StreamBuilder(
-        stream: bloc.playGif,
-        builder: (context, AsyncSnapshot<bool> snapshot) => ImagePlayer(
-          images: List<int>.generate(exercise.imageCount, (i) => i)
-              .map((index) => AssetImage(
-                    'assets/images/exercise_workout_${exercise.id}_$index.jpg',
-                  ))
-              .toList(),
-          controller: _imageController,
-          defaultIndex: exercise.thumbnailImageIndex,
-          onTap: () => Router.exerciseDetail(
-            context,
-            exercise.id,
-            exercise.name,
-          ),
-        ),
+      child: ImagePlayer(
+        images: List<int>.generate(exercise.imageCount, (i) => i)
+            .map((index) => AssetImage(
+                  'assets/images/exercise_workout_${exercise.id}_$index.jpg',
+                ))
+            .toList(),
+        controller: _imageController,
+        defaultIndex: exercise.thumbnailImageIndex,
+        onTap: () => Router.exerciseDetail(context, exercise.id),
       ),
       footer: Stack(
         children: <Widget>[

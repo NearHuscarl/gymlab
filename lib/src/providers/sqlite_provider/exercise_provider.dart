@@ -42,19 +42,10 @@ class ExerciseProvider {
 
   Future<ExerciseSummaries> getSummariesByMuscleCategory(String muscle) async {
     final db = await database;
-    final exerciseMuscleTable = DbHelper.exerciseMuscleTable;
-    final favoriteTable = DbHelper.favoriteTable;
-    final res = await db.rawQuery('''
-SELECT id, name, description, imageCount, thumbnailImageIndex, keywords, favorite
-FROM $tableName
-
-INNER JOIN $exerciseMuscleTable
-ON $tableName.id = $exerciseMuscleTable.exerciseId
-AND Exercise_Muscle.muscleId = ?
-
-INNER JOIN $favoriteTable
-ON $tableName.id = $favoriteTable.exerciseId
-''', [muscle]);
+    final res = await db.rawQuery(
+      DbHelper.selectSummariesByMuscleQuery,
+      [muscle],
+    );
 
     return ExerciseSummaries(
         exercises: res.isNotEmpty
@@ -74,9 +65,19 @@ ON $tableName.id = $favoriteTable.exerciseId
 
   Future<ExerciseDetail> getDetailById(int id) async {
     final db = await database;
-    final res = await db.query(tableName, where: 'id = ?', whereArgs: [id]);
+    final batch = db.batch();
 
-    return res.isNotEmpty ? ExerciseDetail.fromJson(res.first) : null;
+    batch.rawQuery(DbHelper.selectAllByExerciseIdQuery, [id]);
+    batch.rawQuery(DbHelper.selectMusclesByExerciseIdQuery, [id]);
+    batch.rawQuery(DbHelper.selectEquipmentsByExerciseIdQuery, [id]);
+
+    final batchResult = await batch.commit();
+    final res = Map<String, dynamic>.from(batchResult[0].first);
+
+    res['muscles'] = batchResult[1];
+    res['equipments'] = batchResult[2].map((x) => x['equipmentId']);
+
+    return res.isNotEmpty ? ExerciseDetail.fromJson(res) : null;
   }
 
   Future<void> updateFavorite(int id, bool favorite) async {

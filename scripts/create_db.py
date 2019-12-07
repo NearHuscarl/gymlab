@@ -88,8 +88,8 @@ def create_table_if_not_exists():
       CREATE TABLE IF NOT EXISTS {0} (
         [exerciseId] INTEGER REFERENCES {1}(id),
         [muscleId] NVARCHAR REFERENCES {2}(id),
-        [primaryMuscle] BIT,
-        CONSTRAINT pk_{0} PRIMARY KEY ([exerciseId], [muscleId], [primaryMuscle])
+        [target] NVARCHAR,
+        CONSTRAINT pk_{0} PRIMARY KEY ([exerciseId], [muscleId], [target])
       )'''.format(EXERCISE_MUSCLE_TABLE, EXERCISE_TABLE, MUSCLE_TABLE))
 
     CURSOR.execute('''
@@ -146,9 +146,9 @@ def create_db():
         for muscle_info in exercise['muscles']:
             CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
                            .format(MUSCLE_TABLE), (muscle_info['muscle'],))
-            CURSOR.execute('INSERT OR IGNORE INTO {} ([exerciseId], [muscleId], [primaryMuscle]) VALUES (?, ?, ?)'
+            CURSOR.execute('INSERT OR IGNORE INTO {} ([exerciseId], [muscleId], [target]) VALUES (?, ?, ?)'
                            .format(EXERCISE_MUSCLE_TABLE),
-                           (exercise['id'], muscle_info['muscle'], muscle_info['target'] == 'primary'))
+                           (exercise['id'], muscle_info['muscle'], muscle_info['target']))
 
         for equipment in exercise['equipments']:
             CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
