@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'image_player.dart';
+import '../components/muscle_anatomy.dart';
+import '../components/flex_with_gap.dart';
+import '../components/linebreak.dart';
 import '../../blocs/exercise_detail_bloc.dart';
 import '../../models/exercise_detail.dart';
+import '../../models/variation.dart';
 import '../../helpers/enum.dart';
 
 class ExerciseDetailSection extends StatefulWidget {
@@ -11,16 +15,11 @@ class ExerciseDetailSection extends StatefulWidget {
 }
 
 class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
-  static const initialPage = 1;
+  int _selectedPage;
   PageController _pageController;
+  bool hasVariationPage = false;
   // TODO: find icon for variation page
   List<IconData> _icons = [Icons.info, Icons.image, Icons.description];
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(initialPage: initialPage);
-  }
 
   @override
   void dispose() {
@@ -28,92 +27,22 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
     _pageController.dispose();
   }
 
-  Widget _buildDescription(ThemeData theme, ExerciseDetail exercise) {
-    final normalTheme = theme.textTheme.body1.copyWith(fontSize: 16);
-    final boldTheme = theme.textTheme.body2.copyWith(fontSize: 16);
-    final paragraph = exercise.description.split('\n');
-    const textPadding = const EdgeInsets.only(top: 8.0);
-
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          RichText(
-            text: TextSpan(
-              // TODO: add image of muscle atonamy
-              style: normalTheme,
-              children: <TextSpan>[
-                TextSpan(
-                  text: 'Primary Muscle: ',
-                  style: boldTheme,
-                ),
-                TextSpan(
-                  text: EnumHelper.parseWord(exercise.muscles.first.muscle),
-                ),
-              ],
-            ),
-          ),
-          if (exercise.muscles.length > 1)
-            Padding(
-              padding: textPadding,
-              child: RichText(
-                text: TextSpan(style: normalTheme, children: [
-                  TextSpan(
-                    text: 'Secondary Muscle: ',
-                    style: boldTheme,
-                  ),
-                  TextSpan(
-                    text: exercise.muscles
-                        .skip(1)
-                        .map((m) => EnumHelper.parseWord(m.muscle))
-                        .join(', '),
-                  )
-                ]),
-              ),
-            ),
-          Padding(
-            padding: textPadding,
-            child: RichText(
-              text: TextSpan(style: normalTheme, children: [
-                TextSpan(
-                  text: 'Exercise Type: ',
-                  style: boldTheme,
-                ),
-                TextSpan(
-                  text: EnumHelper.parseWord(exercise.type),
-                )
-              ]),
-            ),
-          ),
-          Padding(
-            padding: textPadding,
-            child: Text('Description: ', style: theme.textTheme.body2),
-          )
-        ]..addAll(paragraph.map(
-            (p) => Padding(
-              padding: textPadding,
-              child: Text(p),
-            ),
-          )),
-      ),
-    );
+  PageController _getPageController() {
+    if (_pageController == null) {
+      final initialPage = hasVariationPage ? 1 : 0;
+      _pageController = PageController(initialPage: initialPage);
+      _selectedPage = initialPage;
+    }
+    return _pageController;
   }
 
-  Widget _buildDetail(ThemeData theme, ExerciseDetail exercise) {
+  Widget _buildDetailPages(ThemeData theme, ExerciseDetail exercise) {
     return PageView(
       physics: BouncingScrollPhysics(),
-      controller: _pageController,
+      controller: _getPageController(),
+      onPageChanged: (page) => setState(() => _selectedPage = page),
       children: <Widget>[
-        Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              // TODO: add variation and helpers
-              child: Text(exercise.variation.toJson().toString()),
-            ),
-          ],
-        ),
+        if (!exercise.variation.isEmpty) _ExerciseVariation(exercise),
         Flex(
           direction: Axis.vertical,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -131,19 +60,21 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
             ),
           ],
         ),
-        _buildDescription(theme, exercise),
+        _ExerciseDescription(exercise),
       ],
     );
   }
 
   Widget _buildNavigationButton(int pageIndex) {
-    final selected = _pageController.positions.isNotEmpty
-        ? pageIndex == _pageController.page
-        : pageIndex == initialPage;
+    final effectivePageIndex = hasVariationPage ? pageIndex : pageIndex + 1;
+    final selected = pageIndex == _selectedPage;
     return IconButton(
-      icon: Icon(_icons[pageIndex]),
+      icon: Icon(_icons[effectivePageIndex]),
       color: selected ? Colors.indigo : Colors.grey,
-      onPressed: () => setState(() => _pageController.jumpToPage(pageIndex)),
+      onPressed: () {
+        _pageController.jumpToPage(pageIndex);
+        setState(() => _selectedPage = pageIndex);
+      },
       iconSize: 30,
     );
   }
@@ -158,6 +89,7 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
       builder: (context, AsyncSnapshot<ExerciseDetail> snapshot) {
         if (snapshot.hasData) {
           final exercise = snapshot.data;
+          hasVariationPage = !exercise.variation.isEmpty;
           return Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -172,7 +104,7 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
                 ),
                 SizedBox(
                   height: 500,
-                  child: _buildDetail(theme, exercise),
+                  child: _buildDetailPages(theme, exercise),
                 ),
                 SizedBox(height: 20),
                 Row(
@@ -180,7 +112,7 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
                   children: <Widget>[
                     _buildNavigationButton(0),
                     _buildNavigationButton(1),
-                    _buildNavigationButton(2),
+                    if (hasVariationPage) _buildNavigationButton(2),
                   ],
                 )
               ],
@@ -191,6 +123,96 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
         }
         return Center(child: CircularProgressIndicator());
       },
+    );
+  }
+}
+
+class _ExerciseDescription extends StatelessWidget {
+  _ExerciseDescription(this.exercise);
+
+  final ExerciseDetail exercise;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final normalTheme = theme.textTheme.body1.copyWith(fontSize: 16);
+    final boldTheme = theme.textTheme.body2.copyWith(fontSize: 16);
+    final paragraph = exercise.description.split('\n');
+    const textPadding = const EdgeInsets.only(top: 8.0);
+    final primaryMuscle = exercise.muscles.first;
+    final secondaryMuscles = exercise.muscles.skip(1).map((m) => m);
+
+    final content = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        RichText(
+          text: TextSpan(
+            style: normalTheme,
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Primary Muscle: ',
+                style: boldTheme,
+              ),
+              TextSpan(
+                text: EnumHelper.parseWord(primaryMuscle.muscle),
+              ),
+            ],
+          ),
+        ),
+        if (secondaryMuscles.isNotEmpty)
+          Padding(
+            padding: textPadding,
+            child: RichText(
+              text: TextSpan(style: normalTheme, children: [
+                TextSpan(
+                  text: 'Secondary Muscle: ',
+                  style: boldTheme,
+                ),
+                TextSpan(
+                  text: secondaryMuscles
+                      .map((m) => EnumHelper.parseWord(m.muscle))
+                      .join(', '),
+                )
+              ]),
+            ),
+          ),
+        Linebreak(),
+        RichText(
+          text: TextSpan(style: normalTheme, children: [
+            TextSpan(
+              text: 'Exercise Type: ',
+              style: boldTheme,
+            ),
+            TextSpan(
+              text: EnumHelper.parseWord(exercise.type),
+            )
+          ]),
+        ),
+        Padding(
+          padding: textPadding,
+          child: Text('Description: ', style: theme.textTheme.body2),
+        ),
+      ]
+        ..addAll(paragraph.map(
+          (p) => Padding(
+            padding: textPadding,
+            child: Text('- ' + p),
+          ),
+        ))
+        ..add(Padding(
+          padding: textPadding,
+          child: MuscleAnatomy(
+            primary: primaryMuscle,
+            secondaries: secondaryMuscles,
+          ),
+        )),
+    );
+
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: content,
+      ),
     );
   }
 }
@@ -296,6 +318,169 @@ class __ImagePlayerState extends State<_ImagePlayer>
           ),
         )
       ],
+    );
+  }
+}
+
+class _ExerciseVariation extends StatelessWidget {
+  _ExerciseVariation(this.exercise);
+
+  final ExerciseDetail exercise;
+
+  Widget _getGripTypeImage(GripType gripType) => Image.asset(
+        'assets/images/variations/closed_griptype_${EnumHelper.parse(gripType)}.png',
+        width: 55.0,
+      );
+
+  Widget _getGripWidthImage(GripWidth gripWidth) => Image.asset(
+        'assets/images/variations/closed_gripwidth_${EnumHelper.parse(gripWidth)}.png',
+        width: 115.0,
+      );
+
+  Widget _getWeightTypeImage(WeightType weightType) => Image.asset(
+        'assets/images/variations/closed_weighttype_${EnumHelper.parse(weightType).toLowerCase()}.png',
+        width: 90.0,
+      );
+
+  Widget _getTempoImage(RepetitionsSpeed speed) => Image.asset(
+        'assets/images/variations/closed_repetitionsspeed_${EnumHelper.parse(speed).substring(1)}.png',
+        width: 60.0,
+      );
+
+  String _getTempoText(RepetitionsSpeed speed) {
+    switch (speed) {
+      case RepetitionsSpeed.k11:
+        return 'Regular';
+      case RepetitionsSpeed.k22:
+        return 'Extended';
+      case RepetitionsSpeed.k24:
+        return 'Strength Building';
+    }
+    return ''; // shut up dart linter
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final variation = exercise.variation;
+    final boldTheme = theme.textTheme.body2.copyWith(fontSize: 16);
+    final captionTheme = theme.textTheme.caption.copyWith(fontSize: 10);
+    const textPadding = const EdgeInsets.only(top: 8.0);
+    const gap = 20.0;
+
+    final content = Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: textPadding,
+          child: Text('Variations', style: boldTheme.copyWith(fontSize: 17)),
+        ),
+        SizedBox(height: 10),
+        if (variation.gripType.isNotEmpty)
+          Column(
+            children: <Widget>[
+              Text('Grip Type', style: boldTheme.copyWith(fontSize: 14)),
+              SizedBox(height: 5),
+              RowWithGap(
+                gap: gap,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: variation.gripType
+                    .map((g) => Column(
+                          children: <Widget>[
+                            _getGripTypeImage(g),
+                            Text(
+                              EnumHelper.parseWord(g),
+                              style: captionTheme,
+                            )
+                          ],
+                        ))
+                    .toList(),
+              ),
+              Linebreak(),
+            ],
+          ),
+        if (variation.gripWidth.isNotEmpty)
+          Column(
+            children: <Widget>[
+              Text('Grip Width', style: boldTheme.copyWith(fontSize: 14)),
+              SizedBox(height: 5),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: RowWithGap(
+                  gap: gap,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: variation.gripWidth
+                      .map((g) => Column(
+                            children: <Widget>[
+                              _getGripWidthImage(g),
+                              Text(
+                                EnumHelper.parseWord(g),
+                                style: captionTheme,
+                              )
+                            ],
+                          ))
+                      .toList(),
+                ),
+              ),
+              Linebreak(),
+            ],
+          ),
+        if (variation.weightType.isNotEmpty)
+          Column(
+            children: <Widget>[
+              Text('Weight Type', style: boldTheme.copyWith(fontSize: 14)),
+              SizedBox(height: 5),
+              RowWithGap(
+                gap: gap,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: variation.weightType
+                    .map((w) => Column(
+                          children: <Widget>[
+                            _getWeightTypeImage(w),
+                            Text(
+                              EnumHelper.parseWord(w),
+                              style: captionTheme,
+                            )
+                          ],
+                        ))
+                    .toList(),
+              ),
+              Linebreak(),
+            ],
+          ),
+        if (variation.repetitionsSpeed.isNotEmpty)
+          Column(
+            children: <Widget>[
+              Text('Weight Type', style: boldTheme.copyWith(fontSize: 14)),
+              SizedBox(height: 5),
+              RowWithGap(
+                gap: gap,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: variation.repetitionsSpeed
+                    .map((s) => SizedBox(
+                          width: 90,
+                          child: Column(
+                            children: <Widget>[
+                              _getTempoImage(s),
+                              Text(
+                                _getTempoText(s),
+                                style: captionTheme,
+                              )
+                            ],
+                          ),
+                        ))
+                    .toList(),
+              ),
+            ],
+          ),
+      ],
+    );
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        child: content,
+      ),
     );
   }
 }

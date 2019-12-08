@@ -2,29 +2,8 @@ import 'package:flutter/material.dart';
 import 'indicator_button.dart';
 import '../../views/router.dart';
 import '../../models/muscle_info.dart';
+import '../../helpers/muscles.dart';
 import '../../helpers/enum.dart';
-
-enum _BodyDirection { front, back }
-
-bool _shouldDisplay(Muscle muscle, _BodyDirection bodyDirection) {
-  if (muscle == Muscle.cardio) return true;
-
-  switch (muscle) {
-    case Muscle.shoulders:
-    case Muscle.biceps:
-    case Muscle.chest:
-    case Muscle.forearms:
-    case Muscle.abs:
-    case Muscle.obliques:
-    case Muscle.quads:
-    case Muscle.abductors:
-    case Muscle.adductors:
-      return bodyDirection == _BodyDirection.front;
-
-    default:
-      return bodyDirection == _BodyDirection.back;
-  }
-}
 
 class MuscleOptions extends StatefulWidget {
   @override
@@ -33,7 +12,7 @@ class MuscleOptions extends StatefulWidget {
 
 class _MuscleOptionsState extends State<MuscleOptions>
     with TickerProviderStateMixin {
-  _BodyDirection bodyDirection = _BodyDirection.front;
+  BodyDirection bodyDirection = BodyDirection.front;
 
   AnimationController _rippleController;
   AnimationController _switchController;
@@ -78,9 +57,9 @@ class _MuscleOptionsState extends State<MuscleOptions>
   void _handleSwitchSide() {
     _rippleController.reset();
     _switchController.forward().then((_) {
-      setState(() => bodyDirection = bodyDirection == _BodyDirection.front
-          ? _BodyDirection.back
-          : _BodyDirection.front);
+      setState(() => bodyDirection = bodyDirection == BodyDirection.front
+          ? BodyDirection.back
+          : BodyDirection.front);
       _switchController.reverse();
       _rippleController.repeat();
     });
@@ -210,7 +189,7 @@ class _MuscleOptionsState extends State<MuscleOptions>
     };
 
     return Muscle.values
-        .where((m) => _shouldDisplay(m, bodyDirection))
+        .where((m) => shouldDisplay(m, bodyDirection))
         .map((m) => buttonMaps[m]);
   }
 
@@ -238,7 +217,7 @@ class _MuscleOptionsState extends State<MuscleOptions>
             ),
             child: AnimatedCrossFade(
               duration: const Duration(milliseconds: _switchDuration),
-              crossFadeState: bodyDirection == _BodyDirection.front
+              crossFadeState: bodyDirection == BodyDirection.front
                   ? CrossFadeState.showFirst
                   : CrossFadeState.showSecond,
               // dont change image size when loading. It looks weird
@@ -288,7 +267,7 @@ class _Indicators extends CustomPainter {
   });
 
   final Color color;
-  final _BodyDirection bodyDirection;
+  final BodyDirection bodyDirection;
   final double rippleAnimationValue;
   final double switchAnimationValue;
 
@@ -392,7 +371,7 @@ class _Indicators extends CustomPainter {
         textDirection: TextDirection.ltr,
       )..layout();
 
-      if (_shouldDisplay(muscle, bodyDirection)) {
+      if (shouldDisplay(muscle, bodyDirection)) {
         canvas.drawCircle(offset(size, indicator.dot), 3.0, dot);
 
         if (muscle != Muscle.cardio) {

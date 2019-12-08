@@ -25,7 +25,7 @@ enum GripWidth {
 
   /// A wide grip is a grip that is wider than shoulder width. Around 6 inches
   /// wider than shoulder-width is average
-  width,
+  wide,
 }
 enum WeightType {
   /// A long metal bar where disks of varying weights are attached at each end
@@ -79,8 +79,8 @@ class Variation {
               EnumHelper.fromStrings(GripWidth.values, json['gripWidth']),
           weightType:
               EnumHelper.fromStrings(WeightType.values, json['weightType']),
-          repetitionsSpeed: EnumHelper.fromStrings(
-              RepetitionsSpeed.values, json['repetitionsSpeed']?.map((x) => 'k$x')),
+          repetitionsSpeed: EnumHelper.fromStrings(RepetitionsSpeed.values,
+              json['repetitionsSpeed']?.map((x) => 'k$x')),
         );
 
   Map<String, dynamic> toJson() => {
@@ -92,6 +92,12 @@ class Variation {
         'repetitionsSpeed':
             List<String>.from(repetitionsSpeed.map((x) => EnumHelper.parse(x))),
       };
+
+  bool get isEmpty =>
+      this.gripType.isEmpty &&
+      this.gripWidth.isEmpty &&
+      this.weightType.isEmpty &&
+      this.repetitionsSpeed.isEmpty;
 
   bool operator ==(Object other) {
     if (other is Variation) {
