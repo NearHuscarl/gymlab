@@ -8,6 +8,7 @@ import '../../blocs/exercise_detail_bloc.dart';
 import '../../models/exercise_detail.dart';
 import '../../models/variation.dart';
 import '../../helpers/enum.dart';
+import 'variation_help_dialogs.dart';
 
 class ExerciseDetailSection extends StatefulWidget {
   @override
@@ -296,6 +297,7 @@ class __ImagePlayerState extends State<_ImagePlayer>
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () {
+              if (widget.images.length == 1) return;
               setState(() => _imageController.togglePlay());
               _playPauseController
                 ..reset()
@@ -327,24 +329,41 @@ class _ExerciseVariation extends StatelessWidget {
 
   final ExerciseDetail exercise;
 
-  Widget _getGripTypeImage(GripType gripType) => Image.asset(
-        'assets/images/variations/closed_griptype_${EnumHelper.parse(gripType)}.png',
-        width: 55.0,
+  Widget _getGripTypeImage(BuildContext context, GripType gripType) =>
+      InkResponse(
+        onTap: () => showGripTypeHelpDialog(context),
+        child: Image.asset(
+          'assets/images/variations/griptype_${EnumHelper.parse(gripType)}_dark.png',
+          width: 55.0,
+        ),
       );
 
-  Widget _getGripWidthImage(GripWidth gripWidth) => Image.asset(
-        'assets/images/variations/closed_gripwidth_${EnumHelper.parse(gripWidth)}.png',
-        width: 115.0,
+  Widget _getGripWidthImage(BuildContext context, GripWidth gripWidth) =>
+      InkResponse(
+        onTap: () => showGripWidthHelpDialog(context),
+        child: Image.asset(
+          'assets/images/variations/gripwidth_${EnumHelper.parse(gripWidth)}_dark.png',
+          width: 115.0,
+        ),
       );
 
-  Widget _getWeightTypeImage(WeightType weightType) => Image.asset(
-        'assets/images/variations/closed_weighttype_${EnumHelper.parse(weightType).toLowerCase()}.png',
-        width: 90.0,
+  Widget _getWeightTypeImage(BuildContext context, WeightType weightType) =>
+      InkResponse(
+        onTap:  () => showWeightTypeHelpDialog(context),
+        child: Image.asset(
+          'assets/images/variations/weighttype_${EnumHelper.parse(weightType).toLowerCase()}_dark.png',
+          // width: 90.0,
+          height: 35,
+        ),
       );
 
-  Widget _getTempoImage(RepetitionsSpeed speed) => Image.asset(
-        'assets/images/variations/closed_repetitionsspeed_${EnumHelper.parse(speed).substring(1)}.png',
-        width: 60.0,
+  Widget _getTempoImage(BuildContext context, RepetitionsSpeed speed) =>
+      InkResponse(
+        onTap: () => showRepetitionsSpeedHelpDialog(context),
+        child: Image.asset(
+          'assets/images/variations/repetitionsspeed_${EnumHelper.parse(speed).substring(1)}_dark.png',
+          width: 60.0,
+        ),
       );
 
   String _getTempoText(RepetitionsSpeed speed) {
@@ -375,7 +394,7 @@ class _ExerciseVariation extends StatelessWidget {
           padding: textPadding,
           child: Text('Variations', style: boldTheme.copyWith(fontSize: 17)),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 20),
         if (variation.gripType.isNotEmpty)
           Column(
             children: <Widget>[
@@ -387,7 +406,7 @@ class _ExerciseVariation extends StatelessWidget {
                 children: variation.gripType
                     .map((g) => Column(
                           children: <Widget>[
-                            _getGripTypeImage(g),
+                            _getGripTypeImage(context, g),
                             Text(
                               EnumHelper.parseWord(g),
                               style: captionTheme,
@@ -412,7 +431,7 @@ class _ExerciseVariation extends StatelessWidget {
                   children: variation.gripWidth
                       .map((g) => Column(
                             children: <Widget>[
-                              _getGripWidthImage(g),
+                              _getGripWidthImage(context, g),
                               Text(
                                 EnumHelper.parseWord(g),
                                 style: captionTheme,
@@ -430,20 +449,22 @@ class _ExerciseVariation extends StatelessWidget {
             children: <Widget>[
               Text('Weight Type', style: boldTheme.copyWith(fontSize: 14)),
               SizedBox(height: 5),
-              RowWithGap(
-                gap: gap,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: variation.weightType
-                    .map((w) => Column(
-                          children: <Widget>[
-                            _getWeightTypeImage(w),
-                            Text(
-                              EnumHelper.parseWord(w),
-                              style: captionTheme,
-                            )
-                          ],
-                        ))
-                    .toList(),
+              SingleChildScrollView(
+                child: RowWithGap(
+                  gap: gap,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: variation.weightType
+                      .map((w) => Column(
+                            children: <Widget>[
+                              _getWeightTypeImage(context, w),
+                              Text(
+                                EnumHelper.parseWord(w),
+                                style: captionTheme,
+                              )
+                            ],
+                          ))
+                      .toList(),
+                ),
               ),
               Linebreak(),
             ],
@@ -451,17 +472,17 @@ class _ExerciseVariation extends StatelessWidget {
         if (variation.repetitionsSpeed.isNotEmpty)
           Column(
             children: <Widget>[
-              Text('Weight Type', style: boldTheme.copyWith(fontSize: 14)),
+              Text('Repetitions Speed',
+                  style: boldTheme.copyWith(fontSize: 14)),
               SizedBox(height: 5),
               RowWithGap(
-                gap: gap,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: variation.repetitionsSpeed
                     .map((s) => SizedBox(
                           width: 90,
                           child: Column(
                             children: <Widget>[
-                              _getTempoImage(s),
+                              _getTempoImage(context, s),
                               Text(
                                 _getTempoText(s),
                                 style: captionTheme,

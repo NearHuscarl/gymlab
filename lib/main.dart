@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'src/helpers/app_colors.dart';
 import 'src/views/screens/home_screen.dart';
 import 'src/z_rxdart_example/github_api.dart';
 import 'src/z_rxdart_example/search_widget.dart';
@@ -14,6 +15,11 @@ class GymLabApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
         accentColor: Colors.indigo,
+        textTheme: TextTheme().copyWith(
+          body1: TextStyle(color: Colors.black54),
+          body2: TextStyle(color: AppColors.black75),
+          title: TextStyle(color: AppColors.black75),
+        )
       ),
       home: HomeScreen(),
     );

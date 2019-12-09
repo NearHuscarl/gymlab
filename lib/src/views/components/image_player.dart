@@ -60,7 +60,7 @@ class _ImagePlayerState extends State<ImagePlayer> {
   @override
   void dispose() {
     super.dispose();
-    _timer.cancel();
+    _timer?.cancel();
   }
 
   @override

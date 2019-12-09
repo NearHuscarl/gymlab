@@ -93,6 +93,8 @@ class _ExerciseListItemState extends State<ExerciseListItem>
     final bloc = Provider.of<ExerciseListItemBloc>(context);
     final nameTextTheme = theme.textTheme.caption;
     final exercise = widget.exercise;
+    final favoratieButton =
+        exercise.imageCount > 1 ? _buildPlayButton(bloc) : SizedBox.shrink();
 
     return GridTile(
       header: Container(
@@ -102,7 +104,7 @@ class _ExerciseListItemState extends State<ExerciseListItem>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             _buildFavoriteButton(bloc),
-            _buildPlayButton(bloc),
+            favoratieButton,
           ],
         ),
       ),
