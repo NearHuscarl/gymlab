@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/gym_icons.dart';
 import '../components/muscle_options.dart';
+import '../router.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  var titles = ['Exercises', 'Timer', 'Settings'];
 
   Widget _buildOptions() {
     switch (_selectedIndex) {
@@ -23,7 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text(titles[_selectedIndex]),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.star),
+            onPressed: () => Router.favorite(context),
+          )
+        ],
       ),
       body: Center(
         child: _buildOptions(),

@@ -4,10 +4,9 @@ import '../../helpers/enum.dart';
 import '../../helpers/muscles.dart';
 
 class MuscleAnatomy extends StatelessWidget {
-  MuscleAnatomy({@required this.primary, this.secondaries = const []});
+  MuscleAnatomy({@required this.muscles});
 
-  final MuscleInfo primary;
-  final Iterable<MuscleInfo> secondaries;
+  final Iterable<MuscleInfo> muscles;
 
   String _getSuffix(MuscleInfo muscle) =>
       muscle.target == Target.primary ? '1' : '2';
@@ -15,20 +14,12 @@ class MuscleAnatomy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const imageWidth = 120.0;
-    final frontMuscles = secondaries
+    final frontMuscles = muscles
         .where((m) => isMuscleInFront(m.muscle) && m.muscle != Muscle.cardio)
         .toList();
-    final backMuscles = secondaries
+    final backMuscles = muscles
         .where((m) => !isMuscleInFront(m.muscle) && m.muscle != Muscle.cardio)
         .toList();
-
-    if (primary.muscle != Muscle.cardio) {
-      if (isMuscleInFront(primary.muscle)) {
-        frontMuscles.add(primary);
-      } else {
-        backMuscles.add(primary);
-      }
-    }
 
     return Center(
       child: Row(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/exercise_overview_screen.dart';
 import 'screens/exercise_detail_screen.dart';
+import 'screens/favorite_screen.dart';
 import '../models/muscle_info.dart';
 
 class Router {
@@ -24,6 +25,13 @@ class Router {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ExerciseDetailScreen(id)),
+    );
+  }
+
+  static void favorite(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => FavoriteScreen()),
     );
   }
 }

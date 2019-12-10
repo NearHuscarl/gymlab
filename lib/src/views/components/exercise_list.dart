@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'exercise_list_item.dart';
-import '../../blocs/exercise_list_bloc.dart';
 import '../../blocs/exercise_list_item_bloc.dart';
 import '../../models/exercise_summary.dart';
 
 class ExerciseList extends StatelessWidget {
-  Widget _buildList(ExerciseSummaries summary) {
+  ExerciseList({this.summary});
+
+  final ExerciseSummaries summary;
+
+  Widget build(BuildContext context) {
     const padding = const EdgeInsets.all(4.0);
 
     return GridView.builder(
       itemCount: summary.totalResults,
       padding: padding,
+      // Disable scroll physics if there is parent scrollable widget (FavoriteScreen have [ListView] of [ExerciseList])
+      physics: ScrollPhysics(),
+      shrinkWrap: true,
       gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context, int index) {
@@ -27,23 +33,6 @@ class ExerciseList extends StatelessWidget {
             child: ExerciseListItem(exercise),
           ),
         );
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final bloc = Provider.of<ExerciseListBloc>(context);
-
-    return StreamBuilder(
-      stream: bloc.summaries,
-      builder: (context, AsyncSnapshot<ExerciseSummaries> snapshot) {
-        if (snapshot.hasData) {
-          return _buildList(snapshot.data);
-        } else if (snapshot.hasError) {
-          return Text(snapshot.error.toString());
-        }
-        return Center(child: CircularProgressIndicator());
       },
     );
   }

@@ -53,6 +53,16 @@ class ExerciseProvider {
             : <ExerciseSummary>[]);
   }
 
+  Future<ExerciseSummaries> getAllFavorites() async {
+    final db = await database;
+    final res = await db.rawQuery(DbHelper.selectFavorites);
+
+    return ExerciseSummaries(
+        exercises: res.isNotEmpty
+            ? res.map((c) => ExerciseSummary.fromJson(c)).toList()
+            : <ExerciseSummary>[]);
+  }
+
   Future<ExerciseSummaries> getAllSummaries() async {
     final db = await database;
     final List<Map> res = await db.query(tableName);

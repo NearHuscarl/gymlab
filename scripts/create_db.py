@@ -17,8 +17,12 @@ path = os.path
 SCRIPT_DIRECTORY = path.dirname(path.realpath(__file__))
 DB_PATH = path.normpath(
     path.join(SCRIPT_DIRECTORY, '../assets/data/data.sqlite'))
-RAW_JSON_PATH = path.normpath(
+DB_TEST_PATH = path.normpath(
+    path.join(SCRIPT_DIRECTORY, '../assets/data/data.test.sqlite'))
+EXERCISE_JSON_PATH = path.normpath(
     path.join(SCRIPT_DIRECTORY, '../assets/data/exercises.json'))
+FAVORITE_JSON_PATH = path.normpath(
+    path.join(SCRIPT_DIRECTORY, '../assets/data/favorites.json'))
 
 EXERCISE_TABLE = 'Exercise'
 EXERCISE_EQUIPMENT_TABLE = 'Exercise_Equipment'
@@ -30,29 +34,22 @@ CONNECTION = None
 CURSOR = None
 
 
-def setup_db():
-    if path.isfile(DB_PATH):
+def setup_db(db_path):
+    if path.isfile(db_path):
         try:  # delete file if exist only
-            os.remove(DB_PATH)
+            os.remove(db_path)
         except PermissionError:
             print(
                 'Cannot delete old db file because it is being used by another process.')
             sys.exit()
-    connect_db()
+    connect_db(db_path)
 
 
-def connect_db():
+def connect_db(db_path):
     global CONNECTION
     global CURSOR
-    CONNECTION = sqlite3.connect(DB_PATH)
+    CONNECTION = sqlite3.connect(db_path)
     CURSOR = CONNECTION.cursor()
-
-
-def remove_old_db_file():
-    try:
-        os.remove(DB_PATH)
-    except PermissionError:
-        return
 
 
 def read_json_from_file(path):
@@ -112,11 +109,13 @@ def create_table_if_not_exists():
       )'''.format(FAVORITE_TABLE, EXERCISE_TABLE))
 
 
-def create_db():
+def create_db(test_db):
+    setup_db(DB_TEST_PATH if test_db else DB_PATH)
     create_table_if_not_exists()
-    json = read_json_from_file(RAW_JSON_PATH)
+    exercise_objs = read_json_from_file(EXERCISE_JSON_PATH)
+    favorite_objs = read_json_from_file(FAVORITE_JSON_PATH)
 
-    for exercise in json:
+    for exercise in exercise_objs:
         print('Inserting exercise ' + exercise['name'])
         CURSOR.execute('''INSERT INTO {} (
             [id],
@@ -140,8 +139,12 @@ def create_db():
                            uglify(exercise['keywords'])
                        ))
 
-        CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
-                       .format(FAVORITE_TABLE), (exercise['id'], False))
+        if (test_db):
+            CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
+                           .format(FAVORITE_TABLE), (exercise['id'], str(exercise['id']) in favorite_objs))
+        else:
+            CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
+                           .format(FAVORITE_TABLE), (exercise['id'], False))
 
         for muscle_info in exercise['muscles']:
             CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
@@ -178,8 +181,8 @@ def test_db():
 def main():
     # connect_db()
     # test_db()
-    setup_db()
-    create_db()
+    create_db(False)
+    create_db(True)
 
 
 if __name__ == '__main__':

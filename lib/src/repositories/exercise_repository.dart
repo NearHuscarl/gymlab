@@ -12,6 +12,9 @@ class ExerciseRepository {
   Future<ExerciseSummaries> getAllSummaries() =>
       ExerciseProvider.db.getAllSummaries();
 
+  Future<ExerciseSummaries> getAllFavorites() =>
+      ExerciseProvider.db.getAllFavorites();
+
   Future<ExerciseDetail> getDetailById(int id) =>
       ExerciseProvider.db.getDetailById(id);
 

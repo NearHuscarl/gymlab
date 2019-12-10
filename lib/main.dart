@@ -19,6 +19,7 @@ class GymLabApp extends StatelessWidget {
           body1: TextStyle(color: Colors.black54),
           body2: TextStyle(color: AppColors.black75),
           title: TextStyle(color: AppColors.black75),
+          headline: TextStyle(color: AppColors.black75),
         )
       ),
       home: HomeScreen(),

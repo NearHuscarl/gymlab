@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'muscle_info.dart';
+import '../helpers/enum.dart';
+
 class ExerciseSummary {
   ExerciseSummary({
     this.id,
@@ -8,6 +11,7 @@ class ExerciseSummary {
     this.imageCount,
     this.thumbnailImageIndex,
     this.keywords,
+    this.muscle,
     this.favorite,
   });
 
@@ -17,6 +21,7 @@ class ExerciseSummary {
   final int imageCount;
   final int thumbnailImageIndex;
   final List<String> keywords;
+  final Muscle muscle;
   final bool favorite;
 
   factory ExerciseSummary.fromJson(Map<String, dynamic> map) {
@@ -27,6 +32,7 @@ class ExerciseSummary {
       imageCount: map['imageCount'],
       thumbnailImageIndex: map['thumbnailImageIndex'],
       keywords: List<String>.from(json.decode(map['keywords']) ?? []),
+      muscle: EnumHelper.fromString(Muscle.values, map['muscle']),
       favorite: map['favorite'] == 1 ? true : false,
     );
   }
@@ -38,6 +44,7 @@ class ExerciseSummary {
         'imageCount': imageCount,
         'thumbnailImageIndex': thumbnailImageIndex,
         'keywords': keywords,
+        'muscle': muscle,
         'favorite': favorite,
       };
 }

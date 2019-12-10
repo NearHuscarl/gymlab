@@ -11,21 +11,56 @@ class DbHelper {
   static final String exerciseMuscleTable = 'Exercise_Muscle';
   static final String exerciseEquipmentTable = 'Exercise_Equipment';
   static final String favoriteTable = 'Favorite';
+  static String get dbName => !kDebugMode ? 'data.test.sqlite' : 'data.sqlite';
+  static const List<String> summaryColumns = [
+    'id',
+    'name',
+    'description',
+    'imageCount',
+    'thumbnailImageIndex',
+    'keywords',
+    'favorite',
+    'muscleId as muscle',
+  ];
+  static const List<String> detailColumns = [
+    'id',
+    'name',
+    'description',
+    'imageCount',
+    'thumbnailImageIndex',
+    'type',
+    'variation',
+    'keywords',
+    'favorite',
+  ];
 
   static final String selectSummariesByMuscleQuery = '''
-SELECT id, name, description, imageCount, thumbnailImageIndex, keywords, favorite
+SELECT ${summaryColumns.join(', ')}
 FROM $exerciseTable
 
 INNER JOIN $exerciseMuscleTable
 ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
-AND Exercise_Muscle.muscleId = ?
+AND $exerciseMuscleTable.muscleId = ?
 
 INNER JOIN $favoriteTable
 ON $exerciseTable.id = $favoriteTable.exerciseId
 ''';
 
+  static final String selectFavorites = '''
+SELECT ${summaryColumns.join(', ')}
+FROM $exerciseTable
+
+INNER JOIN $exerciseMuscleTable
+ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+AND $exerciseMuscleTable.target == 'primary'
+
+INNER JOIN $favoriteTable
+ON $exerciseTable.id = $favoriteTable.exerciseId
+AND $favoriteTable.favorite = 1
+''';
+
   static final String selectAllByExerciseIdQuery = '''
-SELECT id, name, description, imageCount, thumbnailImageIndex, type, variation, keywords, favorite
+SELECT ${detailColumns.join(', ')}
 FROM $exerciseTable
 
 INNER JOIN $favoriteTable
@@ -72,7 +107,7 @@ WHERE id = ?
     // move the database file from assets/ folder to app document directory
     // so sqflite can access it
     if (FileSystemEntity.typeSync(dbPath) == FileSystemEntityType.notFound) {
-      final data = await rootBundle.load('assets/data/data.sqlite');
+      final data = await rootBundle.load('assets/data/$dbName');
       List<int> bytes =
           data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await File(dbPath).writeAsBytes(bytes);
@@ -82,7 +117,7 @@ WHERE id = ?
   /// Get the path to the local database stored on the device
   static Future<String> getDbPath() async {
     final documentsDirectory = await getApplicationDocumentsDirectory();
-    final dbPath = join(documentsDirectory.path, 'data.sqlite');
+    final dbPath = join(documentsDirectory.path, dbName);
 
     return dbPath;
   }

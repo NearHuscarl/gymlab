@@ -1,0 +1,46 @@
+{
+  "83": {
+    "name": "Bench Press, Normal Grip",
+    "favorite": true
+  },
+  "86": {
+    "name": "Incline Bench Press, Normal Grip",
+    "favorite": true
+  },
+  "89": {
+    "name": "Decline Bench Press, Normal Grip",
+    "favorite": true
+  },
+  "104": {
+    "name": "Chest Press Machine",
+    "favorite": true
+  },
+  "114": {
+    "name": "Chest Fly Machine, Straight Arm",
+    "favorite": true
+  },
+  "300": {
+    "name": "Cable Triceps Pushdown, Overhand Grip",
+    "favorite": true
+  },
+  "257": {
+    "name": "Barbell Shoulder Press, Wide Grip",
+    "favorite": true
+  },
+  "258": {
+    "name": "Machine Shoulder Press",
+    "favorite": true
+  },
+  "233": {
+    "name": "Leg Raise Machine",
+    "favorite": true
+  },
+  "243": {
+    "name": "Walking Lunge with Side Weights",
+    "favorite": true
+  },
+  "157": {
+    "name": "Hamstring Pullback Machine",
+    "favorite": true
+  }
+}

@@ -6,6 +6,7 @@ import '../components/flex_with_gap.dart';
 import '../components/linebreak.dart';
 import '../../blocs/exercise_detail_bloc.dart';
 import '../../models/exercise_detail.dart';
+import '../../models/muscle_info.dart';
 import '../../models/variation.dart';
 import '../../helpers/enum.dart';
 import 'variation_help_dialogs.dart';
@@ -140,8 +141,10 @@ class _ExerciseDescription extends StatelessWidget {
     final boldTheme = theme.textTheme.body2.copyWith(fontSize: 16);
     final paragraph = exercise.description.split('\n');
     const textPadding = const EdgeInsets.only(top: 8.0);
-    final primaryMuscle = exercise.muscles.first;
-    final secondaryMuscles = exercise.muscles.skip(1).map((m) => m);
+    final primaryMuscle =
+        exercise.muscles.firstWhere((m) => m.target == Target.primary);
+    final secondaryMuscles =
+        exercise.muscles.where((m) => m != primaryMuscle).map((m) => m);
 
     final content = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -203,8 +206,7 @@ class _ExerciseDescription extends StatelessWidget {
         ..add(Padding(
           padding: textPadding,
           child: MuscleAnatomy(
-            primary: primaryMuscle,
-            secondaries: secondaryMuscles,
+            muscles: exercise.muscles,
           ),
         )),
     );
@@ -349,7 +351,7 @@ class _ExerciseVariation extends StatelessWidget {
 
   Widget _getWeightTypeImage(BuildContext context, WeightType weightType) =>
       InkResponse(
-        onTap:  () => showWeightTypeHelpDialog(context),
+        onTap: () => showWeightTypeHelpDialog(context),
         child: Image.asset(
           'assets/images/variations/weighttype_${EnumHelper.parse(weightType).toLowerCase()}_dark.png',
           // width: 90.0,
