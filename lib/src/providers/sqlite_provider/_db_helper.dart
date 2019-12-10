@@ -11,7 +11,7 @@ class DbHelper {
   static final String exerciseMuscleTable = 'Exercise_Muscle';
   static final String exerciseEquipmentTable = 'Exercise_Equipment';
   static final String favoriteTable = 'Favorite';
-  static String get dbName => !kDebugMode ? 'data.test.sqlite' : 'data.sqlite';
+  static String get dbName => kDebugMode ? 'data.test.sqlite' : 'data.sqlite';
   static const List<String> summaryColumns = [
     'id',
     'name',
