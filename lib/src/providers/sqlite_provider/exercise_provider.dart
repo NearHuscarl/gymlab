@@ -1,13 +1,23 @@
+import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '_db_helper.dart';
 import '../../models/exercise_summary.dart';
 import '../../models/exercise_detail.dart';
 
+Future<ExerciseSummaries> _computeExerciseSummariesResult(
+  List<Map<String, dynamic>> result,
+) async {
+  return ExerciseSummaries(
+      exercises: result.isNotEmpty
+          ? result.map((c) => ExerciseSummary.fromJson(c)).toList()
+          : <ExerciseSummary>[]);
+}
+
 class ExerciseProvider {
   ExerciseProvider._();
 
-  static String get tableName => DbHelper.exerciseTable;
+  String get tableName => DbHelper.exerciseTable;
   static final ExerciseProvider db = ExerciseProvider._();
 
   static Database _database;
@@ -40,37 +50,29 @@ class ExerciseProvider {
     return res.isNotEmpty ? ExerciseSummary.fromJson(res.first) : null;
   }
 
-  Future<ExerciseSummaries> getSummariesByMuscleCategory(String muscle) async {
+  Future<ExerciseSummaries> getSummariesByMuscleCategory(
+      String muscle) async {
     final db = await database;
     final res = await db.rawQuery(
       DbHelper.selectSummariesByMuscleQuery,
       [muscle],
     );
 
-    return ExerciseSummaries(
-        exercises: res.isNotEmpty
-            ? res.map((c) => ExerciseSummary.fromJson(c)).toList()
-            : <ExerciseSummary>[]);
+    return compute(_computeExerciseSummariesResult, res);
   }
 
   Future<ExerciseSummaries> getAllFavorites() async {
     final db = await database;
     final res = await db.rawQuery(DbHelper.selectFavorites);
 
-    return ExerciseSummaries(
-        exercises: res.isNotEmpty
-            ? res.map((c) => ExerciseSummary.fromJson(c)).toList()
-            : <ExerciseSummary>[]);
+    return compute(_computeExerciseSummariesResult, res);
   }
 
   Future<ExerciseSummaries> getAllSummaries() async {
     final db = await database;
-    final List<Map> res = await db.query(tableName);
+    final res = await db.query(tableName);
 
-    return ExerciseSummaries(
-        exercises: res.isNotEmpty
-            ? res.map((c) => ExerciseSummary.fromJson(c)).toList()
-            : <ExerciseSummary>[]);
+    return compute(_computeExerciseSummariesResult, res);
   }
 
   Future<ExerciseDetail> getDetailById(int id) async {
