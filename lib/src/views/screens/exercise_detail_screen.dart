@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../blocs/exercise_detail_bloc.dart';
 import '../components/exercise_detail_section.dart';
+import '../../blocs/exercise_detail_bloc.dart';
+import '../../models/exercise_summary.dart';
 
 class ExerciseDetailScreen extends StatefulWidget {
-  ExerciseDetailScreen(this.exerciseId);
+  ExerciseDetailScreen(this.summary);
 
-  final int exerciseId;
+  final ExerciseSummary summary;
 
   @override
   _ExerciseDetailScreenState createState() => _ExerciseDetailScreenState();
@@ -19,7 +20,7 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
   @override
   void initState() {
     super.initState();
-    bloc = ExerciseDetailBloc(widget.exerciseId)..getById();
+    bloc = ExerciseDetailBloc(widget.summary.id)..getById();
   }
 
   @override
@@ -50,7 +51,7 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
       ),
       body: Provider<ExerciseDetailBloc>(
         create: (context) => bloc,
-        child: ExerciseDetailSection(),
+        child: ExerciseDetailSection(widget.summary),
       ),
     );
   }

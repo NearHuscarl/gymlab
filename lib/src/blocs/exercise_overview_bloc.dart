@@ -9,18 +9,19 @@ class ExerciseOverviewBloc {
   final _repository = ExerciseRepository();
   final _exercises = BehaviorSubject<ExerciseSummaries>();
   // combineLatest2 need both sources to emit first value before it can emit
-  final _favorite = BehaviorSubject<bool>()
+  final _showFavoriteOnly = BehaviorSubject<bool>()
     ..sink
     ..add(false);
 
-  Observable<bool> get favorite => _favorite;
+  Observable<bool> get showFavoriteOnly => _showFavoriteOnly;
   Observable<ExerciseSummaries> get summaries =>
       Observable.combineLatest2<ExerciseSummaries, bool, ExerciseSummaries>(
         _exercises,
-        _favorite,
-        (summaries, favorite) => ExerciseSummaries(
-          exercises:
-              summaries.exercises.where((e) => e.favorite == favorite).toList(),
+        _showFavoriteOnly,
+        (summaries, favoriteOnly) => ExerciseSummaries(
+          exercises: summaries.exercises
+              .where((e) => favoriteOnly ? e.favorite : true)
+              .toList(),
         ),
       );
 
@@ -37,11 +38,11 @@ class ExerciseOverviewBloc {
   }
 
   Future<void> updateFavorite(bool favorite) async {
-    _favorite.sink.add(favorite);
+    _showFavoriteOnly.sink.add(favorite);
   }
 
   void dispose() {
     _exercises.close();
-    _favorite.close();
+    _showFavoriteOnly.close();
   }
 }

@@ -21,6 +21,19 @@ class ExerciseDetail {
     this.favorite,
   });
 
+  ExerciseDetail.fromSummary(ExerciseSummary summary)
+      : id = summary.id,
+        name = summary.name,
+        description = '',
+        equipments = [],
+        imageCount = summary.imageCount,
+        thumbnailImageIndex = summary.thumbnailImageIndex,
+        muscles = [],
+        type = null,
+        variation = Variation(),
+        keywords = summary.keywords,
+        favorite = false;
+
   final int id;
   final String name;
   final String description;
@@ -32,6 +45,9 @@ class ExerciseDetail {
   final Variation variation;
   final List<String> keywords;
   final bool favorite;
+
+
+  String image(int index) => ExerciseSummary.getImage(id, index);
 
   factory ExerciseDetail.fromJson(Map<String, dynamic> map) {
     return ExerciseDetail(

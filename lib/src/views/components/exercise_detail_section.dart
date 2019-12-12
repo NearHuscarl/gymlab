@@ -5,13 +5,19 @@ import '../components/muscle_anatomy.dart';
 import '../components/flex_with_gap.dart';
 import '../components/linebreak.dart';
 import '../../blocs/exercise_detail_bloc.dart';
+import '../../models/exercise_summary.dart';
 import '../../models/exercise_detail.dart';
 import '../../models/muscle_info.dart';
 import '../../models/variation.dart';
 import '../../helpers/enum.dart';
+import '../../helpers/constants.dart';
 import 'variation_help_dialogs.dart';
 
 class ExerciseDetailSection extends StatefulWidget {
+  ExerciseDetailSection(this.summary);
+
+  final ExerciseSummary summary;
+
   @override
   _ExerciseDetailSectionState createState() => _ExerciseDetailSectionState();
 }
@@ -19,9 +25,18 @@ class ExerciseDetailSection extends StatefulWidget {
 class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
   int _selectedPage;
   PageController _pageController;
-  bool hasVariationPage = false;
+  bool get hasVariationPage => widget.summary.hasVariation;
   // TODO: find icon for variation page
   List<IconData> _icons = [Icons.info, Icons.image, Icons.description];
+
+  @override
+  void initState() {
+    super.initState();
+
+    final initialPage = hasVariationPage ? 1 : 0;
+    _selectedPage = initialPage;
+    _pageController = PageController(initialPage: initialPage);
+  }
 
   @override
   void dispose() {
@@ -29,41 +44,46 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
     _pageController.dispose();
   }
 
-  PageController _getPageController() {
-    if (_pageController == null) {
-      final initialPage = hasVariationPage ? 1 : 0;
-      _pageController = PageController(initialPage: initialPage);
-      _selectedPage = initialPage;
-    }
-    return _pageController;
-  }
+  Widget _buildDetailPages(
+    ThemeData theme,
+    MediaQueryData media,
+    ExerciseDetail exercise,
+  ) {
+    final widgets = [
+      if (!exercise.variation.isEmpty) _ExerciseVariation(exercise),
+      _ImagePlayer(
+        tag: Constants.exercisePreviewTag(exercise.id),
+        images: List<int>.generate(exercise.imageCount, (i) => i)
+            .map((index) => AssetImage(exercise.image(index)))
+            .toList(),
+        defaultIndex: exercise.thumbnailImageIndex,
+      ),
+      _ExerciseDescription(exercise),
+    ];
 
-  Widget _buildDetailPages(ThemeData theme, ExerciseDetail exercise) {
-    return PageView(
+    return PageView.builder(
       physics: BouncingScrollPhysics(),
-      controller: _getPageController(),
+      controller: _pageController,
       onPageChanged: (page) => setState(() => _selectedPage = page),
-      children: <Widget>[
-        if (!exercise.variation.isEmpty) _ExerciseVariation(exercise),
-        Flex(
-          direction: Axis.vertical,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 500,
-              child: _ImagePlayer(
-                images: List<int>.generate(exercise.imageCount, (i) => i)
-                    .map((index) => AssetImage(
-                          'assets/images/exercise_workout_${exercise.id}_$index.jpg',
-                        ))
-                    .toList(),
-                defaultIndex: exercise.thumbnailImageIndex,
-              ),
-            ),
-          ],
-        ),
-        _ExerciseDescription(exercise),
-      ],
+      itemCount: widgets.length,
+      itemBuilder: (context, index) {
+        final effectiveIndex = hasVariationPage ? index : index + 1;
+
+        switch (effectiveIndex) {
+          case 0:
+            return _ExerciseVariation(exercise);
+          case 1:
+            return _ImagePlayer(
+              tag: Constants.exercisePreviewTag(exercise.id),
+              images: List<int>.generate(exercise.imageCount, (i) => i)
+                  .map((index) => AssetImage(exercise.image(index)))
+                  .toList(),
+              defaultIndex: exercise.thumbnailImageIndex,
+            );
+          case 2:
+            return _ExerciseDescription(exercise);
+        }
+      },
     );
   }
 
@@ -84,46 +104,46 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final media = MediaQuery.of(context);
     final bloc = Provider.of<ExerciseDetailBloc>(context);
 
     return StreamBuilder(
       stream: bloc.detail,
+      initialData: ExerciseDetail.fromSummary(widget.summary),
       builder: (context, AsyncSnapshot<ExerciseDetail> snapshot) {
-        if (snapshot.hasData) {
-          final exercise = snapshot.data;
-          hasVariationPage = !exercise.variation.isEmpty;
-          return Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(32.0),
-                  child: Text(
-                    exercise.name,
-                    style: theme.textTheme.title,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(
-                  height: 500,
-                  child: _buildDetailPages(theme, exercise),
-                ),
-                SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _buildNavigationButton(0),
-                    _buildNavigationButton(1),
-                    if (hasVariationPage) _buildNavigationButton(2),
-                  ],
-                )
-              ],
-            ),
-          );
-        } else if (snapshot.hasError) {
+        if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }
-        return Center(child: CircularProgressIndicator());
+
+        final exercise = snapshot.data;
+        return Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Text(
+                  exercise.name,
+                  style: theme.textTheme.title,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                height: 500,
+                child: _buildDetailPages(theme, media, exercise),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _buildNavigationButton(0),
+                  _buildNavigationButton(1),
+                  if (hasVariationPage) _buildNavigationButton(2),
+                ],
+              )
+            ],
+          ),
+        );
       },
     );
   }
@@ -226,11 +246,13 @@ class _ImagePlayer extends StatefulWidget {
     @required this.images,
     this.defaultIndex,
     this.playInterval = const Duration(milliseconds: 1000),
+    this.tag,
   }) : super(key: key);
 
   final List<ImageProvider<dynamic>> images;
   final int defaultIndex;
   final Duration playInterval;
+  final String tag;
 
   @override
   __ImagePlayerState createState() => __ImagePlayerState();
@@ -293,6 +315,7 @@ class __ImagePlayerState extends State<_ImagePlayer>
           defaultIndex: widget.defaultIndex,
           playInterval: widget.playInterval,
           controller: _imageController,
+          tag: widget.tag,
         ),
         SizedBox.expand(
           child: InkResponse(

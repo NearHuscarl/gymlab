@@ -15,12 +15,12 @@ class DbHelper {
   static const List<String> summaryColumns = [
     'id',
     'name',
-    'description',
     'imageCount',
     'thumbnailImageIndex',
     'keywords',
     'favorite',
-    'muscleId as muscle',
+    'muscleId AS muscle',
+    'CASE WHEN variation IS NULL THEN 0 ELSE 1 END AS hasVariation',
   ];
   static const List<String> detailColumns = [
     'id',

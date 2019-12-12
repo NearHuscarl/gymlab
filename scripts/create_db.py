@@ -60,7 +60,11 @@ def read_json_from_file(path):
 
 def uglify(data):
     """ return a string of compressed json text """
-    return json.dumps(data, separators=(',', ':'))
+    result = json.dumps(data, separators=(',', ':'))
+
+    if result == r'{}' or result == '[]' or result == 'null':
+        return None
+    return result
 
 
 def create_table_if_not_exists():

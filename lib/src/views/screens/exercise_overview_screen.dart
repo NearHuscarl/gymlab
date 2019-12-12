@@ -38,7 +38,7 @@ class _ExerciseOverviewScreenState extends State<ExerciseOverviewScreen> {
         title: Text(EnumHelper.parseWord(widget.muscle)),
         actions: <Widget>[
           StreamBuilder(
-            stream: bloc.favorite,
+            stream: bloc.showFavoriteOnly,
             initialData: false,
             builder: (context, AsyncSnapshot<bool> snapshot) {
               final favorite = snapshot.data;

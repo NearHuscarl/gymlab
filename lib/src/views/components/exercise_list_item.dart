@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'image_player.dart';
 import '../../blocs/exercise_list_item_bloc.dart';
 import '../../models/exercise_summary.dart';
+import '../../helpers/constants.dart';
 import '../router.dart';
 
 class ExerciseListItem extends StatefulWidget {
@@ -109,14 +110,13 @@ class _ExerciseListItemState extends State<ExerciseListItem>
         ),
       ),
       child: ImagePlayer(
+        tag: Constants.exercisePreviewTag(exercise.id),
         images: List<int>.generate(exercise.imageCount, (i) => i)
-            .map((index) => AssetImage(
-                  'assets/images/exercise_workout_${exercise.id}_$index.jpg',
-                ))
+            .map((index) => AssetImage(exercise.image(index)))
             .toList(),
         controller: _imageController,
         defaultIndex: exercise.thumbnailImageIndex,
-        onTap: () => Router.exerciseDetail(context, exercise.id),
+        onTap: () => Router.exerciseDetail(context, exercise),
       ),
       footer: Stack(
         children: <Widget>[
