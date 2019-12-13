@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'bloc_provider.dart';
 import 'exercise_list_item.dart';
 import '../../blocs/exercise_list_item_bloc.dart';
 import '../../models/exercise_summary.dart';
@@ -24,12 +24,11 @@ class ExerciseList extends StatelessWidget {
         final exercise = summary.exercises[index];
         return Padding(
           padding: padding,
-          child: Provider<ExerciseListItemBloc>(
-            create: (context) => ExerciseListItemBloc(
+          child: BlocProvider<ExerciseListItemBloc>(
+            bloc: ExerciseListItemBloc(
               exercise.id,
               exercise.favorite,
             ),
-            dispose: (context, bloc) => bloc.dispose(),
             child: ExerciseListItem(exercise),
           ),
         );

@@ -1,10 +1,11 @@
 import 'package:rxdart/rxdart.dart';
 
 import '../repositories/exercise_repository.dart';
+import '../helpers/disposable.dart';
 
 typedef PlayCallback = void Function(bool);
 
-class ExerciseListItemBloc {
+class ExerciseListItemBloc extends Disposable {
   ExerciseListItemBloc(this.exerciseId, this.initialFavorite);
 
   // TODO: convert to stream and use stream transform or something

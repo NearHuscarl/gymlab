@@ -41,10 +41,12 @@ class _ExerciseOverviewScreenState extends State<ExerciseOverviewScreen> {
             stream: bloc.showFavoriteOnly,
             initialData: false,
             builder: (context, AsyncSnapshot<bool> snapshot) {
-              final favorite = snapshot.data;
+              final showFavoriteOnly = snapshot.data;
               return IconButton(
-                icon: favorite ? Icon(Icons.star) : Icon(Icons.star_border),
-                onPressed: () => bloc.updateFavorite(!favorite),
+                icon: showFavoriteOnly
+                    ? Icon(Icons.star)
+                    : Icon(Icons.star_border),
+                onPressed: () => bloc.updateShowFavoriteOnly(!showFavoriteOnly),
               );
             },
           )

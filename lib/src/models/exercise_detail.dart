@@ -60,8 +60,8 @@ class ExerciseDetail {
       muscles: List<MuscleInfo>.from(
           map['muscles']?.map((m) => MuscleInfo.fromJson(m))),
       type: EnumHelper.fromString(ExerciseType.values, map['type']),
-      variation: Variation.fromJson(json.decode(map['variation'])),
-      keywords: List<String>.from(json.decode(map['keywords']) ?? []),
+      variation: Variation.fromJson(json.decode(map['variation'] ?? 'null')),
+      keywords: List<String>.from(json.decode(map['keywords'] ?? '[]')),
       favorite: map['favorite'] == 1 ? true : false,
     );
   }

@@ -37,7 +37,7 @@ class ExerciseOverviewBloc {
     _exercises.sink.add(exercises);
   }
 
-  Future<void> updateFavorite(bool favorite) async {
+  Future<void> updateShowFavoriteOnly(bool favorite) async {
     _showFavoriteOnly.sink.add(favorite);
   }
 

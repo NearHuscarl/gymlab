@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
+import 'bloc_provider.dart';
 import 'image_player.dart';
 import '../../blocs/exercise_list_item_bloc.dart';
 import '../../models/exercise_summary.dart';
@@ -91,7 +91,7 @@ class _ExerciseListItemState extends State<ExerciseListItem>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final bloc = Provider.of<ExerciseListItemBloc>(context);
+    final bloc = BlocProvider.of<ExerciseListItemBloc>(context);
     final nameTextTheme = theme.textTheme.caption;
     final exercise = widget.exercise;
     final favoratieButton =
