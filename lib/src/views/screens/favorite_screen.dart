@@ -1,24 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../blocs/exercise_list_favorite_bloc.dart';
+import '../../blocs/exercise_favorite_bloc.dart';
 import '../../models/exercise_summary.dart';
 import '../../models/muscle_info.dart';
 import '../../helpers/enum.dart';
 import '../components/exercise_list.dart';
 import '../components/linebreak.dart';
+import '../components/bloc_provider.dart';
+import '../components/search_bar.dart';
 
-class FavoriteScreen extends StatelessWidget {
+class FavoriteScreen extends StatefulWidget {
+  @override
+  _FavoriteScreenState createState() => _FavoriteScreenState();
+}
+
+class _FavoriteScreenState extends State<FavoriteScreen> {
+  ExerciseFavoriteBloc bloc;
+
+  @override
+  void initState() {
+    super.initState();
+    bloc = ExerciseFavoriteBloc()..getFavorite();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bloc.dispose();
+  }
+
+  Widget _buildShowSearchBarButton() {
+    return StreamBuilder(
+      stream: bloc.showSearchBar,
+      initialData: false,
+      builder: (context, AsyncSnapshot<bool> snapshot) {
+        return IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () => bloc.toggleShowSearchBar(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Favorite'),
+        actions: <Widget>[
+          _buildShowSearchBarButton(),
+        ],
       ),
-      body: Provider<ExerciseListFavoriteBloc>(
-        create: (context) => ExerciseListFavoriteBloc()..getFavorite(),
-        dispose: (context, bloc) => bloc.dispose(),
+      body: BlocProvider<ExerciseFavoriteBloc>(
+        bloc: bloc,
         child: _FavoriteContent(),
+        dispose: false,
       ),
     );
   }
@@ -47,43 +83,63 @@ class _FavoriteContent extends StatelessWidget {
     );
   }
 
+  Widget _buildExerciseListByCategory(
+    ThemeData theme,
+    Map<Muscle, ExerciseSummaries> exercises,
+  ) {
+    final children = <Widget>[];
+    final headlineTheme = theme.textTheme.headline;
+
+    exercises.forEach((muscle, summaries) {
+      final title = EnumHelper.parseWord(muscle);
+      children.addAll([
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Linebreak(),
+        ),
+        Text(
+          title,
+          style: headlineTheme,
+          textAlign: TextAlign.center,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Linebreak(),
+        ),
+        ExerciseList(summary: summaries),
+      ]);
+    });
+
+    return ListView(children: children);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final bloc = Provider.of<ExerciseListFavoriteBloc>(context);
+    final bloc = BlocProvider.of<ExerciseFavoriteBloc>(context);
     final theme = Theme.of(context);
-    final headlineTheme = theme.textTheme.headline;
     final media = MediaQuery.of(context);
 
     return StreamBuilder(
       stream: bloc.summaries,
       builder:
           (context, AsyncSnapshot<Map<Muscle, ExerciseSummaries>> snapshot) {
-        if (snapshot.hasData && snapshot.data.isNotEmpty) {
-          final children = <Widget>[];
-
-          snapshot.data.forEach((muscle, summaries) {
-            final title = EnumHelper.parseWord(muscle);
-            children.addAll([
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Linebreak(),
+        if (snapshot.hasData) {
+          return Stack(
+            children: <Widget>[
+              snapshot.data.isEmpty
+                  ? _buildNoFavorite(theme, media)
+                  : _buildExerciseListByCategory(theme, snapshot.data),
+              StreamBuilder(
+                stream: bloc.showSearchBar,
+                builder: (context, AsyncSnapshot<bool> snapshot) {
+                  return SearchBar(
+                    expandSearchBar: snapshot.data,
+                    onTextChanged: (t) => bloc.updateSearchTerm(t),
+                  );
+                },
               ),
-              Text(
-                title,
-                style: headlineTheme,
-                textAlign: TextAlign.center,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Linebreak(),
-              ),
-              ExerciseList(summary: summaries),
-            ]);
-          });
-
-          return ListView(children: children);
-        } else if (snapshot.hasData && snapshot.data.isEmpty) {
-          return _buildNoFavorite(theme, media);
+            ],
+          );
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }

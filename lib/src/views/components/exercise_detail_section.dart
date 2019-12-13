@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'bloc_provider.dart';
 import 'image_player.dart';
 import '../components/muscle_anatomy.dart';
 import '../components/flex_with_gap.dart';
@@ -82,6 +82,8 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
             );
           case 2:
             return _ExerciseDescription(exercise);
+          default:
+            throw Exception('No such page');
         }
       },
     );
@@ -94,7 +96,11 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
       icon: Icon(_icons[effectivePageIndex]),
       color: selected ? Colors.indigo : Colors.grey,
       onPressed: () {
-        _pageController.jumpToPage(pageIndex);
+        _pageController.animateToPage(
+          pageIndex,
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.ease,
+        );
         setState(() => _selectedPage = pageIndex);
       },
       iconSize: 30,
@@ -105,7 +111,7 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final media = MediaQuery.of(context);
-    final bloc = Provider.of<ExerciseDetailBloc>(context);
+    final bloc = BlocProvider.of<ExerciseDetailBloc>(context);
 
     return StreamBuilder(
       stream: bloc.detail,

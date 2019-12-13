@@ -2,8 +2,9 @@ import 'package:rxdart/rxdart.dart';
 
 import '../repositories/exercise_repository.dart';
 import '../models/exercise_detail.dart';
+import '../helpers/disposable.dart';
 
-class ExerciseDetailBloc {
+class ExerciseDetailBloc extends Disposable {
   ExerciseDetailBloc(this.exerciseId);
 
   // TODO: convert to stream and use stream transform or something

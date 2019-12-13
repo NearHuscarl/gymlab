@@ -21,6 +21,7 @@ class GymLabApp extends StatelessWidget {
           title: TextStyle(color: AppColors.black75),
           headline: TextStyle(color: AppColors.black75),
         ),
+        cursorColor: Colors.amber,
       ),
       home: HomeScreen(),
     );

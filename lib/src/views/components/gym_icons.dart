@@ -18,6 +18,6 @@ class GymIcons {
 
   static const _kFontFam = 'Gym';
 
-  static const IconData dumbbell =
-      const IconData(0xe800, fontFamily: _kFontFam);
+  static const IconData dumbbell = const IconData(0xe800, fontFamily: _kFontFam);
+  static const IconData equipment = const IconData(0xe801, fontFamily: _kFontFam);
 }

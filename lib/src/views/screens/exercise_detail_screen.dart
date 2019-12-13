@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
+import '../components/bloc_provider.dart';
 import '../components/exercise_detail_section.dart';
 import '../../blocs/exercise_detail_bloc.dart';
 import '../../models/exercise_summary.dart';
@@ -49,9 +49,10 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
           )
         ],
       ),
-      body: Provider<ExerciseDetailBloc>(
-        create: (context) => bloc,
+      body: BlocProvider<ExerciseDetailBloc>(
+        bloc: bloc,
         child: ExerciseDetailSection(widget.summary),
+        dispose: false,
       ),
     );
   }

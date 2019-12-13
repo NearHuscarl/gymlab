@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
+import '../components/bloc_provider.dart';
 import '../components/exercise_list.dart';
+import '../components/search_bar.dart';
 import '../../blocs/exercise_overview_bloc.dart';
 import '../../models/muscle_info.dart';
 import '../../models/exercise_summary.dart';
@@ -31,30 +32,47 @@ class _ExerciseOverviewScreenState extends State<ExerciseOverviewScreen> {
     bloc.dispose();
   }
 
+  Widget _buildFavoriteFilterButton() {
+    return StreamBuilder(
+      stream: bloc.showFavoriteOnly,
+      initialData: false,
+      builder: (context, AsyncSnapshot<bool> snapshot) {
+        final showFavoriteOnly = snapshot.data;
+        return IconButton(
+          icon: showFavoriteOnly ? Icon(Icons.star) : Icon(Icons.star_border),
+          onPressed: () => bloc.toggleShowFavoriteOnly(),
+        );
+      },
+    );
+  }
+
+  Widget _buildShowSearchBarButton() {
+    return StreamBuilder(
+      stream: bloc.showSearchBar,
+      initialData: false,
+      builder: (context, AsyncSnapshot<bool> snapshot) {
+        return IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () => bloc.toggleShowSearchBar(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(EnumHelper.parseWord(widget.muscle)),
         actions: <Widget>[
-          StreamBuilder(
-            stream: bloc.showFavoriteOnly,
-            initialData: false,
-            builder: (context, AsyncSnapshot<bool> snapshot) {
-              final showFavoriteOnly = snapshot.data;
-              return IconButton(
-                icon: showFavoriteOnly
-                    ? Icon(Icons.star)
-                    : Icon(Icons.star_border),
-                onPressed: () => bloc.updateShowFavoriteOnly(!showFavoriteOnly),
-              );
-            },
-          )
+          _buildShowSearchBarButton(),
+          _buildFavoriteFilterButton(),
         ],
       ),
-      body: Provider<ExerciseOverviewBloc>(
-        create: (context) => bloc,
+      body: BlocProvider<ExerciseOverviewBloc>(
+        bloc: bloc,
         child: _ExerciseOverviewContent(),
+        dispose: false,
       ),
     );
   }
@@ -63,13 +81,26 @@ class _ExerciseOverviewScreenState extends State<ExerciseOverviewScreen> {
 class _ExerciseOverviewContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = Provider.of<ExerciseOverviewBloc>(context);
+    final bloc = BlocProvider.of<ExerciseOverviewBloc>(context);
 
     return StreamBuilder(
       stream: bloc.summaries,
       builder: (context, AsyncSnapshot<ExerciseSummaries> snapshot) {
         if (snapshot.hasData) {
-          return ExerciseList(summary: snapshot.data);
+          return Stack(
+            children: <Widget>[
+              ExerciseList(summary: snapshot.data),
+              StreamBuilder(
+                stream: bloc.showSearchBar,
+                builder: (context, AsyncSnapshot<bool> snapshot) {
+                  return SearchBar(
+                    expandSearchBar: snapshot.data,
+                    onTextChanged: (t) => bloc.updateSearchTerm(t),
+                  );
+                },
+              )
+            ],
+          );
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }

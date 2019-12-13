@@ -14,10 +14,13 @@ class BlocProvider<T extends Disposable> extends StatefulWidget {
     Key key,
     @required this.child,
     @required this.bloc,
+    this.dispose = true,
   }) : super(key: key);
 
   final T bloc;
   final Widget child;
+  /// Should dispose bloc when this widget is disposed
+  final bool dispose;
 
   @override
   _BlocProviderState<T> createState() => _BlocProviderState<T>();
@@ -48,7 +51,9 @@ class _BlocProviderState<T extends Disposable> extends State<BlocProvider> {
   @override
   void dispose() {
     super.dispose();
-    widget.bloc.dispose();
+
+    if (widget.dispose)
+      widget.bloc.dispose();
   }
 
   @override

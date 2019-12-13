@@ -55,10 +55,11 @@ class ExerciseSummary {
 }
 
 class ExerciseSummaries {
-  ExerciseSummaries({this.exercises});
+  ExerciseSummaries({this.exercises = const []});
 
   final List<ExerciseSummary> exercises;
   int get totalResults => exercises.length;
+  bool get isEmpty => exercises.isEmpty;
 }
 
 enum Equipment {
