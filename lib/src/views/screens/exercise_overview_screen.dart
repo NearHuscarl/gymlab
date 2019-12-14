@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../components/loading_indicator.dart';
 import '../components/bloc_provider.dart';
 import '../components/exercise_list.dart';
 import '../components/search_bar.dart';
@@ -104,7 +104,7 @@ class _ExerciseOverviewContent extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }
-        return Center(child: CircularProgressIndicator());
+        return Center(child: LoadingIndicator());
       },
     );
   }

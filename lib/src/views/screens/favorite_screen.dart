@@ -8,6 +8,7 @@ import '../components/exercise_list.dart';
 import '../components/linebreak.dart';
 import '../components/bloc_provider.dart';
 import '../components/search_bar.dart';
+import '../components/loading_indicator.dart';
 
 class FavoriteScreen extends StatefulWidget {
   @override
@@ -143,7 +144,7 @@ class _FavoriteContent extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }
-        return Center(child: CircularProgressIndicator());
+        return Center(child: LoadingIndicator());
       },
     );
   }
