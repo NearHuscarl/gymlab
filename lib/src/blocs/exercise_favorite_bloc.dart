@@ -27,7 +27,7 @@ class ExerciseFavoriteBloc extends Disposable {
         _exercises,
         _searchBloc.stream,
         _search,
-      ).switchMap(mapSummaryToSummaryCategory);
+      ).switchMap(_mapSummaryToSummaryCategory);
 
   static ExerciseSummaries _search(
     ExerciseSummaries summaries,
@@ -43,7 +43,7 @@ class ExerciseFavoriteBloc extends Disposable {
     );
   }
 
-  Stream<Map<Muscle, ExerciseSummaries>> mapSummaryToSummaryCategory(
+  Stream<Map<Muscle, ExerciseSummaries>> _mapSummaryToSummaryCategory(
     ExerciseSummaries summaries,
   ) async* {
     final favorites = Map<Muscle, ExerciseSummaries>();

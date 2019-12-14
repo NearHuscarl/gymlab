@@ -81,12 +81,11 @@ class _SearchBarState extends State<SearchBar>
                 focusNode: _focusNode,
               ),
             ),
-            // TODO: add equipment filter
-            // IconButton(
-            //   icon: Icon(GymIcons.equipment),
-            //   color: Colors.white,
-            //   onPressed: () {},
-            // ),
+            IconButton(
+              icon: Icon(GymIcons.equipment),
+              color: Colors.white,
+              onPressed: () {},
+            ),
           ],
         ),
       ),

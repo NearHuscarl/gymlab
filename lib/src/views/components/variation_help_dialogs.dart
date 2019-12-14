@@ -3,6 +3,7 @@ import 'app_dialog.dart';
 import 'linebreak.dart';
 import '../../models/variation.dart';
 import '../../helpers/enum.dart';
+import '../../helpers/exercises.dart';
 
 String _getGripTypeDescription(GripType gripType) {
   switch (gripType) {
@@ -19,7 +20,6 @@ String _getGripTypeDescription(GripType gripType) {
 
 Widget _getGripTypeHelp(ThemeData theme, GripType gripType) {
   final boldTheme = theme.textTheme.body2;
-  final gripTypeStr = EnumHelper.parse(gripType).toLowerCase();
   final gripTypeWord = EnumHelper.parseWord(gripType);
 
   return Row(
@@ -28,7 +28,7 @@ Widget _getGripTypeHelp(ThemeData theme, GripType gripType) {
       Flexible(
         flex: 1,
         child: Image.asset(
-          'assets/images/variations/griptype_$gripTypeStr.png',
+          getGripTypeImage(gripType, icon: false),
           width: 115,
         ),
       ),
@@ -48,7 +48,7 @@ Widget _getGripTypeHelp(ThemeData theme, GripType gripType) {
                   right: 0,
                   top: -15,
                   child: Image.asset(
-                    'assets/images/variations/griptype_$gripTypeStr\_dark.png',
+                    getGripTypeImage(gripType, icon: true),
                     height: 40,
                   ),
                 ),
@@ -97,7 +97,6 @@ String _getGripWidthDescription(GripWidth gripWidth) {
 
 Widget _getGripWidthHelp(ThemeData theme, GripWidth gripWidth) {
   final boldTheme = theme.textTheme.body2;
-  final gripWidthStr = EnumHelper.parse(gripWidth).toLowerCase();
   final gripWidthWord = EnumHelper.parseWord(gripWidth);
 
   return Row(
@@ -106,7 +105,7 @@ Widget _getGripWidthHelp(ThemeData theme, GripWidth gripWidth) {
       Flexible(
         flex: 1,
         child: Image.asset(
-          'assets/images/variations/gripwidth_$gripWidthStr.png',
+          getGripWidthImage(gripWidth, icon: false),
           width: 115,
         ),
       ),
@@ -126,7 +125,7 @@ Widget _getGripWidthHelp(ThemeData theme, GripWidth gripWidth) {
                   right: 0,
                   top: -4,
                   child: Image.asset(
-                    'assets/images/variations/gripwidth_$gripWidthStr\_dark.png',
+                    getGripWidthImage(gripWidth, icon: true),
                     height: 20,
                   ),
                 ),
@@ -181,7 +180,6 @@ String _getWeightTypeDescription(WeightType weightType) {
 
 Widget _getWeightTypeHelp(ThemeData theme, WeightType weightType) {
   final boldTheme = theme.textTheme.body2;
-  final weightTypeStr = EnumHelper.parse(weightType).toLowerCase();
   final weightTypeWord = EnumHelper.parseWord(weightType);
 
   return Column(
@@ -198,7 +196,7 @@ Widget _getWeightTypeHelp(ThemeData theme, WeightType weightType) {
             right: 0,
             top: -4,
             child: Image.asset(
-              'assets/images/variations/weighttype_$weightTypeStr\_dark.png',
+              getWeightTypeImage(weightType),
               height: 20,
             ),
           ),
@@ -277,7 +275,7 @@ Widget _getRepetitionsSpeedHelp(ThemeData theme, RepetitionsSpeed speed) {
       Flexible(
         flex: 1,
         child: Image.asset(
-          'assets/images/variations/repetitionsspeed_${EnumHelper.parse(speed).substring(1)}_dark.png',
+          getRepetitionsSpeedImage(speed),
           height: 60,
         ),
       ),
