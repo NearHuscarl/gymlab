@@ -113,6 +113,22 @@ def create_table_if_not_exists():
       )'''.format(FAVORITE_TABLE, EXERCISE_TABLE))
 
 
+def get_id_from_name(name):
+    CURSOR.execute('''
+      SELECT id from {0}
+      WHERE name = ?
+      '''.format(EXERCISE_TABLE), (name,))
+    return next(iter(CURSOR.fetchone()))
+
+
+def get_image_count_from_name(name):
+    CURSOR.execute('''
+      SELECT imageCount from {0}
+      WHERE name = ?
+      '''.format(EXERCISE_TABLE), (name,))
+    return next(iter(CURSOR.fetchone()))
+
+
 def create_db(test_db):
     setup_db(DB_TEST_PATH if test_db else DB_PATH)
     create_table_if_not_exists()
@@ -134,7 +150,7 @@ def create_db(test_db):
         '''
                        .format(EXERCISE_TABLE), (
                            exercise['id'],
-                           exercise['name'],
+                           exercise['name'].strip(),
                            exercise['description'],
                            exercise['imageCount'],
                            exercise['thumbnailImageIndex'],
