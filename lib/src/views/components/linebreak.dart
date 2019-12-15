@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// TODO: use CustomPainter to optimize rendering
 class Linebreak extends StatelessWidget {
   Linebreak({this.color = Colors.grey, this.height = 1});
 

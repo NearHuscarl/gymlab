@@ -3,9 +3,6 @@ import '../models/exercise_summary.dart';
 import '../models/exercise_detail.dart';
 
 class ExerciseRepository {
-  Future<ExerciseSummary> getSummaryById(int id) =>
-      ExerciseProvider.db.getSummaryById(id);
-
   Future<ExerciseSummaries> getSummariesByMuscleCategory(String muscle) =>
       ExerciseProvider.db.getSummariesByMuscleCategory(muscle);
 

@@ -7,6 +7,7 @@ class ExerciseSummary {
   ExerciseSummary({
     this.id,
     this.name,
+    this.equipments,
     this.imageCount,
     this.thumbnailImageIndex,
     this.keywords,
@@ -17,6 +18,7 @@ class ExerciseSummary {
 
   final int id;
   final String name;
+  final List<Equipment> equipments;
   final int imageCount;
   final int thumbnailImageIndex;
   final List<String> keywords;
@@ -33,6 +35,7 @@ class ExerciseSummary {
     return ExerciseSummary(
       id: map['id'],
       name: map['name'],
+      equipments: EnumHelper.fromStrings(Equipment.values, map['equipments']),
       imageCount: map['imageCount'],
       thumbnailImageIndex: map['thumbnailImageIndex'],
       keywords: List<String>.from(json.decode(map['keywords'] ?? '[]')),
@@ -45,6 +48,8 @@ class ExerciseSummary {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'equipments':
+            List<dynamic>.from(equipments.map((x) => EnumHelper.parse(x))),
         'imageCount': imageCount,
         'thumbnailImageIndex': thumbnailImageIndex,
         'keywords': keywords,
@@ -65,8 +70,8 @@ class ExerciseSummaries {
 enum Equipment {
   none,
   bodyOnly,
-  bands,
-  foamRoll,
+  // bands,
+  // foamRoll,
   barbell,
   ezBar,
   kettleBell,
@@ -74,7 +79,7 @@ enum Equipment {
   machine,
   cable,
   weightPlate,
-  medicineBall,
+  // medicineBall,
   exerciseBall,
   bar,
   other,

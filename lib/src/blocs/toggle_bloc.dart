@@ -3,19 +3,26 @@ import '../helpers/disposable.dart';
 
 class ToggleBloc extends Disposable {
   ToggleBloc({bool initialValue}) {
-    _switchValue = initialValue;
+    rawValue = initialValue;
     _switch = BehaviorSubject<bool>();
   }
 
-  bool _switchValue;
+  bool rawValue;
   BehaviorSubject<bool> _switch;
 
   Observable<bool> get stream =>
-      _switch.stream.startWith(_switchValue);
+      _switch.stream.startWith(rawValue);
 
-  Future<void> toggle() async {
-    _switchValue = !_switchValue;
-    _switch.sink.add(_switchValue);
+  Future<bool> toggle() async {
+    rawValue = !rawValue;
+    _switch.sink.add(rawValue);
+    return rawValue;
+  }
+
+  Future<bool> change(bool value) async {
+    rawValue = value;
+    _switch.sink.add(rawValue);
+    return rawValue;
   }
 
   void dispose() {

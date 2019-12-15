@@ -1,12 +1,29 @@
 import 'enum.dart';
+import '../blocs/equipment_filter_bloc.dart';
+import '../models/exercise_summary.dart';
 import '../models/variation.dart';
 
 /// filter exercise by [name] and [keywords] with the given [searchTerms] which is a
 /// list of words that the user typed in.
-bool filterName(List<String> searchTerms, String name, List<String> keywords) {
+bool filterByName(
+    List<String> searchTerms, String name, List<String> keywords) {
   return searchTerms.every((term) {
     return name.contains(term) || keywords.any((kw) => kw.contains(term));
   });
+}
+
+bool filterByEquipment(EquipmentFilterData filter, List<Equipment> equipments) {
+  if (filter.equipments.isEmpty) return true;
+
+  if (filter.include) {
+    return equipments.any((e) {
+      return filter.equipments.any((fe) => fe == e);
+    });
+  } else {
+    return equipments.every((e) {
+      return filter.equipments.every((fe) => fe != e);
+    });
+  }
 }
 
 String getGripWidthImage(

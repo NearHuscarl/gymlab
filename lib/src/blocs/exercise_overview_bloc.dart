@@ -6,6 +6,7 @@ import '../models/muscle_info.dart';
 import '../helpers/enum.dart';
 import '../helpers/exercises.dart';
 import '../helpers/disposable.dart';
+import 'equipment_filter_bloc.dart';
 import 'search_bloc.dart';
 import 'toggle_bloc.dart';
 
@@ -13,30 +14,53 @@ class ExerciseOverviewBloc extends Disposable {
   ExerciseOverviewBloc() {
     _searchBloc = SearchBloc();
     _showSearchBarBloc = ToggleBloc(initialValue: false);
+    _showEquipmentFilterBloc = ToggleBloc(initialValue: false);
     _showFavoriteOnlyBloc = ToggleBloc(initialValue: false);
+    _equipmentFilter = BehaviorSubject<EquipmentFilterData>();
     _exercises = BehaviorSubject<ExerciseSummaries>();
   }
 
   final _repository = ExerciseRepository();
 
-  SearchBloc _searchBloc;
   ToggleBloc _showSearchBarBloc;
+  ToggleBloc _showEquipmentFilterBloc;
+  SearchBloc _searchBloc;
   ToggleBloc _showFavoriteOnlyBloc;
+  BehaviorSubject<EquipmentFilterData> _equipmentFilter;
   BehaviorSubject<ExerciseSummaries> _exercises;
 
-  Observable<bool> get showFavoriteOnly => _showFavoriteOnlyBloc.stream;
   Observable<bool> get showSearchBar => _showSearchBarBloc.stream;
-  Observable<ExerciseSummaries> get summaries => Observable.combineLatest3<
-          ExerciseSummaries, bool, List<String>, ExerciseSummaries>(
+  Observable<bool> get showEquipmentFilter => _showEquipmentFilterBloc.stream;
+  Observable<bool> get showFavoriteOnly => _showFavoriteOnlyBloc.stream;
+  Observable<EquipmentFilterData> get equipmentFilter =>
+      _equipmentFilter.startWith(EquipmentFilterData());
+  Observable<ExerciseSummaries> get summaries => Observable.combineLatest4<
+          ExerciseSummaries,
+          List<String>,
+          bool,
+          EquipmentFilterData,
+          ExerciseSummaries>(
         _exercises,
-        _showFavoriteOnlyBloc.stream,
         _searchBloc.stream,
+        showFavoriteOnly,
+        equipmentFilter,
         _search,
       );
 
-  Future<void> toggleShowSearchBar() => _showSearchBarBloc.toggle();
-  Future<void> toggleShowFavoriteOnly() => _showFavoriteOnlyBloc.toggle();
+  Future<void> toggleShowSearchBar() async {
+    _showEquipmentFilterBloc.change(false);
+    _showSearchBarBloc.toggle();
+  }
+
+  Future<void> toggleEquipmentFilter() async {
+    _showSearchBarBloc.change(false);
+    _showEquipmentFilterBloc.toggle();
+  }
+
   Function(String) get updateSearchTerm => _searchBloc.updateSearchTerm;
+  void toggleShowFavoriteOnly() => _showFavoriteOnlyBloc.toggle();
+  void updateEquipmentFilter(EquipmentFilterData filter) =>
+      _equipmentFilter.add(filter);
 
   Future<void> getAll() async {
     final exercises = await _repository.getAllSummaries();
@@ -52,25 +76,29 @@ class ExerciseOverviewBloc extends Disposable {
 
   static ExerciseSummaries _search(
     ExerciseSummaries summaries,
-    bool favoriteOnly,
     List<String> searchTerms,
+    bool favoriteOnly,
+    EquipmentFilterData equipmentData,
   ) {
     return ExerciseSummaries(
       exercises: summaries.exercises.where((e) {
         final name = e.name.toLowerCase();
         final favoriteFilter = favoriteOnly ? e.favorite : true;
-        final nameFilter = filterName(searchTerms, name, e.keywords);
+        final nameFilter = filterByName(searchTerms, name, e.keywords);
+        final equipmentFilter = filterByEquipment(equipmentData, e.equipments);
 
-        return nameFilter && favoriteFilter;
+        return nameFilter && favoriteFilter && equipmentFilter;
       }).toList(),
     );
   }
 
   void dispose() {
     _showSearchBarBloc.dispose();
+    _showEquipmentFilterBloc.dispose();
     _exercises.close();
-    _showFavoriteOnlyBloc.dispose();
     _searchBloc.dispose();
+    _showFavoriteOnlyBloc.dispose();
+    _equipmentFilter.close();
   }
 }
 
