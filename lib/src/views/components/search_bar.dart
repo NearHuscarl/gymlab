@@ -23,7 +23,7 @@ class _SearchBarState extends State<SearchBar>
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 250),
     );
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, -1),

@@ -4,6 +4,8 @@ import 'screens/home_screen.dart';
 import 'screens/exercise_overview_screen.dart';
 import 'screens/exercise_detail_screen.dart';
 import 'screens/favorite_screen.dart';
+import 'components/bloc_provider.dart';
+import '../blocs/home_bloc.dart';
 import '../models/muscle_info.dart';
 import '../models/exercise_summary.dart';
 
@@ -11,7 +13,12 @@ class Router {
   static void home(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => HomeScreen()),
+      MaterialPageRoute(
+        builder: (context) => BlocProvider(
+          bloc: HomeBloc(),
+          child: HomeScreen(),
+        ),
+      ),
     );
   }
 
@@ -22,10 +29,12 @@ class Router {
     );
   }
 
-  static void exerciseDetail(BuildContext context, ExerciseSummary exerciseSummary) {
+  static void exerciseDetail(
+      BuildContext context, ExerciseSummary exerciseSummary) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ExerciseDetailScreen(exerciseSummary)),
+      MaterialPageRoute(
+          builder: (context) => ExerciseDetailScreen(exerciseSummary)),
     );
   }
 

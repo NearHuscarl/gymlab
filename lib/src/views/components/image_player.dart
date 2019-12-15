@@ -120,20 +120,25 @@ class _ImagePlayerState extends State<ImagePlayer> {
   }
 }
 
-class ImageController extends ValueNotifier<bool> {
-  ImageController({bool autoPlay}) : super(autoPlay);
+class ImageController extends ChangeNotifier {
+  ImageController({bool autoPlay}) : isPlaying = autoPlay;
 
-  bool get isPlaying => value;
+  bool isPlaying;
 
   void play() {
-    value = true;
+    if (isPlaying) return;
+    isPlaying = true;
+    notifyListeners();
   }
 
   void pause() {
-    value = false;
+    if (!isPlaying) return;
+    isPlaying = false;
+    notifyListeners();
   }
 
   void togglePlay() {
-    value = !value;
+    isPlaying = !isPlaying;
+    notifyListeners();
   }
 }
