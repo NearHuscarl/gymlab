@@ -53,7 +53,7 @@ class _ExerciseOverviewScreenState extends State<ExerciseOverviewScreen> {
       initialData: false,
       builder: (context, AsyncSnapshot<bool> snapshot) {
         return IconButton(
-          icon: Icon(GymIcons.equipment),
+          icon: Icon(GymIcons.machine),
           onPressed: () => bloc.toggleEquipmentFilter(),
         );
       },

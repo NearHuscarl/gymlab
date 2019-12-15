@@ -83,8 +83,8 @@ class ExerciseOverviewBloc extends Disposable {
     return ExerciseSummaries(
       exercises: summaries.exercises.where((e) {
         final name = e.name.toLowerCase();
-        final favoriteFilter = favoriteOnly ? e.favorite : true;
         final nameFilter = filterByName(searchTerms, name, e.keywords);
+        final favoriteFilter = favoriteOnly ? e.favorite : true;
         final equipmentFilter = filterByEquipment(equipmentData, e.equipments);
 
         return nameFilter && favoriteFilter && equipmentFilter;

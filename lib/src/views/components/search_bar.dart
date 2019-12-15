@@ -30,7 +30,7 @@ class _SearchBarState extends State<SearchBar>
       end: const Offset(0, 0),
     ).animate(CurvedAnimation(
       parent: _controller,
-      curve: const Interval(.6875, 1.0, curve: Curves.fastOutSlowIn),
+      curve: Curves.easeOut,
     ));
   }
 

@@ -38,7 +38,7 @@ class _EquipmentFilterState extends State<EquipmentFilter>
       end: const Offset(0, 0),
     ).animate(CurvedAnimation(
       parent: _controller,
-      curve: const Interval(.6875, 1.0, curve: Curves.fastOutSlowIn),
+      curve: Curves.easeOutBack,
     ));
   }
 
@@ -118,6 +118,7 @@ class _EquipmentFilterState extends State<EquipmentFilter>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final backgroundColor = theme.primaryColor.withOpacity(.85);
     final actions = Wrap(
       spacing: 6.0,
       children: <Widget>[
@@ -155,17 +156,31 @@ class _EquipmentFilterState extends State<EquipmentFilter>
 
     return SlideTransition(
       position: _slideAnimation,
-      child: Container(
-        color: theme.primaryColor.withOpacity(.85),
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        width: double.infinity,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            actions,
-            filters,
-          ],
-        ),
+      child: Stack(
+        overflow: Overflow.visible,
+        children: <Widget>[
+          // Background above the top for easeOutBack animation curve
+          Positioned.fill(
+            top: -50,
+            bottom: null,
+            child: Container(
+              color: backgroundColor,
+              height: 50,
+            ),
+          ),
+          Container(
+            color: backgroundColor,
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            width: double.infinity,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                actions,
+                filters,
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
