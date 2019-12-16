@@ -26,81 +26,53 @@ class Counter extends StatefulWidget {
 }
 
 class _CounterState extends State<Counter> {
-  Timer _timer;
-  double _counter;
-  double _totalTime;
-  bool _timeout = false;
-  bool _isActive = false;
   GlobalKey<AnimatedCircularChartState> _chartKey = GlobalKey();
 
-  List<CircularStackEntry> get _chartData => [
-        CircularStackEntry(
-          <CircularSegmentEntry>[
-            CircularSegmentEntry(
-              1 - (_counter / _totalTime),
-              widget.progressColor,
-              rankKey: 'time elapsed',
-            ),
-            CircularSegmentEntry(
-              _counter / _totalTime,
-              widget.backgroundColor,
-              rankKey: 'time remaining',
-            ),
-          ],
-          rankKey: 'counter',
-        ),
-      ];
-  String get _displayCounter => formatHHMMSS(max(_counter.toInt(), 0));
+  List<CircularStackEntry> get _chartData {
+    final counter = widget.controller.counter;
+    final totalTime = widget.controller.totalTime;
+    return [
+      CircularStackEntry(
+        <CircularSegmentEntry>[
+          CircularSegmentEntry(
+            1 - (counter / totalTime),
+            widget.progressColor,
+            rankKey: 'time elapsed',
+          ),
+          CircularSegmentEntry(
+            counter / totalTime,
+            widget.backgroundColor,
+            rankKey: 'time remaining',
+          ),
+        ],
+        rankKey: 'counter',
+      ),
+    ];
+  }
+
+  String get _displayCounter =>
+      formatHHMMSS(max(widget.controller.counter.toInt(), 0));
 
   @override
   void initState() {
     super.initState();
-    _totalTime = widget.totalTime;
-    _counter = _totalTime;
-    widget.controller.setCounter(_counter);
+    widget.controller.setCounter(widget.totalTime);
     widget.controller.addListener(_handleController);
   }
 
   void _handleController() {
     final controller = widget.controller;
 
-    if (_isActive != controller.isActive) {
-      if (controller.isActive) {
-        _timeout = false;
-        _timer = _getTimer();
-      } else {
-        _timer?.cancel();
-      }
-      _isActive = controller.isActive;
-    }
-    if (_totalTime != controller.counter) {
+    if (controller.counter >= 0) {
       setState(() {
-        _totalTime = controller.counter ?? _totalTime;
-        _counter = _totalTime;
+        _chartKey.currentState.updateData(_chartData);
       });
-    }
-  }
-
-  Timer _getTimer() {
-    return Timer.periodic(Duration(seconds: 1), (_) {
-      if (_timeout) return;
-
-      if (_counter >= 0) {
-        setState(() {
-          _counter--;
-          _chartKey.currentState.updateData(_chartData);
-        });
-      } else {
+    } else {
+      if (controller.isRunning) {
         if (widget.onTimeout != null) widget.onTimeout();
-        _timeout = true;
+        controller.stop();
       }
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _timer?.cancel();
+    }
   }
 
   @override
@@ -133,43 +105,65 @@ class _CounterState extends State<Counter> {
 class CounterController extends ChangeNotifier {
   CounterController();
 
+  Timer _timer;
+
+  double _totalTime = 0;
+  double get totalTime => _totalTime;
+
   double _counter = 0;
   double get counter => _counter;
 
-  bool _isActive = false;
-  bool get isActive => _isActive;
+  bool _isRunning = false;
+
+  bool get isRunning => _isRunning;
+  bool get isStop => !isRunning;
 
   void start() {
-    if (isActive) return;
-    _isActive = true;
-    notifyListeners();
+    if (isRunning) return;
+    _isRunning = true;
+    _timer = _getTimer();
   }
 
   void stop() {
-    if (!isActive) return;
-    _isActive = false;
-    notifyListeners();
+    if (isStop) return;
+    _isRunning = false;
+    _timer?.cancel();
   }
 
   void reset() {
-    if (_counter == 0 && !_isActive) return;
-    _counter = 0;
-    _isActive = false;
+    _isRunning = false;
+    _timer?.cancel();
+    _counter = _totalTime;
     notifyListeners();
   }
 
   void setCounter(double value) {
-    if (counter == value) return;
+    if (_totalTime == value) return;
+    _totalTime = value;
     _counter = value;
     notifyListeners();
   }
 
   void addCounter(double value) {
     if (counter + value < 0) return;
+    _totalTime += value;
     _counter += value;
     notifyListeners();
   }
 
+  Timer _getTimer() {
+    return Timer.periodic(Duration(seconds: 1), (_) {
+      _counter--;
+      notifyListeners();
+    });
+  }
+
   @override
-  String toString() => '${describeIdentity(this)}($isActive)($counter)';
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
+
+  @override
+  String toString() => '${describeIdentity(this)}($isRunning)($counter)';
 }

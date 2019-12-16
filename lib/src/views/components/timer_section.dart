@@ -31,7 +31,7 @@ class _TimerSectionState extends State<TimerSection> {
       child: Text(addAmount > 0 ? '+$addAmount' : '$addAmount'),
       // TODO: use StreamBuilder to set onPressed to null to change disable button visual
       onPressed: () =>
-          _counter.isActive ? null : _counter.addCounter(addAmount.toDouble()),
+          _counter.isRunning ? null : _counter.addCounter(addAmount.toDouble()),
       size: 50,
     );
   }
@@ -98,7 +98,7 @@ class _TimerSectionState extends State<TimerSection> {
       child: RaisedButton(
         // TODO: use StreamBuilder to set onPressed to null to change disable button visual
         onPressed: () =>
-            _counter.isActive ? null : _counter.setCounter(seconds.toDouble()),
+            _counter.isRunning ? null : _counter.setCounter(seconds.toDouble()),
         child: Text('$seconds\s'),
       ),
     );
