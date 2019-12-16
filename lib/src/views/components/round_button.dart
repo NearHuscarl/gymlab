@@ -5,11 +5,13 @@ class RoundButton extends StatefulWidget {
     Key key,
     @required this.child,
     @required this.onPressed,
+    this.enable = true,
     this.size = 60,
   }) : super(key: key);
 
   final Widget child;
   final VoidCallback onPressed;
+  final bool enable;
   final double size;
 
   @override
@@ -80,12 +82,15 @@ class _RoundButtonState extends State<RoundButton>
             heroTag: null,
             child: widget.child,
             mini: true,
-            onPressed: () {
-              _pressController.forward().then((_) {
-                _pressController.reverse();
-              });
-              widget.onPressed();
-            },
+            disabledElevation: 1,
+            onPressed: widget.enable
+                ? () {
+                    _pressController.forward().then((_) {
+                      _pressController.reverse();
+                    });
+                    widget.onPressed();
+                  }
+                : null,
             foregroundColor: Colors.white,
           ),
         ),

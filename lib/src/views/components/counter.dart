@@ -5,12 +5,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import '../../helpers/time.dart';
+import 'gradient_text.dart';
 
 class Counter extends StatefulWidget {
   Counter({
     this.totalTime,
     this.onTimeout,
-    this.controller,
+    @required this.controller,
     this.backgroundColor,
     this.progressColor,
   });
@@ -85,15 +86,20 @@ class _CounterState extends State<Counter> {
           key: _chartKey,
           size: const Size(245.0, 245.0),
           initialChartData: _chartData,
+          holeRadius: 60,
           edgeStyle: SegmentEdgeStyle.round,
           chartType: CircularChartType.Radial,
         ),
         Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: Text(
+            child: GradientText(
               _displayCounter,
-              style: theme.textTheme.title,
+              gradient: LinearGradient(colors: [
+                Colors.pink.shade200,
+                Colors.pink.shade500,
+              ]),
+              style: theme.textTheme.display1,
             ),
           ),
         ),
