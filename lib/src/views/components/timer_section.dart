@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:wakelock/wakelock.dart';
 import 'fade_in.dart';
@@ -22,6 +21,9 @@ class _TimerSectionState extends State<TimerSection> {
   void initState() {
     super.initState();
     _counter = CounterController();
+    _counter.addListener(() {
+      _bloc.setCounter(_counter.counter.toInt());
+    });
     _bloc = TimerBloc();
   }
 
@@ -33,17 +35,23 @@ class _TimerSectionState extends State<TimerSection> {
   }
 
   Widget _buildAddButton({int addAmount}) {
-    return StreamBuilder<TimerStatus>(
-      stream: _bloc.status,
-      initialData: TimerStatus.stop,
+    return StreamBuilder<int>(
+      stream: _bloc.counter,
+      initialData: 0,
       builder: (context, snapshot) {
-        final isActive = snapshot.data != TimerStatus.stop;
-        return RoundButton(
-          child: Text(addAmount > 0 ? '+$addAmount' : '$addAmount'),
-          enable: !isActive,
-          onPressed:
-              isActive ? null : () => _counter.addCounter(addAmount.toDouble()),
-          size: 50,
+        final counter = snapshot.data;
+        return StreamBuilder<TimerStatus>(
+          stream: _bloc.status,
+          initialData: TimerStatus.stop,
+          builder: (context, snapshot) {
+            final isActive = snapshot.data != TimerStatus.stop;
+            return RoundButton(
+              child: Text(addAmount > 0 ? '+$addAmount' : '$addAmount'),
+              enable: !isActive && counter + addAmount > 0,
+              onPressed: () => _counter.addCounter(addAmount.toDouble()),
+              size: 50,
+            );
+          },
         );
       },
     );
@@ -124,7 +132,7 @@ class _TimerSectionState extends State<TimerSection> {
     return FadeIn(
       duration: Duration(milliseconds: 300),
       fadeDirection: FadeDirection.bottomToTop,
-      offset: .25,
+      offset: .5,
       child: StreamBuilder<TimerStatus>(
         stream: _bloc.status,
         initialData: TimerStatus.stop,

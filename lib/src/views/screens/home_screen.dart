@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/bloc_provider.dart';
 import '../components/gym_icons.dart';
 import '../components/muscle_options.dart';
@@ -13,16 +14,28 @@ class HomeScreen extends StatelessWidget {
       initialData: HomePageSection.muscleOption,
       builder: (context, AsyncSnapshot<HomePageSection> snapshot) {
         final currentPage = snapshot.data;
+        Widget child;
         switch (currentPage) {
           case HomePageSection.muscleOption:
-            return MuscleOptions();
+            child = MuscleOptions();
+            break;
           case HomePageSection.timer:
-            return TimerSection();
+            child = TimerSection();
+            break;
+          case HomePageSection.statistics:
+            child = TimerSection();
+            break;
           default:
-            return Center(
+            child = Center(
               child: Text('Current Page: $currentPage'),
             );
+            break;
         }
+
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 150),
+          child: child,
+        );
       },
     );
   }
@@ -34,6 +47,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, AsyncSnapshot<HomePageSection> snapshot) {
         final currentPage = snapshot.data;
         return BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(GymIcons.dumbbell),
@@ -44,8 +58,12 @@ class HomeScreen extends StatelessWidget {
               title: Text('Timer'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
+              icon: Icon(FontAwesomeIcons.chartArea),
               title: Text('Statistics'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('Settings'),
             ),
           ],
           currentIndex: currentPage.index,
