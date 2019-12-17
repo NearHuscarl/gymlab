@@ -22,19 +22,17 @@ import create_db
 
 Coord = namedtuple('Coord', 'x y')
 
-SCRIPT_DIRECTORY = path.dirname(path.realpath(__file__))
-IMAGE_PATH = path.normpath(
-    path.join(SCRIPT_DIRECTORY, '../assets/images/large'))
+SCRIPT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
+IMAGE_PATH = os.path.normpath(
+    os.path.join(SCRIPT_DIRECTORY, '../assets/images/large'))
 
-WIDTH = 550
-HEIGHT = 510
+WIDTH = 490
+HEIGHT = 460
 
 WIDTH_NAME = 490
-HEIGHT_NAME = 100
+HEIGHT_NAME = 100   
 
-TOP_LEFT = Coord(x=1363, y=312)         
-
-# TOP_LEFT = Coord(x=1390, y=345)         
+TOP_LEFT = Coord(x=1390, y=345)         
 TOP_LEFT_NAME = Coord(x =1390, y = 234)
 
 TOP_LEFT_ADB = Coord(x=1390, y=278)
@@ -138,16 +136,17 @@ def screencrop_name_adb():
 def get_name_exercise():
     create_db.connect_db(create_db.DB_TEST_PATH)
     
-    SCRIPT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
+    # SCRIPT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
-    exercise_name = ocr_core(os.path.join(SCRIPT_DIRECTORY, './name.jpg'))
+    # exercise_name = ocr_core(os.path.join(SCRIPT_DIRECTORY, './name.jpg'))
+    exercise_name = 'Ring Muscleup'
 
     id_exercise_name = create_db.get_id_from_name(exercise_name)
     print(id_exercise_name)
     index_exercise_name = create_db.get_image_count_from_name(exercise_name)
     print(index_exercise_name)
     for x in range(index_exercise_name):
-        to_clipboard('exercise_workout_large_'+ str(id_exercise_name) + '_' + str(x))
+        to_clipboard('exercise_workout_'+ str(id_exercise_name) + '_' + str(x))
         time.sleep(1)
         # screencrop()
         screencrop_adb()
@@ -163,19 +162,17 @@ def main():
 
 def test():
     # screencrop_name()
-    # screencrop_name_adb()exercise_workout_large_260_0
+    # screencrop_name_adb()
     create_db.connect_db(create_db.DB_TEST_PATH)
     
-    SCRIPT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
-
-    exercise_name = ocr_core(os.path.join(SCRIPT_DIRECTORY, './name.jpg'))
-
+    # exercise_workout_large_38_0
+    exercise_name = 'Dumbbell Biceps Curl, On Knee, Underhand Grip'
     id_exercise_name = create_db.get_id_from_name(exercise_name)
     # print(id_exercise_name)
     index_exercise_name = create_db.get_image_count_from_name(exercise_name)
     # print(index_exercise_name)
 if __name__ == '__main__':
-    test()
+    # test()
     main()
 
     # create_db.connect_db(create_db.DB_TEST_PATH)
