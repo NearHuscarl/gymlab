@@ -1,0 +1,291 @@
+[
+  {
+    // 219x219
+    // 490x460
+    "id": 10000,
+    "name": "Incline Chest Press Machine",
+    "description": "Load an appropriate weight onto the pins and adjust the seat for your height. The handles should be near the top of the pectorals at the beginning of the motion. Your chest and head should be up and your shoulder blades retracted. This will be your starting position.\nPress the handles forward by extending through the elbow.\nAfter a brief pause at the top, return the weight just above the start position, keeping tension on the muscles by not returning the weight to the stops until the set is complete.",
+    "equipments": [
+      "machine"
+    ],
+    // 2 images
+    // https://www.bodybuilding.com/exercises/leverage-incline-chest-press
+    "imageCount": 2,
+    "thumbnailImageIndex": 1,
+    "muscles": [
+      {
+        "muscle": "chest",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": [
+      "machine bench press"
+    ]
+  },
+  {
+    "id": 10001,
+    "name": "Decline Chest Press Machine",
+    "description": "Load an appropriate weight onto the pins and adjust the seat for your height. The handles should be near the bottom of the pectorals at the beginning of the motion. Your chest and head should be up and your shoulder blades retracted. This will be your starting position.\nPress the handles forward by extending through the elbow.\nAfter a brief pause at the top, return the weight just above the start position, keeping tension on the muscles by not returning the weight to the stops until the set is complete.",
+    "equipments": [
+      "machine"
+    ],
+    // 2 images
+    // https://www.bodybuilding.com/exercises/leverage-decline-chest-press
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "chest",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": [
+      "machine bench press"
+    ]
+  },
+  {
+    "id": 10002,
+    "name": "Lying Chest Press Machine",
+    "description": "Lie flat on the bench with your feet on the ground (if the bench is low) or on a step. Take hold of the grips, which should be vertically above the chest, overhand (pronation) and with your hands slightly more than shoulder width apart. Preferably you should place your thumb below the grip.\nInhale as you lower the weight to the level of the middle of your chest and then raise it vertically. Your elbows should stay perpendicular (and away from) your body. Avoid locking the elbows when you reach the top of the movement. Exhale on completing the lift.",
+    "equipments": [
+      "machine"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "chest",
+        "target": "primary"
+      },
+      {
+        "muscle": "triceps",
+        "target": "secondary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": [
+      "machine bench press"
+    ]
+  },
+  {
+    "id": 10003,
+    "name": "Weight Plate Pinches",
+    "description": "The weight plate pinch is a simple way to build real strength in your forearms. To complete this exercise grasp a weight plate (or two if you can) between your two index fingers and your thumb.\nStand up straight and hold the weight plate with your fingers as long as possible.\nIf you can hold it longer than 30 seconds, use a heavier plate or two small plates together.",
+    "equipments": [
+      "weightPlate"
+    ],
+    // 1 images
+    "imageCount": 1,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "forearms",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "gripType": [
+        "neutral"
+      ]
+    },
+    "keywords": null
+  },
+  {
+    "id": 10004,
+    "name": "Plate Pinch Carry",
+    "description": "Grasp a plate in each hand using just your fingers.\nWhile maintaining an active shoulder position, hold the plates by your side and walk for a designated distance or amount of time.",
+    "equipments": [
+      "weightPlate"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "forearms",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "gripType": [
+        "neutral"
+      ]
+    },
+    "keywords": null
+  },
+  {
+    "id": 10005,
+    "name": "Reverse Grip Barbell Curl",
+    "description": "Grasp a barbell or Olympic bar at around shoulder width apart using a reverse grip (palms facing down).\nStand straight up, feet together (you may be more comfortable putting one foot back for stability), back straight, and with your arms fully extended. The bar should not be touching your body.\nKeeping your eyes facing forwards, elbows tucked in at your sides, and your body completely still, slowly curl the bar up.\nSqueeze your forearms hard at the top of the movement, and then slowly lower it back to the starting position.\nRepeat for desired reps.",
+    "equipments": [
+      "barbell"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 1,
+    "muscles": [
+      {
+        "muscle": "forearms",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "gripType": [
+        "overhand"
+      ],
+      "weightType": [
+        "barbell",
+        "ezBar"
+      ],
+      "gripWidth": [
+        "normal"
+      ],
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": [
+      "curls",
+      "forearm",
+      "forearms"
+    ]
+  },
+  {
+    "id": 10006,
+    "name": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+    "description": "Start by standing straight and holding a barbell behind your glutes at arm's length while using a pronated grip (palms will be facing back away from the glutes) and having your hands shoulder width apart from each other.\nYou should be looking straight forward while your feet are shoulder width apart from each other. This is the starting position.\nWhile exhaling, slowly elevate the barbell up by curling your wrist in a semi-circular motion towards the ceiling. Note: Your wrist should be the only body part moving for this exercise.\nHold the contraction for a second and lower the barbell back down to the starting position while inhaling.\nRepeat for the recommended amount of repetitions.\nWhen finished, lower the barbell down to the squat rack or the floor by bending the knees. Tip: It is easiest to either pick it up from a squat rack or have a partner hand it to you.",
+    "equipments": [
+      "barbell",
+      "dumbbell"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 1,
+    "muscles": [
+      {
+        "muscle": "forearms",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "gripType": [
+        "overhand"
+      ],
+      "weightType": [
+        "barbell",
+        "dumbbell"
+      ],
+      "gripWidth": [
+        "normal"
+      ],
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": [
+      "forearm",
+      "forearms"
+    ]
+  },
+  {
+    "id": 10007,
+    "name": "Standing Palms-Up Barbell Wrist Curl",
+    "description": "Stand while holding a straight barbell in front of your thighs with an underhand grip (palms facing forward), your arms extended toward the floor, and your wrists flat. Use an open grip, with your thumbs on the same side of the bar as your fingers.\nWhile keeping both arms completely stationary, flex your wrists to lift the bar up in a short range of motion (only a few inches) so that at the top your palms face the ceiling. Squeeze the contraction for a count, then lower the bar back down to the starting position until your wrists are fully extended again.",
+    "equipments": [
+      "barbell",
+      "dumbbell"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 1,
+    "muscles": [
+      {
+        "muscle": "forearms",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "gripType": [
+        "overhand",
+        "underhand"
+      ],
+      "weightType": [
+        "barbell",
+        "dumbbell"
+      ],
+      "gripWidth": [
+        "normal"
+      ],
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": [
+      "forearm",
+      "forearms"
+    ]
+  },
+  {
+    "id": 10008,
+    "name": "Machine Lat Pulldown",
+    "description": "Beginning Position\n-Place thighs under restraining pads, keeping torso upright.\n-Grip the handles with arms fully extended overhead.\nDownward Movement Phase\n-Pull handles downward slowly below chin, keeping your elbows close to your sides.\n-Exhale throughout pulling movement.\nUpward Movement Phase\n-Return slowly to starting position with arms fully extended.\n-Inhale throughout the upward movement.",
+    "equipments": [
+      "machine"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 1,
+    "muscles": [
+      {
+        "muscle": "lats",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": [
+      "fixed"
+    ]
+  }
+]

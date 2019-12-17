@@ -21,6 +21,8 @@ DB_TEST_PATH = path.normpath(
     path.join(SCRIPT_DIRECTORY, '../assets/data/data.test.sqlite'))
 EXERCISE_JSON_PATH = path.normpath(
     path.join(SCRIPT_DIRECTORY, '../assets/data/exercises.json'))
+CUSTOM_EXERCISE_JSON_PATH = path.normpath(
+    path.join(SCRIPT_DIRECTORY, '../assets/data/exercises.custom.json'))
 FAVORITE_JSON_PATH = path.normpath(
     path.join(SCRIPT_DIRECTORY, '../assets/data/favorites.json'))
 
@@ -52,10 +54,14 @@ def connect_db(db_path):
     CURSOR = CONNECTION.cursor()
 
 
+def strip_json_comment(file):
+    return ''.join(line for line in file if not re.match(r"^\s*\/\/", line))
+
+
 def read_json_from_file(path):
     """ return a python object of the json file's content """
     with open(path, 'r') as file:
-        return json.load(file)
+        return json.loads(strip_json_comment(file))
 
 
 def uglify(data):
@@ -129,15 +135,8 @@ def get_image_count_from_name(name):
     return next(iter(CURSOR.fetchone()))
 
 
-def create_db(test_db):
-    setup_db(DB_TEST_PATH if test_db else DB_PATH)
-    create_table_if_not_exists()
-    exercise_objs = read_json_from_file(EXERCISE_JSON_PATH)
-    favorite_objs = read_json_from_file(FAVORITE_JSON_PATH)
-
-    for exercise in exercise_objs:
-        print('Inserting exercise ' + exercise['name'])
-        CURSOR.execute('''INSERT INTO {} (
+def insert_exercise(exercise, favorite_objs, test_db):
+    CURSOR.execute('''INSERT INTO {} (
             [id],
             [name],
             [description],
@@ -148,37 +147,54 @@ def create_db(test_db):
             [keywords]
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         '''
-                       .format(EXERCISE_TABLE), (
-                           exercise['id'],
-                           exercise['name'].strip(),
-                           exercise['description'],
-                           exercise['imageCount'],
-                           exercise['thumbnailImageIndex'],
-                           exercise['type'],
-                           uglify(exercise['variation']),
-                           uglify(exercise['keywords'])
-                       ))
+                   .format(EXERCISE_TABLE), (
+                       exercise['id'],
+                       exercise['name'].strip(),
+                       exercise['description'],
+                       exercise['imageCount'],
+                       exercise['thumbnailImageIndex'],
+                       exercise['type'],
+                       uglify(exercise['variation']),
+                       uglify(exercise['keywords'])
+                   ))
 
-        if (test_db):
-            CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
-                           .format(FAVORITE_TABLE), (exercise['id'], str(exercise['id']) in favorite_objs))
-        else:
-            CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
-                           .format(FAVORITE_TABLE), (exercise['id'], False))
+    for muscle_info in exercise['muscles']:
+        CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
+                        .format(MUSCLE_TABLE), (muscle_info['muscle'],))
+        CURSOR.execute('INSERT OR IGNORE INTO {} ([exerciseId], [muscleId], [target]) VALUES (?, ?, ?)'
+                        .format(EXERCISE_MUSCLE_TABLE),
+                        (exercise['id'], muscle_info['muscle'], muscle_info['target']))
 
-        for muscle_info in exercise['muscles']:
-            CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
-                           .format(MUSCLE_TABLE), (muscle_info['muscle'],))
-            CURSOR.execute('INSERT OR IGNORE INTO {} ([exerciseId], [muscleId], [target]) VALUES (?, ?, ?)'
-                           .format(EXERCISE_MUSCLE_TABLE),
-                           (exercise['id'], muscle_info['muscle'], muscle_info['target']))
+    for equipment in exercise['equipments']:
+        CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
+                        .format(EQUIPMENT_TABLE), (equipment,))
+        CURSOR.execute('INSERT OR IGNORE INTO {} ([exerciseId], [equipmentId]) VALUES (?, ?)'
+                        .format(EXERCISE_EQUIPMENT_TABLE),
+                        (exercise['id'], equipment))
 
-        for equipment in exercise['equipments']:
-            CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
-                           .format(EQUIPMENT_TABLE), (equipment,))
-            CURSOR.execute('INSERT OR IGNORE INTO {} ([exerciseId], [equipmentId]) VALUES (?, ?)'
-                           .format(EXERCISE_EQUIPMENT_TABLE),
-                           (exercise['id'], equipment))
+    if test_db:
+        CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
+                        .format(FAVORITE_TABLE), (exercise['id'], str(exercise['id']) in favorite_objs))
+    else:
+        CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
+                        .format(FAVORITE_TABLE), (exercise['id'], False))
+
+
+def create_db(test_db):
+    setup_db(DB_TEST_PATH if test_db else DB_PATH)
+    create_table_if_not_exists()
+    exercise_objs = read_json_from_file(EXERCISE_JSON_PATH)
+    favorite_objs = read_json_from_file(FAVORITE_JSON_PATH)
+
+    for exercise in exercise_objs:
+        print('Inserting exercise ' + exercise['name'])
+        insert_exercise(exercise, favorite_objs, test_db)
+
+    if test_db:
+        custom_ex_objs = read_json_from_file(CUSTOM_EXERCISE_JSON_PATH)
+        for exercise in custom_ex_objs:
+            print('Inserting custom exercise ' + exercise['name'])
+            insert_exercise(exercise, favorite_objs, test_db)
 
     # improve SELECT .. WHERE .. performance
     CURSOR.execute('CREATE INDEX [idx{}] ON {} ([id])'.format(
