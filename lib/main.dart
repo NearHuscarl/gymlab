@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'src/helpers/app_colors.dart';
+import 'src/helpers/local_notification.dart';
+import 'src/views/components/bloc_provider.dart';
+import 'src/blocs/home_bloc.dart';
 import 'src/views/screens/home_screen.dart';
+import 'src/helpers/app_colors.dart';
+
 import 'src/z_rxdart_example/github_api.dart';
 import 'src/z_rxdart_example/search_widget.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupNotification();
   runApp(GymLabApp());
 }
 
@@ -23,7 +29,10 @@ class GymLabApp extends StatelessWidget {
         ),
         cursorColor: Colors.amber,
       ),
-      home: HomeScreen(),
+      home: BlocProvider(
+        bloc: HomeBloc(),
+        child: HomeScreen(),
+      ),
     );
     // return RxDartExample(api: GithubApi());
   }

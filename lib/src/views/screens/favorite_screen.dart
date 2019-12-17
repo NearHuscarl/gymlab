@@ -8,6 +8,9 @@ import '../components/exercise_list.dart';
 import '../components/linebreak.dart';
 import '../components/bloc_provider.dart';
 import '../components/search_bar.dart';
+import '../components/equipment_filter.dart';
+import '../components/gym_icons.dart';
+import '../components/loading_indicator.dart';
 
 class FavoriteScreen extends StatefulWidget {
   @override
@@ -42,6 +45,19 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     );
   }
 
+  Widget _buildShowEquipmentFilterButton() {
+    return StreamBuilder(
+      stream: bloc.showSearchBar,
+      initialData: false,
+      builder: (context, AsyncSnapshot<bool> snapshot) {
+        return IconButton(
+          icon: Icon(GymIcons.equipment),
+          onPressed: () => bloc.toggleEquipmentFilter(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +65,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         title: Text('Favorite'),
         actions: <Widget>[
           _buildShowSearchBarButton(),
+          _buildShowEquipmentFilterButton(),
         ],
       ),
       body: BlocProvider<ExerciseFavoriteBloc>(
@@ -133,8 +150,17 @@ class _FavoriteContent extends StatelessWidget {
                 stream: bloc.showSearchBar,
                 builder: (context, AsyncSnapshot<bool> snapshot) {
                   return SearchBar(
-                    expandSearchBar: snapshot.data,
+                    expand: snapshot.data,
                     onTextChanged: (t) => bloc.updateSearchTerm(t),
+                  );
+                },
+              ),
+              StreamBuilder(
+                stream: bloc.showEquipmentFilter,
+                builder: (context, AsyncSnapshot<bool> snapshot) {
+                  return EquipmentFilter(
+                    expand: snapshot.data,
+                    onFilterChanged: (f) => bloc.updateEquipmentFilter(f),
                   );
                 },
               ),
@@ -143,7 +169,7 @@ class _FavoriteContent extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }
-        return Center(child: CircularProgressIndicator());
+        return Center(child: LoadingIndicator());
       },
     );
   }

@@ -15,6 +15,7 @@ class DbHelper {
   static const List<String> summaryColumns = [
     'id',
     'name',
+    'GROUP_CONCAT(equipmentId) as equipments',
     'imageCount',
     'thumbnailImageIndex',
     'keywords',
@@ -25,9 +26,11 @@ class DbHelper {
   static const List<String> detailColumns = [
     'id',
     'name',
+    'GROUP_CONCAT(equipmentId) as equipments',
     'description',
     'imageCount',
     'thumbnailImageIndex',
+    "GROUP_CONCAT(muscleId || '|' || target) as muscles",
     'type',
     'variation',
     'keywords',
@@ -44,6 +47,10 @@ AND $exerciseMuscleTable.muscleId = ?
 
 INNER JOIN $favoriteTable
 ON $exerciseTable.id = $favoriteTable.exerciseId
+
+INNER JOIN $exerciseEquipmentTable
+ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
+GROUP BY id
 ''';
 
   static final String selectFavorites = '''
@@ -57,6 +64,10 @@ AND $exerciseMuscleTable.target == 'primary'
 INNER JOIN $favoriteTable
 ON $exerciseTable.id = $favoriteTable.exerciseId
 AND $favoriteTable.favorite = 1
+
+INNER JOIN $exerciseEquipmentTable
+ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
+GROUP BY id
 ''';
 
   static final String selectAllByExerciseIdQuery = '''
@@ -66,7 +77,14 @@ FROM $exerciseTable
 INNER JOIN $favoriteTable
 ON $exerciseTable.id = $favoriteTable.exerciseId
 
+INNER JOIN $exerciseMuscleTable -- 208
+ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+
+INNER JOIN $exerciseEquipmentTable -- 311
+ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
+
 WHERE id = ?
+GROUP BY id
 ''';
 
   static final String selectMusclesByExerciseIdQuery = '''

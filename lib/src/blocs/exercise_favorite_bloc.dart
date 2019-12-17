@@ -5,6 +5,7 @@ import '../models/exercise_summary.dart';
 import '../models/muscle_info.dart';
 import '../helpers/disposable.dart';
 import '../helpers/exercises.dart';
+import 'equipment_filter_bloc.dart';
 import 'search_bloc.dart';
 import 'toggle_bloc.dart';
 
@@ -12,6 +13,8 @@ class ExerciseFavoriteBloc extends Disposable {
   ExerciseFavoriteBloc() {
     _searchBloc = SearchBloc();
     _showSearchBarBloc = ToggleBloc(initialValue: false);
+    _showEquipmentFilterBloc = ToggleBloc(initialValue: false);
+    _equipmentFilter = BehaviorSubject<EquipmentFilterData>();
     _exercises = PublishSubject<ExerciseSummaries>();
   }
 
@@ -19,31 +22,39 @@ class ExerciseFavoriteBloc extends Disposable {
 
   SearchBloc _searchBloc;
   ToggleBloc _showSearchBarBloc;
+  ToggleBloc _showEquipmentFilterBloc;
+  BehaviorSubject<EquipmentFilterData> _equipmentFilter;
   PublishSubject<ExerciseSummaries> _exercises;
 
   Observable<bool> get showSearchBar => _showSearchBarBloc.stream;
+  Observable<bool> get showEquipmentFilter => _showEquipmentFilterBloc.stream;
+  Observable<EquipmentFilterData> get equipmentFilter =>
+      _equipmentFilter.startWith(EquipmentFilterData());
   Observable<Map<Muscle, ExerciseSummaries>> get summaries => Observable
-          .combineLatest2<ExerciseSummaries, List<String>, ExerciseSummaries>(
+          .combineLatest3<ExerciseSummaries, List<String>, EquipmentFilterData, ExerciseSummaries>(
         _exercises,
         _searchBloc.stream,
+        equipmentFilter,
         _search,
-      ).switchMap(mapSummaryToSummaryCategory);
+      ).switchMap(_mapSummaryToSummaryCategory);
 
   static ExerciseSummaries _search(
     ExerciseSummaries summaries,
     List<String> searchTerms,
+    EquipmentFilterData equipmentData,
   ) {
     return ExerciseSummaries(
       exercises: summaries.exercises.where((e) {
         final name = e.name.toLowerCase();
-        final nameFilter = filterName(searchTerms, name, e.keywords);
+        final nameFilter = filterByName(searchTerms, name, e.keywords);
+        final equipmentFilter = filterByEquipment(equipmentData, e.equipments);
 
-        return nameFilter;
+        return nameFilter && equipmentFilter;
       }).toList(),
     );
   }
 
-  Stream<Map<Muscle, ExerciseSummaries>> mapSummaryToSummaryCategory(
+  Stream<Map<Muscle, ExerciseSummaries>> _mapSummaryToSummaryCategory(
     ExerciseSummaries summaries,
   ) async* {
     final favorites = Map<Muscle, ExerciseSummaries>();
@@ -65,7 +76,14 @@ class ExerciseFavoriteBloc extends Disposable {
   }
 
   Future<void> toggleShowSearchBar() => _showSearchBarBloc.toggle();
+  Future<void> toggleEquipmentFilter() async {
+    _showSearchBarBloc.change(false);
+    _showEquipmentFilterBloc.toggle();
+  }
+
   Function(String) get updateSearchTerm => _searchBloc.updateSearchTerm;
+  void updateEquipmentFilter(EquipmentFilterData filter) =>
+      _equipmentFilter.add(filter);
 
   Future<void> getFavorite() async {
     final summaries = await _repository.getAllFavorites();
@@ -73,8 +91,10 @@ class ExerciseFavoriteBloc extends Disposable {
   }
 
   void dispose() {
+    _showSearchBarBloc.dispose();
+    _showEquipmentFilterBloc.dispose();
     _exercises.close();
     _searchBloc.dispose();
-    _showSearchBarBloc.dispose();
+    _equipmentFilter.close();
   }
 }

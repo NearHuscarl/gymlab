@@ -10,8 +10,40 @@ Future<ExerciseSummaries> _computeExerciseSummariesResult(
 ) async {
   return ExerciseSummaries(
       exercises: result.isNotEmpty
-          ? result.map((c) => ExerciseSummary.fromJson(c)).toList()
+          ? result.map((m) {
+              final jsonMap = m.map((k, v) {
+                if (k == 'equipments') return MapEntry(k, v.split(','));
+                return MapEntry(k, v);
+              });
+              return ExerciseSummary.fromJson(jsonMap);
+            }).toList()
           : <ExerciseSummary>[]);
+}
+
+Future<ExerciseDetail> _computeExerciseDetailResult(
+  List<Map<String, dynamic>> result,
+) async {
+  return result.isNotEmpty
+      ? ExerciseDetail.fromJson(result.first.map((k, v) {
+          if (k == 'equipments') {
+            return MapEntry(k, v.split(','));
+          }
+          if (k == 'muscles') {
+            return MapEntry(
+                k,
+                v.split(',').map((m) {
+                  final muscleInfo = m.split('|');
+                  if (muscleInfo.length == 2)
+                    return {
+                      'muscle': muscleInfo[0],
+                      'target': muscleInfo[1],
+                    };
+                  return {};
+                }));
+          }
+          return MapEntry(k, v);
+        }))
+      : null;
 }
 
 class ExerciseProvider {
@@ -43,22 +75,14 @@ class ExerciseProvider {
     );
   }
 
-  Future<ExerciseSummary> getSummaryById(int id) async {
-    final db = await database;
-    final res = await db.query(tableName, where: 'id = ?', whereArgs: [id]);
-
-    return res.isNotEmpty ? ExerciseSummary.fromJson(res.first) : null;
-  }
-
-  Future<ExerciseSummaries> getSummariesByMuscleCategory(
-      String muscle) async {
+  Future<ExerciseSummaries> getSummariesByMuscleCategory(String muscle) async {
     final db = await database;
     final res = await db.rawQuery(
       DbHelper.selectSummariesByMuscleQuery,
       [muscle],
     );
 
-    return compute(_computeExerciseSummariesResult, res);
+    return _computeExerciseSummariesResult(res);
   }
 
   Future<ExerciseSummaries> getAllFavorites() async {
@@ -77,19 +101,9 @@ class ExerciseProvider {
 
   Future<ExerciseDetail> getDetailById(int id) async {
     final db = await database;
-    final batch = db.batch();
+    final res = await db.rawQuery(DbHelper.selectAllByExerciseIdQuery, [id]);
 
-    batch.rawQuery(DbHelper.selectAllByExerciseIdQuery, [id]);
-    batch.rawQuery(DbHelper.selectMusclesByExerciseIdQuery, [id]);
-    batch.rawQuery(DbHelper.selectEquipmentsByExerciseIdQuery, [id]);
-
-    final batchResult = await batch.commit();
-    final res = Map<String, dynamic>.from(batchResult[0].first);
-
-    res['muscles'] = batchResult[1];
-    res['equipments'] = batchResult[2].map((x) => x['equipmentId']);
-
-    return res.isNotEmpty ? ExerciseDetail.fromJson(res) : null;
+    return compute(_computeExerciseDetailResult, res);
   }
 
   Future<void> updateFavorite(int id, bool favorite) async {

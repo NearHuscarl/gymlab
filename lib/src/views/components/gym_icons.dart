@@ -18,6 +18,21 @@ class GymIcons {
 
   static const _kFontFam = 'Gym';
 
-  static const IconData dumbbell = const IconData(0xe800, fontFamily: _kFontFam);
-  static const IconData equipment = const IconData(0xe801, fontFamily: _kFontFam);
+  static const IconData equipment =
+      const IconData(0xe801, fontFamily: _kFontFam);
+  static const IconData machine = const IconData(0xe806, fontFamily: _kFontFam);
+  static const IconData bar = const IconData(0xe808, fontFamily: _kFontFam);
+  static const IconData cable = const IconData(0xe80b, fontFamily: _kFontFam);
+  static const IconData kettlebell =
+      const IconData(0xe80d, fontFamily: _kFontFam);
+  static const IconData weightplate =
+      const IconData(0xe80e, fontFamily: _kFontFam);
+  static const IconData ezbar = const IconData(0xe80f, fontFamily: _kFontFam);
+  static const IconData barbell = const IconData(0xe810, fontFamily: _kFontFam);
+  static const IconData exerciseball =
+      const IconData(0xe811, fontFamily: _kFontFam);
+  static const IconData dumbbell =
+      const IconData(0xe812, fontFamily: _kFontFam);
+  static const IconData bodyonly =
+      const IconData(0xe813, fontFamily: _kFontFam);
 }

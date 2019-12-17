@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'bloc_provider.dart';
 import 'image_player.dart';
 import '../components/muscle_anatomy.dart';
@@ -11,6 +12,7 @@ import '../../models/muscle_info.dart';
 import '../../models/variation.dart';
 import '../../helpers/enum.dart';
 import '../../helpers/constants.dart';
+import '../../helpers/exercises.dart';
 import 'variation_help_dialogs.dart';
 
 class ExerciseDetailSection extends StatefulWidget {
@@ -172,75 +174,86 @@ class _ExerciseDescription extends StatelessWidget {
     final secondaryMuscles =
         exercise.muscles.where((m) => m != primaryMuscle).map((m) => m);
 
-    final content = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        RichText(
-          text: TextSpan(
-            style: normalTheme,
-            children: <TextSpan>[
-              TextSpan(
-                text: 'Primary Muscle: ',
-                style: boldTheme,
-              ),
-              TextSpan(
-                text: EnumHelper.parseWord(primaryMuscle.muscle),
-              ),
-            ],
-          ),
-        ),
-        if (secondaryMuscles.isNotEmpty)
-          Padding(
-            padding: textPadding,
-            child: RichText(
-              text: TextSpan(style: normalTheme, children: [
-                TextSpan(
-                  text: 'Secondary Muscle: ',
-                  style: boldTheme,
-                ),
-                TextSpan(
-                  text: secondaryMuscles
-                      .map((m) => EnumHelper.parseWord(m.muscle))
-                      .join(', '),
-                )
-              ]),
-            ),
-          ),
-        Linebreak(),
-        RichText(
-          text: TextSpan(style: normalTheme, children: [
+    final content = <Widget>[
+      RichText(
+        text: TextSpan(
+          style: normalTheme,
+          children: <TextSpan>[
             TextSpan(
-              text: 'Exercise Type: ',
+              text: 'Primary Muscle: ',
               style: boldTheme,
             ),
             TextSpan(
-              text: EnumHelper.parseWord(exercise.type),
-            )
-          ]),
+              text: EnumHelper.parseWord(primaryMuscle.muscle),
+            ),
+          ],
         ),
+      ),
+      if (secondaryMuscles.isNotEmpty)
         Padding(
           padding: textPadding,
-          child: Text('Description: ', style: theme.textTheme.body2),
+          child: RichText(
+            text: TextSpan(style: normalTheme, children: [
+              TextSpan(
+                text: 'Secondary Muscle: ',
+                style: boldTheme,
+              ),
+              TextSpan(
+                text: secondaryMuscles
+                    .map((m) => EnumHelper.parseWord(m.muscle))
+                    .join(', '),
+              )
+            ]),
+          ),
         ),
-      ]
-        ..addAll(paragraph.map(
-          (p) => Padding(
-            padding: textPadding,
-            child: Text('- ' + p),
+      Linebreak(),
+      RichText(
+        text: TextSpan(style: normalTheme, children: [
+          TextSpan(
+            text: 'Exercise Type: ',
+            style: boldTheme,
           ),
-        ))
-        ..add(Padding(
+          TextSpan(
+            text: EnumHelper.parseWord(exercise.type),
+          )
+        ]),
+      ),
+      Padding(
+        padding: textPadding,
+        child: Text('Description: ', style: theme.textTheme.body2),
+      ),
+    ]
+      ..addAll(paragraph.map(
+        (p) => Padding(
           padding: textPadding,
-          child: MuscleAnatomy(
-            muscles: exercise.muscles,
-          ),
-        )),
-    );
+          child: Text('- ' + p),
+        ),
+      ))
+      ..add(Padding(
+        padding: textPadding,
+        child: MuscleAnatomy(
+          muscles: exercise.muscles,
+        ),
+      ));
 
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: content,
+        child: AnimationLimiter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: AnimationConfiguration.toStaggeredList(
+              duration: const Duration(milliseconds: 375),
+              childAnimationBuilder: (widget) => SlideAnimation(
+                horizontalOffset: 50.0,
+                child: FadeInAnimation(
+                  child: widget,
+                ),
+              ),
+              children: content,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -364,7 +377,7 @@ class _ExerciseVariation extends StatelessWidget {
       InkResponse(
         onTap: () => showGripTypeHelpDialog(context),
         child: Image.asset(
-          'assets/images/variations/griptype_${EnumHelper.parse(gripType)}_dark.png',
+          getGripTypeImage(gripType),
           width: 55.0,
         ),
       );
@@ -373,7 +386,7 @@ class _ExerciseVariation extends StatelessWidget {
       InkResponse(
         onTap: () => showGripWidthHelpDialog(context),
         child: Image.asset(
-          'assets/images/variations/gripwidth_${EnumHelper.parse(gripWidth)}_dark.png',
+          getGripWidthImage(gripWidth),
           width: 115.0,
         ),
       );
@@ -382,8 +395,7 @@ class _ExerciseVariation extends StatelessWidget {
       InkResponse(
         onTap: () => showWeightTypeHelpDialog(context),
         child: Image.asset(
-          'assets/images/variations/weighttype_${EnumHelper.parse(weightType).toLowerCase()}_dark.png',
-          // width: 90.0,
+          getWeightTypeImage(weightType),
           height: 35,
         ),
       );
@@ -392,7 +404,7 @@ class _ExerciseVariation extends StatelessWidget {
       InkResponse(
         onTap: () => showRepetitionsSpeedHelpDialog(context),
         child: Image.asset(
-          'assets/images/variations/repetitionsspeed_${EnumHelper.parse(speed).substring(1)}_dark.png',
+          getRepetitionsSpeedImage(speed),
           width: 60.0,
         ),
       );
@@ -418,26 +430,49 @@ class _ExerciseVariation extends StatelessWidget {
     const textPadding = const EdgeInsets.only(top: 8.0);
     const gap = 20.0;
 
-    final content = Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Padding(
-          padding: textPadding,
-          child: Text('Variations', style: boldTheme.copyWith(fontSize: 17)),
+    final content = <Widget>[
+      Padding(
+        padding: textPadding,
+        child: Text('Variations', style: boldTheme.copyWith(fontSize: 17)),
+      ),
+      SizedBox(height: 20),
+      if (variation.gripType.isNotEmpty)
+        Column(
+          children: <Widget>[
+            Text('Grip Type', style: boldTheme.copyWith(fontSize: 14)),
+            SizedBox(height: 5),
+            RowWithGap(
+              gap: gap,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: variation.gripType
+                  .map((g) => Column(
+                        children: <Widget>[
+                          _getGripTypeImage(context, g),
+                          Text(
+                            EnumHelper.parseWord(g),
+                            style: captionTheme,
+                          )
+                        ],
+                      ))
+                  .toList(),
+            ),
+            Linebreak(),
+          ],
         ),
-        SizedBox(height: 20),
-        if (variation.gripType.isNotEmpty)
-          Column(
-            children: <Widget>[
-              Text('Grip Type', style: boldTheme.copyWith(fontSize: 14)),
-              SizedBox(height: 5),
-              RowWithGap(
+      if (variation.gripWidth.isNotEmpty)
+        Column(
+          children: <Widget>[
+            Text('Grip Width', style: boldTheme.copyWith(fontSize: 14)),
+            SizedBox(height: 5),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: RowWithGap(
                 gap: gap,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: variation.gripType
+                children: variation.gripWidth
                     .map((g) => Column(
                           children: <Widget>[
-                            _getGripTypeImage(context, g),
+                            _getGripWidthImage(context, g),
                             Text(
                               EnumHelper.parseWord(g),
                               style: captionTheme,
@@ -446,92 +481,79 @@ class _ExerciseVariation extends StatelessWidget {
                         ))
                     .toList(),
               ),
-              Linebreak(),
-            ],
-          ),
-        if (variation.gripWidth.isNotEmpty)
-          Column(
-            children: <Widget>[
-              Text('Grip Width', style: boldTheme.copyWith(fontSize: 14)),
-              SizedBox(height: 5),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: RowWithGap(
-                  gap: gap,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: variation.gripWidth
-                      .map((g) => Column(
-                            children: <Widget>[
-                              _getGripWidthImage(context, g),
-                              Text(
-                                EnumHelper.parseWord(g),
-                                style: captionTheme,
-                              )
-                            ],
-                          ))
-                      .toList(),
-                ),
-              ),
-              Linebreak(),
-            ],
-          ),
-        if (variation.weightType.isNotEmpty)
-          Column(
-            children: <Widget>[
-              Text('Weight Type', style: boldTheme.copyWith(fontSize: 14)),
-              SizedBox(height: 5),
-              SingleChildScrollView(
-                child: RowWithGap(
-                  gap: gap,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: variation.weightType
-                      .map((w) => Column(
-                            children: <Widget>[
-                              _getWeightTypeImage(context, w),
-                              Text(
-                                EnumHelper.parseWord(w),
-                                style: captionTheme,
-                              )
-                            ],
-                          ))
-                      .toList(),
-                ),
-              ),
-              Linebreak(),
-            ],
-          ),
-        if (variation.repetitionsSpeed.isNotEmpty)
-          Column(
-            children: <Widget>[
-              Text('Repetitions Speed',
-                  style: boldTheme.copyWith(fontSize: 14)),
-              SizedBox(height: 5),
-              RowWithGap(
+            ),
+            Linebreak(),
+          ],
+        ),
+      if (variation.weightType.isNotEmpty)
+        Column(
+          children: <Widget>[
+            Text('Weight Type', style: boldTheme.copyWith(fontSize: 14)),
+            SizedBox(height: 5),
+            SingleChildScrollView(
+              child: RowWithGap(
+                gap: gap,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: variation.repetitionsSpeed
-                    .map((s) => SizedBox(
-                          width: 90,
-                          child: Column(
-                            children: <Widget>[
-                              _getTempoImage(context, s),
-                              Text(
-                                _getTempoText(s),
-                                style: captionTheme,
-                              )
-                            ],
-                          ),
+                children: variation.weightType
+                    .map((w) => Column(
+                          children: <Widget>[
+                            _getWeightTypeImage(context, w),
+                            Text(
+                              EnumHelper.parseWord(w),
+                              style: captionTheme,
+                            )
+                          ],
                         ))
                     .toList(),
               ),
-            ],
-          ),
-      ],
-    );
+            ),
+            Linebreak(),
+          ],
+        ),
+      if (variation.repetitionsSpeed.isNotEmpty)
+        Column(
+          children: <Widget>[
+            Text('Repetitions Speed', style: boldTheme.copyWith(fontSize: 14)),
+            SizedBox(height: 5),
+            RowWithGap(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: variation.repetitionsSpeed
+                  .map((s) => SizedBox(
+                        width: 90,
+                        child: Column(
+                          children: <Widget>[
+                            _getTempoImage(context, s),
+                            Text(
+                              _getTempoText(s),
+                              style: captionTheme,
+                            )
+                          ],
+                        ),
+                      ))
+                  .toList(),
+            ),
+          ],
+        ),
+    ];
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SingleChildScrollView(
-        child: content,
+    return AnimationLimiter(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: AnimationConfiguration.toStaggeredList(
+              duration: const Duration(milliseconds: 375),
+              childAnimationBuilder: (widget) => SlideAnimation(
+                horizontalOffset: -50.0,
+                child: FadeInAnimation(
+                  child: widget,
+                ),
+              ),
+              children: content,
+            ),
+          ),
+        ),
       ),
     );
   }

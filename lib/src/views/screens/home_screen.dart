@@ -1,31 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../components/bloc_provider.dart';
 import '../components/gym_icons.dart';
 import '../components/muscle_options.dart';
+import '../components/timer_section.dart';
 import '../router.dart';
+import '../../blocs/home_bloc.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
+class HomeScreen extends StatelessWidget {
+  Widget _buildOptions(HomeBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.currentPage,
+      initialData: HomePageSection.muscleOption,
+      builder: (context, AsyncSnapshot<HomePageSection> snapshot) {
+        final currentPage = snapshot.data;
+        Widget child;
+        switch (currentPage) {
+          case HomePageSection.muscleOption:
+            child = MuscleOptions();
+            break;
+          case HomePageSection.timer:
+            child = TimerSection();
+            break;
+          case HomePageSection.statistics:
+            child = TimerSection();
+            break;
+          default:
+            child = Center(
+              child: Text('Current Page: $currentPage'),
+            );
+            break;
+        }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-  var titles = ['Exercises', 'Timer', 'Settings'];
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 150),
+          child: child,
+        );
+      },
+    );
+  }
 
-  Widget _buildOptions() {
-    switch (_selectedIndex) {
-      case 0:
-        return MuscleOptions();
-      default:
-        return null;
-    }
+  Widget _buildBottomNavBar(HomeBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.currentPage,
+      initialData: HomePageSection.muscleOption,
+      builder: (context, AsyncSnapshot<HomePageSection> snapshot) {
+        final currentPage = snapshot.data;
+        return BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(GymIcons.dumbbell),
+              title: Text('Exercises'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.timer),
+              title: Text('Timer'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.chartArea),
+              title: Text('Statistics'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('Settings'),
+            ),
+          ],
+          currentIndex: currentPage.index,
+          onTap: (index) => bloc.changePage(index),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<HomeBloc>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(titles[_selectedIndex]),
+        title: StreamBuilder<String>(
+          stream: bloc.title,
+          initialData: '',
+          builder: (context, AsyncSnapshot<String> snapshot) {
+            return Text(snapshot.data);
+          },
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.star),
@@ -34,26 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Center(
-        child: _buildOptions(),
+        child: _buildOptions(bloc),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(GymIcons.dumbbell),
-            title: Text('Exercises'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.timer),
-            title: Text('Timer'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Settings'),
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: (index) => setState(() => _selectedIndex = index),
-      ),
+      bottomNavigationBar: _buildBottomNavBar(bloc),
     );
   }
 }
