@@ -109,11 +109,13 @@ class ExerciseProvider {
   Future<void> updateFavorite(int id, bool favorite) async {
     final db = await database;
 
-    await db.update(
+    await db.insert(
       DbHelper.favoriteTable,
-      {'favorite': favorite},
-      where: 'exerciseId = ?',
-      whereArgs: [id],
+      {
+        'exerciseId': id,
+        'favorite': favorite,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 }

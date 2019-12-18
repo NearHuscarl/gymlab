@@ -19,7 +19,7 @@ class DbHelper {
     'imageCount',
     'thumbnailImageIndex',
     'keywords',
-    'favorite',
+    'IFNULL(favorite, 0) as favorite',
     'muscleId AS muscle',
     'CASE WHEN variation IS NULL THEN 0 ELSE 1 END AS hasVariation',
   ];
@@ -34,7 +34,7 @@ class DbHelper {
     'type',
     'variation',
     'keywords',
-    'favorite',
+    'IFNULL(favorite, 0) as favorite',
   ];
 
   static final String selectSummariesByMuscleQuery = '''
@@ -45,7 +45,7 @@ INNER JOIN $exerciseMuscleTable
 ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
 AND $exerciseMuscleTable.muscleId = ?
 
-INNER JOIN $favoriteTable
+LEFT JOIN $favoriteTable
 ON $exerciseTable.id = $favoriteTable.exerciseId
 
 INNER JOIN $exerciseEquipmentTable
@@ -61,12 +61,13 @@ INNER JOIN $exerciseMuscleTable
 ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
 AND $exerciseMuscleTable.target == 'primary'
 
-INNER JOIN $favoriteTable
+LEFT JOIN $favoriteTable
 ON $exerciseTable.id = $favoriteTable.exerciseId
-AND $favoriteTable.favorite = 1
 
 INNER JOIN $exerciseEquipmentTable
 ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
+
+WHERE $favoriteTable.favorite = 1
 GROUP BY id
 ''';
 
@@ -74,7 +75,7 @@ GROUP BY id
 SELECT ${detailColumns.join(', ')}
 FROM $exerciseTable
 
-INNER JOIN $favoriteTable
+LEFT JOIN $favoriteTable
 ON $exerciseTable.id = $favoriteTable.exerciseId
 
 INNER JOIN $exerciseMuscleTable -- 208

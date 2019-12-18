@@ -160,24 +160,21 @@ def insert_exercise(exercise, favorite_objs, test_db):
 
     for muscle_info in exercise['muscles']:
         CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
-                        .format(MUSCLE_TABLE), (muscle_info['muscle'],))
+                       .format(MUSCLE_TABLE), (muscle_info['muscle'],))
         CURSOR.execute('INSERT OR IGNORE INTO {} ([exerciseId], [muscleId], [target]) VALUES (?, ?, ?)'
-                        .format(EXERCISE_MUSCLE_TABLE),
-                        (exercise['id'], muscle_info['muscle'], muscle_info['target']))
+                       .format(EXERCISE_MUSCLE_TABLE),
+                       (exercise['id'], muscle_info['muscle'], muscle_info['target']))
 
     for equipment in exercise['equipments']:
         CURSOR.execute('INSERT OR IGNORE INTO {} ([id]) VALUES (?)'
-                        .format(EQUIPMENT_TABLE), (equipment,))
+                       .format(EQUIPMENT_TABLE), (equipment,))
         CURSOR.execute('INSERT OR IGNORE INTO {} ([exerciseId], [equipmentId]) VALUES (?, ?)'
-                        .format(EXERCISE_EQUIPMENT_TABLE),
-                        (exercise['id'], equipment))
+                       .format(EXERCISE_EQUIPMENT_TABLE),
+                       (exercise['id'], equipment))
 
-    if test_db:
+    if test_db and str(exercise['id']) in favorite_objs:
         CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
-                        .format(FAVORITE_TABLE), (exercise['id'], str(exercise['id']) in favorite_objs))
-    else:
-        CURSOR.execute('INSERT INTO {} ([exerciseId], [favorite]) VALUES (?, ?)'
-                        .format(FAVORITE_TABLE), (exercise['id'], False))
+                       .format(FAVORITE_TABLE), (exercise['id'], True))
 
 
 def create_db(test_db):

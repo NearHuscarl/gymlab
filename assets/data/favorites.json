@@ -46,5 +46,41 @@
   "157": {
     "name": "Hamstring Pullback Machine",
     "favorite": true
+  },
+  "10000": {
+    "name": "Incline Chest Press Machine",
+    "favorite": true
+  },
+  "10001": {
+    "name": "Decline Chest Press Machine",
+    "favorite": true
+  },
+  "10002": {
+    "name": "Lying Chest Press Machine",
+    "favorite": true
+  },
+  "10003": {
+    "name": "Weight Plate Pinches",
+    "favorite": true
+  },
+  "10004": {
+    "name": "Plate Pinch Carry",
+    "favorite": true
+  },
+  "10005": {
+    "name": "Reverse Grip Barbell Curl",
+    "favorite": true
+  },
+  "10006": {
+    "name": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+    "favorite": true
+  },
+  "10007": {
+    "name": "Standing Palms-Up Barbell Wrist Curl",
+    "favorite": true
+  },
+  "10008": {
+    "name": "Machine Lat Pulldown",
+    "favorite": true
   }
 }
