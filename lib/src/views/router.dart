@@ -44,4 +44,11 @@ class Router {
       MaterialPageRoute(builder: (context) => FavoriteScreen()),
     );
   }
+
+  static void goTo(BuildContext context, Widget page) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
 }

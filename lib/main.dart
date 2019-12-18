@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'src/helpers/local_notification.dart';
-import 'src/views/components/bloc_provider.dart';
-import 'src/blocs/home_bloc.dart';
 import 'src/views/screens/home_screen.dart';
 import 'src/helpers/app_colors.dart';
 
@@ -29,10 +27,7 @@ class GymLabApp extends StatelessWidget {
         ),
         cursorColor: Colors.amber,
       ),
-      home: BlocProvider(
-        bloc: HomeBloc(),
-        child: HomeScreen(),
-      ),
+      home: HomeScreen(),
     );
     // return RxDartExample(api: GithubApi());
   }

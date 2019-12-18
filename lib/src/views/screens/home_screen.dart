@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../components/bloc_provider.dart';
 import '../components/gym_icons.dart';
 import '../components/muscle_options.dart';
 import '../components/timer_section.dart';
+import '../screens/meal_screen.dart';
 import '../router.dart';
 import '../../blocs/home_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
-  Widget _buildOptions(HomeBloc bloc) {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  HomeBloc _bloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = HomeBloc();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bloc.dispose();
+  }
+
+  Widget _buildOptions() {
     return StreamBuilder(
-      stream: bloc.currentPage,
+      stream: _bloc.currentPage,
       initialData: HomePageSection.muscleOption,
       builder: (context, AsyncSnapshot<HomePageSection> snapshot) {
         final currentPage = snapshot.data;
@@ -24,6 +43,9 @@ class HomeScreen extends StatelessWidget {
             break;
           case HomePageSection.statistics:
             child = TimerSection();
+            break;
+          case HomePageSection.meal:
+            child = MealScreen();
             break;
           default:
             child = Center(
@@ -40,9 +62,9 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNavBar(HomeBloc bloc) {
+  Widget _buildBottomNavBar() {
     return StreamBuilder(
-      stream: bloc.currentPage,
+      stream: _bloc.currentPage,
       initialData: HomePageSection.muscleOption,
       builder: (context, AsyncSnapshot<HomePageSection> snapshot) {
         final currentPage = snapshot.data;
@@ -62,12 +84,16 @@ class HomeScreen extends StatelessWidget {
               title: Text('Statistics'),
             ),
             BottomNavigationBarItem(
+              icon: Icon(GymIcons.meal),
+              title: Text('Meals'),
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               title: Text('Settings'),
             ),
           ],
           currentIndex: currentPage.index,
-          onTap: (index) => bloc.changePage(index),
+          onTap: (index) => _bloc.changePage(index),
         );
       },
     );
@@ -75,12 +101,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<HomeBloc>(context);
-
     return Scaffold(
       appBar: AppBar(
         title: StreamBuilder<String>(
-          stream: bloc.title,
+          stream: _bloc.title,
           initialData: '',
           builder: (context, AsyncSnapshot<String> snapshot) {
             return Text(snapshot.data);
@@ -94,9 +118,9 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: _buildOptions(bloc),
+        child: _buildOptions(),
       ),
-      bottomNavigationBar: _buildBottomNavBar(bloc),
+      bottomNavigationBar: _buildBottomNavBar(),
     );
   }
 }

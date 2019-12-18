@@ -5,6 +5,7 @@ enum HomePageSection {
   muscleOption,
   timer,
   statistics,
+  meal,
   settings,
 }
 
@@ -16,7 +17,13 @@ class HomeBloc extends Disposable {
 
   static const startPage = 0;
 
-  List<String> _titlesRaw = ['Exercises', 'Timer', 'Statistics'];
+  List<String> _titlesRaw = [
+    'Exercises',
+    'Timer',
+    'Statistics',
+    'Meal Plans',
+    'Settings'
+  ];
   BehaviorSubject<String> _title;
   BehaviorSubject<int> _currentPage;
 
