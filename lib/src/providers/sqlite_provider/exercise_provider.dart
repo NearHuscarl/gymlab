@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '_db_helper.dart';
+import 'exercise_provider.query.dart';
 import '../../models/exercise_summary.dart';
 import '../../models/exercise_detail.dart';
 
@@ -49,7 +50,7 @@ Future<ExerciseDetail> _computeExerciseDetailResult(
 class ExerciseProvider {
   ExerciseProvider._();
 
-  String get tableName => DbHelper.exerciseTable;
+  String get tableName => ExerciseQuery.exerciseTable;
   static final ExerciseProvider db = ExerciseProvider._();
 
   static Database _database;
@@ -78,7 +79,7 @@ class ExerciseProvider {
   Future<ExerciseSummaries> getSummariesByMuscleCategory(String muscle) async {
     final db = await database;
     final res = await db.rawQuery(
-      DbHelper.selectSummariesByMuscleQuery,
+      ExerciseQuery.selectSummariesByMuscleQuery,
       [muscle],
     );
 
@@ -87,7 +88,7 @@ class ExerciseProvider {
 
   Future<ExerciseSummaries> getAllFavorites() async {
     final db = await database;
-    final res = await db.rawQuery(DbHelper.selectFavorites);
+    final res = await db.rawQuery(ExerciseQuery.selectFavorites);
 
     return compute(_computeExerciseSummariesResult, res);
   }
@@ -101,7 +102,7 @@ class ExerciseProvider {
 
   Future<ExerciseDetail> getDetailById(int id) async {
     final db = await database;
-    final res = await db.rawQuery(DbHelper.selectAllByExerciseIdQuery, [id]);
+    final res = await db.rawQuery(ExerciseQuery.selectAllByExerciseIdQuery, [id]);
 
     return compute(_computeExerciseDetailResult, res);
   }
@@ -110,7 +111,7 @@ class ExerciseProvider {
     final db = await database;
 
     await db.insert(
-      DbHelper.favoriteTable,
+      ExerciseQuery.favoriteTable,
       {
         'exerciseId': id,
         'favorite': favorite,
