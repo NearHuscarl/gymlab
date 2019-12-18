@@ -287,5 +287,306 @@
     "keywords": [
       "fixed"
     ]
+  },
+  {
+    "id": 10009,
+    "name": "Reverse Grip Bent-Over Rows",
+    "description": "Stand erect while holding a barbell with a supinated grip (palms facing up).\nBend your knees slightly and bring your torso forward, by bending at the waist, while keeping the back straight until it is almost parallel to the floor. Tip: Make sure that you keep the head up. The barbell should hang directly in front of you as your arms hang perpendicular to the floor and your torso. This is your starting position.\nWhile keeping the torso stationary, lift the barbell as you breathe out, keeping the elbows close to the body and not doing any force with the forearm other than holding the weights. On the top contracted position, squeeze the back muscles and hold for a second.\nSlowly lower the weight again to the starting position as you inhale.\nRepeat for the recommended amount of repetitions.",
+    "equipments": [
+      "barbell",
+      "dumbbell"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "lowerBack",
+        "target": "primary"
+      },
+      {
+        "muscle": "biceps",
+        "target": "secondary"
+      },
+      {
+        "muscle": "lats",
+        "target": "secondary"
+      },
+      {
+        "muscle": "shoulders",
+        "target": "secondary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ],
+      "gripType": [
+        "overhand",
+        "underhand"
+      ],
+      "weightType": [
+        "barbell",
+        "dumbbell"
+      ]
+    },
+    "keywords": null
+  },
+  {
+    "id": 10010,
+    "name": "Dumbbell Biceps Curl, Standing, Alternating, Underhand Grip",
+    "description": "Stand (torso upright) with a dumbbell in each hand held at arms length. The elbows should be close to the torso and the palms of your hand should be facing your thighs.\nWhile holding the upper arm stationary, curl the right weight as you rotate the palm of the hands until they are facing forward. At this point continue contracting the biceps as you breathe out until your biceps is fully contracted and the dumbbells are at shoulder level. Hold the contracted position for a second as you squeeze the biceps. Tip: Only the forearms should move.\nSlowly begin to bring the dumbbell back to the starting position as your breathe in. Tip: Remember to twist the palms back to the starting position (facing your thighs) as you come down.\nRepeat the movement with the left hand. This equals one repetition.\nContinue alternating in this manner for the recommended amount of repetitions.",
+    "equipments": [
+      "dumbbell"
+    ],
+    // https://www.bodybuilding.com/exercises/dumbbell-alternate-bicep-curl
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "biceps",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ],
+      "gripType": [
+        "overhand",
+        "underhand",
+        "neutral"
+      ],
+      "weightType": [
+        "dumbbell",
+        "kettlebell"
+      ]
+    },
+    "keywords": ["arm curl"]
+  },
+  {
+    "id": 10011,
+    "name": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+    "description": "Attach a rope attachment to a high pulley and grab with a neutral grip (palms facing each other).\nStanding upright with the torso straight and a very small inclination forward, bring the upper arms close to your body and perpendicular to the floor. The forearms should be pointing up towards the pulley as they hold the rope with the palms facing each other. This is your starting position.\nUsing the triceps, bring the rope down as you bring each side of the rope to the side of your thighs. At the end of the movement the arms are fully extended and perpendicular to the floor. The upper arms should always remain stationary next to your torso and only the forearms should move. Exhale as you perform this movement.\nAfter holding for a second, at the contracted position, bring the rope slowly up to the starting point. Breathe in as you perform this step.\nRepeat for the recommended amount of repetitions.",
+    "equipments": [
+      "cable"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 1,
+    "muscles": [
+      {
+        "muscle": "triceps",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ],
+      "gripType": [
+        "overhand"
+      ]
+    },
+    "keywords": ["pushdowns","triceps pushdowns","tricep push-down"]
+  },
+  {
+    "id": 10012,
+    "name": "Standing Overhead Barbell Triceps Extension",
+    "description": "To begin, stand up holding a barbell or e-z bar using a pronated grip (palms facing forward) with your hands closer than shoulder width apart from each other. Your feet should be about shoulder width apart.\nNow elevate the barbell above your head until your arms are fully extended. Keep your elbows in. This will be your starting position.\nKeeping your upper arms close to your head and elbows in, perpendicular to the floor, lower the resistance in a semicircular motion behind your head until your forearms touch your biceps. Tip: The upper arms should remain stationary and only the forearms should move. Breathe in as you perform this step.\nGo back to the starting position by using the triceps to raise the barbell. Breathe out as you perform this step.\nRepeat for the recommended amount of repetitions.",
+    "equipments": [
+      "barbell",
+      "dumbbell"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 1,
+    "muscles": [
+      {
+        "muscle": "triceps",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ],
+      "weightType": [
+        "barbell",
+        "dumbbell"
+      ]
+    },
+    "keywords": ["tricep"]
+  },
+  {
+    "id": 10013,
+    "name": "Narrow Stance Leg Press",
+    "description": "Using a leg press machine, sit down on the machine and place your legs on the platform directly in front of you at a less-than-shoulder-width narrow stance with the toes slightly pointed out. Your feet should be around 3 inches or less apart. Tip: Keep your head up at all times and also maintain the back on the pad at all times.\nLower the safety bars holding the weighted platform in place and press the platform all the way up until your legs are fully extended in front of you. Tip: Make sure that you do not lock your knees. Your torso and the legs should make a perfect 90-degree angle. This will be your starting position.\nAs you inhale, slowly lower the platform until your upper and lower legs make a 90-degree angle.\nPushing mainly with the heels of your feet and using the quadriceps go back to the starting position as you exhale.\nRepeat for the recommended amount of repetitions and ensure to lock the safety pins properly once you are done. You do not want that platform falling on you fully loaded.",
+    "equipments": [
+      "machine"
+    ],
+    // 2 images
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "quads",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": null
+  },
+  {
+    "id": 10014,
+    "name": "Dumbbell Walking Lunge",
+    "description": "Begin standing with your feet about hip-width apart and holding dumbbells in your hands down by your side. This will be your starting position.\nStep forward with one leg, flexing the knees to drop your hips. Descend until your rear knee nearly touches the ground. Your posture should remain upright, and your front knee should be in line with your front foot. Do not allow your front knee to go forward beyond your toes as you come down, as this will put undue stress on the knee joint.\nDrive through the heel of your lead foot and extend both knees to raise yourself back up.\nStep forward with your rear foot, repeating the lunge on the opposite leg.",
+    "equipments": [
+      "dumbbell",
+      "weightPlate",
+      "kettlebell"
+    ],
+    "imageCount": 3,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "quads",
+        "target": "primary"
+      },
+      {
+        "muscle": "glutes",
+        "target": "secondary"
+      },
+      {
+        "muscle": "hamstrings",
+        "target": "secondary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ],
+      "weightType": [
+        "dumbbell",
+        "weightPlate",
+        "kettlebell"
+      ]
+    },
+    "keywords": ["lunges"]
+  },
+  {
+    "id": 10015,
+    "name": "Hack Squats",
+    "description": "Place the back of your torso against the back pad of the machine and hook your shoulders under the shoulder pads provided.\nPosition your legs in the platform using a shoulder width medium stance with the toes slightly pointed out. Tip: Keep your head up at all times and also maintain the back on the pad at all times.\nPlace your arms on the side handles of the machine and disengage the safety bars (which on most designs is done by moving the side handles from a facing front position to a diagonal position).\nNow straighten your legs without locking the knees. This will be your starting position. (Note: For the purposes of this discussion we will use the medium stance described above which targets overall development; however you can choose any of the three stances described in the foot positioning section).\nBegin to slowly lower the unit by bending the knees as you maintain a straight posture with the head up (back on the pad at all times). Continue down until the angle between the upper leg and the calves becomes slightly less than 90-degrees (which is the point in which the upper legs are below parallel to the floor). Inhale as you perform this portion of the movement. Tip: If you performed the exercise correctly, the front of the knees should make an imaginary straight line with the toes that is perpendicular to the front. If your knees are past that imaginary line (if they are past your toes) then you are placing undue stress on the knee and the exercise has been performed incorrectly.\nBegin to raise the unit as you exhale by pushing the floor with mainly with the heel of your foot as you straighten the legs again and go back to the starting position.\nRepeat for the recommended amount of repetitions.",
+    "equipments": [
+      "machine"
+    ],
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "quads",
+        "target": "primary"
+      },
+      {
+        "muscle": "glutes",
+        "target": "secondary"
+      },
+      {
+        "muscle": "hamstrings",
+        "target": "secondary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": ["squats"]
+  },
+  {
+    "id": 10016,
+    "name": "Dumbbell Calf Raise",
+    "description": "Stand upright holding two dumbbells by your sides.\nPlace the balls of your feet on an exercise step or weight plate with your heels touching the floor.\nWith your toes pointing forwards, raise your heels off the floor and contract your calves.\nSlowly return to the starting position.",
+    "equipments": [
+      "dumbbell",
+      "weightPlate",
+      "kettlebell",
+      "bodyOnly"
+    ],
+    "imageCount": 2,
+    "thumbnailImageIndex": 1,
+    "muscles": [
+      {
+        "muscle": "calves",
+        "target": "primary"
+      }
+    ],
+    "type": "bodyWeight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ],
+      "weightType": [
+        "dumbbell",
+        "weightPlate",
+        "kettlebell",
+        "noWeight"
+      ]
+    },
+    "keywords": ["calves"]
+  },
+  {
+    "id": 10017,
+    "name": "Hack Calf Raise",
+    "description": "Load the weight you want to use on a hack squat machine.\nStand on the foot plate facing the machine with your chest on the back pad and shoulders under the shoulder pads.\nIf you have a block available, put it on the foot plate an use it to stand on for extra range of motion.\nPush up and take the weight off the rack by releasing the safety.\nKeeping your legs straight, slowly raise your heels off the floor as far as possible.\nPause, and then slowly lower back to the starting position without letting your heels fully rest on the foot plate.\nRepeat for desired reps.",
+    "equipments": [
+      "machine"
+    ],
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "calves",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ]
+    },
+    "keywords": ["calves"]
   }
 ]

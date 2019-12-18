@@ -14,7 +14,7 @@ class ImagePlayer extends StatefulWidget {
     this.tag,
     this.playInterval = const Duration(milliseconds: 1000),
     this.fit = BoxFit.cover,
-    this.filterQuality
+    this.filterQuality = FilterQuality.low,
   }) : super(key: key);
 
   final List<ImageProvider<dynamic>> images;
