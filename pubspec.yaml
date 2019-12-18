@@ -56,6 +56,8 @@ flutter:
   assets:
    - assets/data/
    - assets/images/
+   - assets/images/exercise_small/
+   - assets/images/exercise_large/
    - assets/images/muscles/
    - assets/images/variations/
   #  - images/a_dot_ham.jpeg

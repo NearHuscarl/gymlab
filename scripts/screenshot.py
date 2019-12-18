@@ -24,7 +24,7 @@ Coord = namedtuple('Coord', 'x y')
 
 SCRIPT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 IMAGE_PATH = os.path.normpath(
-    os.path.join(SCRIPT_DIRECTORY, '../assets/images/large'))
+    os.path.join(SCRIPT_DIRECTORY, '../assets/images/exercise_large'))
 
 WIDTH = 490
 HEIGHT = 460

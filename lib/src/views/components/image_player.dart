@@ -13,6 +13,8 @@ class ImagePlayer extends StatefulWidget {
     this.onTap,
     this.tag,
     this.playInterval = const Duration(milliseconds: 1000),
+    this.fit = BoxFit.cover,
+    this.filterQuality
   }) : super(key: key);
 
   final List<ImageProvider<dynamic>> images;
@@ -21,6 +23,8 @@ class ImagePlayer extends StatefulWidget {
   final Duration playInterval;
   final VoidCallback onTap;
   final String tag;
+  final BoxFit fit;
+  final FilterQuality filterQuality;
 
   @override
   _ImagePlayerState createState() => _ImagePlayerState();
@@ -92,13 +96,14 @@ class _ImagePlayerState extends State<ImagePlayer> {
   Widget build(BuildContext context) {
     Widget displayImage = _currentIndex == widget.defaultIndex
         ? FadeInImage(
-            fit: BoxFit.cover,
+            fit: widget.fit,
             image: widget.images[_currentIndex],
             placeholder: MemoryImage(kTransparentImage),
           )
         : Image(
-            fit: BoxFit.cover,
+            fit: widget.fit,
             image: widget.images[_currentIndex],
+            filterQuality: widget.filterQuality,
           );
 
     if (widget.tag != null) {

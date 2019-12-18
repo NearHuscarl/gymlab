@@ -56,7 +56,7 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
       _ImagePlayer(
         tag: Constants.exercisePreviewTag(exercise.id),
         images: List<int>.generate(exercise.imageCount, (i) => i)
-            .map((index) => AssetImage(getImage(exercise.id, index)))
+            .map((index) => AssetImage(getImage(exercise.id, index, large: true)))
             .toList(),
         defaultIndex: exercise.thumbnailImageIndex,
       ),
@@ -78,9 +78,11 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
             return _ImagePlayer(
               tag: Constants.exercisePreviewTag(exercise.id),
               images: List<int>.generate(exercise.imageCount, (i) => i)
-                  .map((index) => AssetImage(getImage(exercise.id, index)))
+                  .map((index) => AssetImage(getImage(exercise.id, index, large: true)))
                   .toList(),
               defaultIndex: exercise.thumbnailImageIndex,
+              filterQuality: FilterQuality.high,
+              fit: BoxFit.contain,
             );
           case 2:
             return _ExerciseDescription(exercise);
@@ -266,12 +268,16 @@ class _ImagePlayer extends StatefulWidget {
     this.defaultIndex,
     this.playInterval = const Duration(milliseconds: 1000),
     this.tag,
+    this.fit = BoxFit.cover,
+    this.filterQuality
   }) : super(key: key);
 
   final List<ImageProvider<dynamic>> images;
   final int defaultIndex;
   final Duration playInterval;
   final String tag;
+  final BoxFit fit;
+  final FilterQuality filterQuality;
 
   @override
   __ImagePlayerState createState() => __ImagePlayerState();
@@ -335,6 +341,8 @@ class __ImagePlayerState extends State<_ImagePlayer>
           playInterval: widget.playInterval,
           controller: _imageController,
           tag: widget.tag,
+          fit: widget.fit,
+          filterQuality: widget.filterQuality,
         ),
         SizedBox.expand(
           child: InkResponse(
