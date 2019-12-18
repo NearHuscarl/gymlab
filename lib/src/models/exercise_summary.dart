@@ -26,11 +26,6 @@ class ExerciseSummary {
   final bool favorite;
   final bool hasVariation;
 
-  String image(int index) => getImage(id, index);
-
-  static String getImage(int id, int index) =>
-      'assets/images/exercise_workout_$id\_$index.jpg';
-
   factory ExerciseSummary.fromJson(Map<String, dynamic> map) {
     return ExerciseSummary(
       id: map['id'],

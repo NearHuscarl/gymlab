@@ -1,3 +1,5 @@
+import 'package:flutter/rendering.dart';
+
 import 'enum.dart';
 import '../blocs/equipment_filter_bloc.dart';
 import '../models/exercise_summary.dart';
@@ -24,6 +26,12 @@ bool filterByEquipment(EquipmentFilterData filter, List<Equipment> equipments) {
       return filter.equipments.every((fe) => fe != e);
     });
   }
+}
+
+String getImage(id, index) {
+  // TODO: add images for custom exercises and remove this
+  if (id >= 10000) return 'assets/images/exercise_placeholder_small.jpg';
+  return 'assets/images/exercise_workout_$id\_$index.jpg';
 }
 
 String getGripWidthImage(

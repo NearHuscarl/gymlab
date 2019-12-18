@@ -46,9 +46,6 @@ class ExerciseDetail {
   final List<String> keywords;
   final bool favorite;
 
-
-  String image(int index) => ExerciseSummary.getImage(id, index);
-
   factory ExerciseDetail.fromJson(Map<String, dynamic> map) {
     return ExerciseDetail(
       id: map['id'],
