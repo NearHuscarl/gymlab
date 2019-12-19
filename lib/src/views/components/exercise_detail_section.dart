@@ -56,7 +56,8 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
       _ImagePlayer(
         tag: Constants.exercisePreviewTag(exercise.id),
         images: List<int>.generate(exercise.imageCount, (i) => i)
-            .map((index) => AssetImage(getImage(exercise.id, index, large: true)))
+            .map((index) =>
+                AssetImage(getImage(exercise.id, index, large: true)))
             .toList(),
         defaultIndex: exercise.thumbnailImageIndex,
       ),
@@ -78,7 +79,8 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
             return _ImagePlayer(
               tag: Constants.exercisePreviewTag(exercise.id),
               images: List<int>.generate(exercise.imageCount, (i) => i)
-                  .map((index) => AssetImage(getImage(exercise.id, index, large: true)))
+                  .map((index) =>
+                      AssetImage(getImage(exercise.id, index, large: true)))
                   .toList(),
               defaultIndex: exercise.thumbnailImageIndex,
               filterQuality: FilterQuality.high,
@@ -138,19 +140,21 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(
-                height: 500,
+              Expanded(
                 child: _buildDetailPages(theme, media, exercise),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _buildNavigationButton(0),
+                    _buildNavigationButton(1),
+                    if (hasVariationPage) _buildNavigationButton(2),
+                  ],
+                ),
+              ),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  _buildNavigationButton(0),
-                  _buildNavigationButton(1),
-                  if (hasVariationPage) _buildNavigationButton(2),
-                ],
-              )
             ],
           ),
         );
@@ -262,15 +266,15 @@ class _ExerciseDescription extends StatelessWidget {
 }
 
 class _ImagePlayer extends StatefulWidget {
-  _ImagePlayer({
-    Key key,
-    @required this.images,
-    this.defaultIndex,
-    this.playInterval = const Duration(milliseconds: 1000),
-    this.tag,
-    this.fit = BoxFit.cover,
-    this.filterQuality
-  }) : super(key: key);
+  _ImagePlayer(
+      {Key key,
+      @required this.images,
+      this.defaultIndex,
+      this.playInterval = const Duration(milliseconds: 1000),
+      this.tag,
+      this.fit = BoxFit.cover,
+      this.filterQuality})
+      : super(key: key);
 
   final List<ImageProvider<dynamic>> images;
   final int defaultIndex;
