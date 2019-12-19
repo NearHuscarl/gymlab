@@ -6,7 +6,7 @@ class ExerciseQuery {
   static const List<String> summaryColumns = [
     'id',
     'name',
-    'GROUP_CONCAT(equipmentId) as equipments',
+    'GROUP_CONCAT(DISTINCT equipmentId) as equipments',
     'imageCount',
     'thumbnailImageIndex',
     'keywords',
@@ -17,11 +17,11 @@ class ExerciseQuery {
   static const List<String> detailColumns = [
     'id',
     'name',
-    'GROUP_CONCAT(equipmentId) as equipments',
+    'GROUP_CONCAT(DISTINCT equipmentId) as equipments',
     'description',
     'imageCount',
     'thumbnailImageIndex',
-    "GROUP_CONCAT(muscleId || '|' || target) as muscles",
+    "GROUP_CONCAT(DISTINCT muscleId || '|' || target) as muscles",
     'type',
     'variation',
     'keywords',
