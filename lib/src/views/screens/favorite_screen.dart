@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../blocs/exercise_favorite_bloc.dart';
 import '../../models/exercise_summary.dart';
@@ -123,11 +124,22 @@ class _FavoriteContent extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Linebreak(),
         ),
-        ExerciseList(summary: summaries),
+        ExerciseList(
+          summary: summaries,
+          runStaggeredAnimation: false,
+        ),
       ]);
     });
 
-    return ListView(children: children);
+    return AnimationLimiter(
+      child: ListView(
+        children: AnimationConfiguration.toStaggeredList(
+          duration: const Duration(milliseconds: 375),
+          childAnimationBuilder: (widget) => fadeInItem(widget),
+          children: children,
+        ),
+      ),
+    );
   }
 
   @override
