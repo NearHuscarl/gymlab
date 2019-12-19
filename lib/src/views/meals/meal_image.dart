@@ -42,16 +42,20 @@ class MealImage extends StatelessWidget {
               ),
             ),
             displayText
-                ? Container(
+                ? FractionallySizedBox(
+                    widthFactor: .75,
                     alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12.0,
-                      vertical: 6.0,
-                    ),
-                    child: Text(
-                      title,
-                      style:
-                          theme.textTheme.display1.copyWith(color: fontColor),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 6.0,
+                      ),
+                      child: Text(
+                        title,
+                        style:
+                            theme.textTheme.display1.copyWith(color: fontColor),
+                      ),
                     ),
                   )
                 : SizedBox.shrink(),

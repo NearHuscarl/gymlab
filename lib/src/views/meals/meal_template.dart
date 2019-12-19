@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'meal_image.dart';
+import '../components/exercise_list.dart';
 import '../components/linebreak.dart';
 import '../../helpers/app_colors.dart';
 
-const mealPadding = 8.0;
+const mealPadding = 12.0;
 
 class MealHeader extends StatelessWidget {
   MealHeader(this.text);
@@ -88,8 +90,11 @@ class MealListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const gap = 8.0;
-    final textWidth =
-        MediaQuery.of(context).size.width - mealPadding * 2 - 12 - gap;
+    const bulletLeftPad = 12.0;
+    final textWidth = MediaQuery.of(context).size.width -
+        (mealPadding * 2 + bulletLeftPad) -
+        12 -
+        gap;
     final textStyle = TextStyle(
       fontSize: 20,
       height: 1.45,
@@ -101,27 +106,30 @@ class MealListItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         if (bullet)
-          Stack(
-            overflow: Overflow.visible,
-            children: <Widget>[
-              Container(
-                width: 8,
-                height: 12,
-                color: Colors.transparent,
-              ),
-              Positioned(
-                top: 12,
-                child: Container(
+          Padding(
+            padding: const EdgeInsets.only(left: bulletLeftPad),
+            child: Stack(
+              overflow: Overflow.visible,
+              children: <Widget>[
+                Container(
                   width: 8,
-                  height: 8,
-                  // alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    shape: BoxShape.circle,
+                  height: 12,
+                  color: Colors.transparent,
+                ),
+                Positioned(
+                  top: 12,
+                  child: Container(
+                    width: 8,
+                    height: 8,
+                    // alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      shape: BoxShape.circle,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         if (bullet) SizedBox(width: gap),
         Container(
@@ -164,30 +172,34 @@ class MealTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: image.height,
-            centerTitle: true,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(image.title),
-              background: image,
+      body: AnimationLimiter(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              expandedHeight: image.height,
+              centerTitle: true,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text(image.title),
+                background: image,
+              ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              body
-                  .map(
-                    (w) => Padding(
-                      padding: const EdgeInsets.all(mealPadding),
-                      child: w,
-                    ),
-                  )
-                  .toList(),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                AnimationConfiguration.toStaggeredList(
+                  duration: const Duration(milliseconds: 375),
+                  childAnimationBuilder: (widget) => fadeInItem(widget),
+                  children: body
+                      .map((w) => Padding(
+                            padding: const EdgeInsets.all(mealPadding),
+                            child: w,
+                          ))
+                      .toList(),
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
