@@ -82,5 +82,41 @@
   "10008": {
     "name": "Machine Lat Pulldown",
     "favorite": true
+  },
+  "10009": {
+    "name": "Reverse Grip Bent-Over Rows",
+    "favorite": true
+  },
+  "10010": {
+    "name": "Dumbbell Biceps Curl, Standing, Alternating, Underhand Grip",
+    "favorite": true
+  },
+  "10011": {
+    "name": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+    "favorite": true
+  },
+  "10012": {
+    "name": "Standing Overhead Barbell Triceps Extension",
+    "favorite": true
+  },
+  "10013": {
+    "name": "Narrow Stance Leg Press",
+    "favorite": true
+  },
+  "10014": {
+    "name": "Dumbbell Walking Lunge",
+    "favorite": true
+  },
+  "10015": {
+    "name": "Hack Squats",
+    "favorite": true
+  },
+  "10016": {
+    "name": "Dumbbell Calf Raise",
+    "favorite": true
+  },
+  "10017": {
+    "name": "Hack Calf Raise",
+    "favorite": true
   }
 }
