@@ -30,7 +30,7 @@ class VeganMeal extends StatelessWidget {
     return MealTemplate(
       image: MealImage(
         title: 'Vegan',
-        image: 'assets/images/meals/paleo.jpg',
+        image: 'assets/images/meals/vegan.jpg',
         imageBrightness: Brightness.dark,
       ),
       body: <Widget>[

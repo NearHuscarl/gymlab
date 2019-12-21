@@ -38,7 +38,7 @@ class DukanMeal extends StatelessWidget {
     return MealTemplate(
       image: MealImage(
         title: 'Dukan',
-        image: 'assets/images/meals/paleo.jpg',
+        image: 'assets/images/meals/dukan.jpg',
         imageBrightness: Brightness.dark,
       ),
       body: <Widget>[

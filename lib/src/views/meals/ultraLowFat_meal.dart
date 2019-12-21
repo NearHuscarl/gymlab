@@ -36,7 +36,7 @@ class UltraLowFatMeal extends StatelessWidget {
     return MealTemplate(
       image: MealImage(
         title: 'Ultra Low-Fat',
-        image: 'assets/images/meals/paleo.jpg',
+        image: 'assets/images/meals/ultraLowFat.jpg',
         imageBrightness: Brightness.dark,
       ),
       body: <Widget>[
