@@ -34,8 +34,8 @@ class AtkinsMeal extends StatelessWidget {
     return MealTemplate(
       image: MealImage(
         title: 'Atkins',
-        image: 'assets/images/meals/paleo.jpg',
-        imageBrightness: Brightness.dark,
+        image: 'assets/images/meals/atkins.jpg',
+        imageBrightness: Brightness.light,
       ),
       body: <Widget>[
         MealParagraph(description),

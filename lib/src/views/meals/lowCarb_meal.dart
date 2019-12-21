@@ -40,8 +40,8 @@ class LowCarbMeal extends StatelessWidget {
     return MealTemplate(
       image: MealImage(
         title: 'Low-Carb',
-        image: 'assets/images/meals/paleo.jpg',
-        imageBrightness: Brightness.dark,
+        image: 'assets/images/meals/lowCarb.jpg',
+        imageBrightness: Brightness.light,
       ),
       body: <Widget>[
         MealParagraph(description),

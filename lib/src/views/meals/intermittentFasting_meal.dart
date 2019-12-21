@@ -44,7 +44,7 @@ class IntermittentFastingMeal extends StatelessWidget {
     return MealTemplate(
       image: MealImage(
         title: 'Intermittent Fasting',
-        image: 'assets/images/meals/paleo.jpg',
+        image: 'assets/images/meals/intermittentFasting.jpg',
         imageBrightness: Brightness.dark,
       ),
       body: <Widget>[
