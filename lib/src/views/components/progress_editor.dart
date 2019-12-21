@@ -23,8 +23,11 @@ class ProgressEditorState extends State<ProgressEditor>
   var _controllers = List<TextEditingController>();
 
   DateTime date = ProgressEditorBloc.initialDate;
-  List<List<String>> get data =>
-      _controllers.map((c) => c.text).group(2, emptyValue: '-1');
+  List<List<String>> get data {
+    return _controllers.map((c) => c.text).group(2, emptyValue: '-1');
+  }
+
+  void saveData() => Provider.of<ProgressEditorBloc>(context).saveData(data);
 
   @override
   void initState() {
@@ -43,6 +46,17 @@ class ProgressEditorState extends State<ProgressEditor>
       curve: Curves.easeOutBack,
       reverseCurve: Curves.easeOut,
     ));
+  }
+
+  var _initData = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (!_initData) {
+      _setDate(ProgressEditorBloc.initialDate);
+      _initData = true;
+    }
   }
 
   @override
@@ -80,24 +94,29 @@ class ProgressEditorState extends State<ProgressEditor>
     return _controllers[index];
   }
 
-  void _selectDate(DateTime initialDate) async {
+  void _setDate(DateTime dateTime) {
     _focusNodes.forEach((f) => f.unfocus());
 
-    final now = DateTime.now();
     final bloc = Provider.of<ProgressEditorBloc>(context);
+
+    if (dateTime != null) {
+      // clear all text in TextFields so next time new data is fetched
+      // the TextFields will not show cache data
+      _controllers.forEach((c) => c.clear());
+      this.date = dateTime;
+      bloc.setDate(dateTime);
+    }
+  }
+
+  void _selectDate(DateTime initialDate) async {
+    final now = DateTime.now();
     final date = await showDatePicker(
       context: context,
       initialDate: initialDate,
       firstDate: now.subtract(Duration(days: 365 * 5)),
       lastDate: now,
     );
-    if (date != null) {
-      // clear all text in TextFields so next time new data is fetched
-      // the TextFields will not show cache data
-      _controllers.forEach((c) => c.clear());
-      this.date = date;
-      bloc.setDate(date);
-    }
+    _setDate(date);
   }
 
   Widget _textField(String value, int index, Function onFocus) {
@@ -106,6 +125,12 @@ class ProgressEditorState extends State<ProgressEditor>
     final nextFocusNode = _getFocusNode(index + 1);
 
     controller.text = value;
+    // https://github.com/flutter/flutter/issues/11416#issuecomment-541435871
+    // update Selection after repopulating existing TextField with new value.
+    // Without this line, after you typed non-empty string, collapse and show
+    // editor again, the Selection index will be out of bound (cannot type anything)
+    controller.selection =
+        TextSelection.collapsed(offset: controller.text.length);
 
     return TextFormField(
       controller: controller,

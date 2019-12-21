@@ -49,9 +49,12 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
                 edit: showEditProgress,
                 onPressed: () {
                   if (showEditProgress) {
+                    final state = _progressKey.currentState;
+
+                    state.saveData();
                     _bloc.saveProgressData(
-                      _progressKey.currentState.data,
-                      _progressKey.currentState.date,
+                      state.data,
+                      state.date,
                     );
                   }
                   _bloc.toggleShowEditProgress();
