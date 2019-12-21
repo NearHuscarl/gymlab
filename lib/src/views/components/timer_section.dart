@@ -198,8 +198,7 @@ class _TimerSectionState extends State<TimerSection> {
           columnCount: columnCount,
           duration: const Duration(milliseconds: 300),
           delay: Duration(milliseconds: 75),
-          child: SlideAnimation(
-            verticalOffset: 200.0,
+          child: FlipAnimation(
             child: FadeInAnimation(
               child: children[index],
             ),
