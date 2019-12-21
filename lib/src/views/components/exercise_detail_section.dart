@@ -48,7 +48,6 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
 
   Widget _buildDetailPages(
     ThemeData theme,
-    MediaQueryData media,
     ExerciseDetail exercise,
   ) {
     final widgets = [
@@ -116,35 +115,41 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final media = MediaQuery.of(context);
     final bloc = BlocProvider.of<ExerciseDetailBloc>(context);
 
-    return StreamBuilder(
-      stream: bloc.detail,
-      initialData: ExerciseDetail.fromSummary(widget.summary),
-      builder: (context, AsyncSnapshot<ExerciseDetail> snapshot) {
-        if (snapshot.hasError) {
-          return Text(snapshot.error.toString());
-        }
+    return LayoutBuilder(builder: (context, constraints) {
+      final contentHeight = constraints.maxHeight;
+      return StreamBuilder(
+        stream: bloc.detail,
+        initialData: ExerciseDetail.fromSummary(widget.summary),
+        builder: (context, AsyncSnapshot<ExerciseDetail> snapshot) {
+          if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          }
 
-        final exercise = snapshot.data;
-        return Container(
-          child: Column(
+          final exercise = snapshot.data;
+          return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(32.0),
+              Container(
+                constraints:
+                    BoxConstraints.tightFor(height: contentHeight * .15),
+                alignment: Alignment.bottomCenter,
                 child: Text(
                   exercise.name,
                   style: theme.textTheme.title,
                   textAlign: TextAlign.center,
                 ),
               ),
-              Expanded(
-                child: _buildDetailPages(theme, media, exercise),
+              ConstrainedBox(
+                constraints:
+                    BoxConstraints.tightFor(height: contentHeight * .7),
+                child: _buildDetailPages(theme, exercise),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+              Container(
+                constraints:
+                    BoxConstraints.tightFor(height: contentHeight * .15),
+                alignment: Alignment.topCenter,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -154,12 +159,11 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
             ],
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    });
   }
 }
 

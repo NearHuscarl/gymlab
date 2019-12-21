@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -5,6 +7,7 @@ import '_db_helper.dart';
 import 'exercise_provider.query.dart';
 import '../../models/exercise_summary.dart';
 import '../../models/exercise_detail.dart';
+import '../../models/exercise_stats.dart';
 
 Future<ExerciseSummaries> _computeExerciseSummariesResult(
   List<Map<String, dynamic>> result,
@@ -45,6 +48,12 @@ Future<ExerciseDetail> _computeExerciseDetailResult(
           return MapEntry(k, v);
         }))
       : null;
+}
+
+Future<ExerciseStats> _computeStatisticResult(
+  List<Map<String, dynamic>> result,
+) async {
+  return result.isNotEmpty ? ExerciseStats.fromJson(result.first) : null;
 }
 
 class ExerciseProvider {
@@ -102,7 +111,8 @@ class ExerciseProvider {
 
   Future<ExerciseDetail> getDetailById(int id) async {
     final db = await database;
-    final res = await db.rawQuery(ExerciseQuery.selectAllByExerciseIdQuery, [id]);
+    final res =
+        await db.rawQuery(ExerciseQuery.selectAllByExerciseIdQuery, [id]);
 
     return compute(_computeExerciseDetailResult, res);
   }
@@ -115,6 +125,37 @@ class ExerciseProvider {
       {
         'exerciseId': id,
         'favorite': favorite,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<ExerciseStats> getStatistic(
+    int exerciseId,
+    String date,
+  ) async {
+    final db = await database;
+    final res = await db.rawQuery(
+      ExerciseQuery.selectStatisticQuery,
+      [exerciseId, date],
+    );
+
+    return compute(_computeStatisticResult, res);
+  }
+
+  Future<void> updateStatistic(
+    int exerciseId,
+    String date,
+    List<Map<String, dynamic>> data,
+  ) async {
+    final db = await database;
+
+    await db.insert(
+      ExerciseQuery.statisticTable,
+      {
+        'exerciseId': exerciseId,
+        'date': date,
+        'data': json.encode(data),
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );

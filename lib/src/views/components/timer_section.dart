@@ -206,22 +206,6 @@ class _TimerSectionState extends State<TimerSection> {
         );
       },
     );
-
-    return GridView.count(
-      crossAxisCount: 3,
-      childAspectRatio: (itemWidth / itemHeight),
-      physics: NeverScrollableScrollPhysics(),
-      padding: padding,
-      shrinkWrap: true,
-      children: <Widget>[
-        _buildSetCounterButton(20),
-        _buildSetCounterButton(30),
-        _buildSetCounterButton(45),
-        _buildSetCounterButton(60),
-        _buildSetCounterButton(90),
-        _buildSetCounterButton(120),
-      ],
-    );
   }
 
   @override

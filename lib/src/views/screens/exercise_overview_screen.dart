@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/icon_buttons.dart';
 import '../components/loading_indicator.dart';
 import '../components/bloc_provider.dart';
 import '../components/exercise_list.dart';
@@ -66,8 +67,8 @@ class _ExerciseOverviewScreenState extends State<ExerciseOverviewScreen> {
       initialData: false,
       builder: (context, AsyncSnapshot<bool> snapshot) {
         final showFavoriteOnly = snapshot.data;
-        return IconButton(
-          icon: showFavoriteOnly ? Icon(Icons.star) : Icon(Icons.star_border),
+        return FavoriteButton(
+          favorite: showFavoriteOnly,
           onPressed: () => bloc.toggleShowFavoriteOnly(),
         );
       },
@@ -99,38 +100,38 @@ class _ExerciseOverviewContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<ExerciseOverviewBloc>(context);
 
-    return StreamBuilder(
-      stream: bloc.summaries,
-      builder: (context, AsyncSnapshot<ExerciseSummaries> snapshot) {
-        if (snapshot.hasData) {
-          return Stack(
-            children: <Widget>[
-              ExerciseList(summary: snapshot.data),
-              StreamBuilder(
-                stream: bloc.showSearchBar,
-                builder: (context, AsyncSnapshot<bool> snapshot) {
-                  return SearchBar(
-                    expand: snapshot.data,
-                    onTextChanged: (t) => bloc.updateSearchTerm(t),
-                  );
-                },
-              ),
-              StreamBuilder(
-                stream: bloc.showEquipmentFilter,
-                builder: (context, AsyncSnapshot<bool> snapshot) {
-                  return EquipmentFilter(
-                    expand: snapshot.data,
-                    onFilterChanged: (f) => bloc.updateEquipmentFilter(f),
-                  );
-                },
-              ),
-            ],
-          );
-        } else if (snapshot.hasError) {
-          return Text(snapshot.error.toString());
-        }
-        return Center(child: LoadingIndicator());
-      },
+    return Stack(
+      children: <Widget>[
+        StreamBuilder(
+          stream: bloc.summaries,
+          builder: (context, AsyncSnapshot<ExerciseSummaries> snapshot) {
+            if (snapshot.hasData) {
+              return ExerciseList(summary: snapshot.data);
+            } else if (snapshot.hasError) {
+              return Text(snapshot.error.toString());
+            }
+            return Center(child: LoadingIndicator());
+          },
+        ),
+        StreamBuilder(
+          stream: bloc.showSearchBar,
+          builder: (context, AsyncSnapshot<bool> snapshot) {
+            return SearchBar(
+              expand: snapshot.data,
+              onTextChanged: (t) => bloc.updateSearchTerm(t),
+            );
+          },
+        ),
+        StreamBuilder(
+          stream: bloc.showEquipmentFilter,
+          builder: (context, AsyncSnapshot<bool> snapshot) {
+            return EquipmentFilter(
+              expand: snapshot.data,
+              onFilterChanged: (f) => bloc.updateEquipmentFilter(f),
+            );
+          },
+        ),
+      ],
     );
   }
 }

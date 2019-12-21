@@ -39,13 +39,14 @@ class MealScreen extends StatelessWidget {
   Widget _buildMealItem(BuildContext context, int index) {
     final id = meals[index]['id'];
     final name = meals[index]['name'];
+    final brightness = meals[index]['brightness'] as Brightness;
 
     return Padding(
       padding: const EdgeInsets.all(6.0),
       child: MealImage(
         title: name,
         image: 'assets/images/meals/$id.jpg',
-        imageBrightness: Brightness.dark,
+        imageBrightness: brightness,
         displayText: true,
         onTap: () => Router.goTo(context, _getPage(id)),
       ),

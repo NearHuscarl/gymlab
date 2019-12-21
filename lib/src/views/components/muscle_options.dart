@@ -54,7 +54,7 @@ class _MuscleOptionsState extends State<MuscleOptions>
     super.dispose();
   }
 
-  void _handleSwitchSide() {
+  void _switchSide() {
     _rippleController.reset();
     _switchController.forward().then((_) {
       setState(() => bodyDirection = bodyDirection == BodyDirection.front
@@ -198,7 +198,7 @@ class _MuscleOptionsState extends State<MuscleOptions>
     final theme = Theme.of(context);
     final primaryColor = theme.primaryColor;
 
-    return Stack(
+    final stack = Stack(
       alignment: Alignment.center,
       children: <Widget>[
         AnimatedBuilder(
@@ -231,11 +231,20 @@ class _MuscleOptionsState extends State<MuscleOptions>
           bottom: 40,
           right: 20,
           child: FloatingActionButton(
-            onPressed: _handleSwitchSide,
+            onPressed: _switchSide,
             child: Text('180°'),
           ),
         )
       ]..addAll(_buildMuscleCategoryButtons()),
+    );
+
+    return GestureDetector(
+      onPanUpdate: (details) {
+        if (details.delta.dx.abs() > 10) {
+          _switchSide();
+        }
+      },
+      child: stack,
     );
   }
 }

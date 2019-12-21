@@ -1,34 +1,44 @@
+import 'dart:ui';
+
 const meals = [
   {
     'id': 'paleo',
-    'name': 'Paleo'
+    'name': 'Paleo',
+    'brightness': Brightness.dark,
   },
   {
     'id': 'vegan',
-    'name': 'Vegan'
+    'name': 'Vegan',
+    'brightness': Brightness.light,
   },
   {
     'id': 'lowCarb',
-    'name': 'Low-Carb'
+    'name': 'Low-Carb',
+    'brightness': Brightness.dark,
   },
   {
     'id': 'dukan',
-    'name': 'Dukan'
+    'name': 'Dukan',
+    'brightness': Brightness.dark,
   },
   {
     'id': 'ultraLowFat',
-    'name': 'Ultra Low-Fat'
+    'name': 'Ultra Low-Fat',
+    'brightness': Brightness.light,
   },
   {
     'id': 'atkins',
-    'name': 'Atkins'
+    'name': 'Atkins',
+    'brightness': Brightness.dark,
   },
   {
     'id': 'zone',
-    'name': 'Zone'
+    'name': 'Zone',
+    'brightness': Brightness.dark,
   },
   {
     'id': 'intermittentFasting',
-    'name': 'Intermittent Fasting'
+    'name': 'Intermittent Fasting',
+    'brightness': Brightness.light,
   },
 ];

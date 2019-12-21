@@ -3,6 +3,8 @@ class ExerciseQuery {
   static final String exerciseMuscleTable = 'Exercise_Muscle';
   static final String exerciseEquipmentTable = 'Exercise_Equipment';
   static final String favoriteTable = 'Favorite';
+  static final String statisticTable = 'Statistic';
+
   static const List<String> summaryColumns = [
     'id',
     'name',
@@ -89,13 +91,13 @@ ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
 WHERE id = ?
 ''';
 
-  static final String selectEquipmentsByExerciseIdQuery = '''
-SELECT equipmentId
-FROM $exerciseTable
+  static final String selectStatisticQuery = '''
+SELECT exerciseId, name as exerciseName, date(date) AS date, data FROM $statisticTable
 
-INNER JOIN $exerciseEquipmentTable -- 311
-ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
+LEFT JOIN $exerciseTable
+ON $statisticTable.exerciseId = $exerciseTable.id
 
-WHERE id = ?
+WHERE exerciseId = ?
+AND date(date) = ?
 ''';
 }

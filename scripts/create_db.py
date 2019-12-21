@@ -23,6 +23,8 @@ EXERCISE_JSON_PATH = path.normpath(
     path.join(SCRIPT_DIRECTORY, '../assets/data/exercises.json'))
 CUSTOM_EXERCISE_JSON_PATH = path.normpath(
     path.join(SCRIPT_DIRECTORY, '../assets/data/exercises.custom.json'))
+CUSTOM_WEIGHT_REP_STATS_JSON_PATH = path.normpath(
+    path.join(SCRIPT_DIRECTORY, '../assets/data/weight-rep.json'))
 FAVORITE_JSON_PATH = path.normpath(
     path.join(SCRIPT_DIRECTORY, '../assets/data/favorites.json'))
 
@@ -32,6 +34,7 @@ EQUIPMENT_TABLE = 'Equipment'
 MUSCLE_TABLE = 'Muscle'
 EXERCISE_MUSCLE_TABLE = 'Exercise_Muscle'
 FAVORITE_TABLE = 'Favorite'
+STATISTIC_TABLE = 'Statistic'
 CONNECTION = None
 CURSOR = None
 
@@ -118,6 +121,14 @@ def create_table_if_not_exists():
         CONSTRAINT pk_{0} PRIMARY KEY ([exerciseId])
       )'''.format(FAVORITE_TABLE, EXERCISE_TABLE))
 
+    CURSOR.execute('''
+      CREATE TABLE IF NOT EXISTS {0} (
+        [exerciseId] INTEGER REFERENCES {1}(id),
+        [date] NVARCHAR,
+        [data] NVARCHAR,
+        CONSTRAINT pk_{0} PRIMARY KEY ([exerciseId], [date])
+      )'''.format(STATISTIC_TABLE, EXERCISE_TABLE))
+
 
 def get_id_from_name(name):
     CURSOR.execute('''
@@ -192,6 +203,17 @@ def create_db(test_db):
         for exercise in custom_ex_objs:
             print('Inserting custom exercise ' + exercise['name'])
             insert_exercise(exercise, favorite_objs, test_db)
+
+        ex_stats_objs = read_json_from_file(CUSTOM_WEIGHT_REP_STATS_JSON_PATH)
+        for stats in ex_stats_objs:
+            print('Inserting testing statisics at {0} for exercise {1}'.format(
+                stats['date'], stats['exerciseName']))
+            CURSOR.execute('INSERT INTO {} ([exerciseId], [date], [data]) VALUES (?, ?, ?)'
+                           .format(STATISTIC_TABLE), (
+                               stats['exerciseId'],
+                               stats['date'],
+                               uglify(stats['data'])
+                           ))
 
     # improve SELECT .. WHERE .. performance
     CURSOR.execute('CREATE INDEX [idx{}] ON {} ([id])'.format(
