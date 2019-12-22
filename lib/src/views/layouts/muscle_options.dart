@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'indicator_button.dart';
-import '../../views/router.dart';
+import '../components/indicator_button.dart';
+import '../router.dart';
 import '../../models/muscle_info.dart';
 import '../../helpers/muscles.dart';
 import '../../helpers/enum.dart';

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'bloc_provider.dart';
-import 'image_player.dart';
+import '../components/bloc_provider.dart';
+import '../components/image_player.dart';
 import '../components/muscle_anatomy.dart';
 import '../components/flex_with_gap.dart';
 import '../components/linebreak.dart';
+import '../components/variation_help_dialogs.dart';
 import '../../blocs/exercise_detail_bloc.dart';
 import '../../models/exercise_summary.dart';
 import '../../models/exercise_detail.dart';
@@ -13,7 +14,6 @@ import '../../models/variation.dart';
 import '../../helpers/enum.dart';
 import '../../helpers/constants.dart';
 import '../../helpers/exercises.dart';
-import 'variation_help_dialogs.dart';
 
 class ExerciseDetailSection extends StatefulWidget {
   ExerciseDetailSection(this.summary);

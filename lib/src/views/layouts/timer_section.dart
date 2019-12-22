@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:wakelock/wakelock.dart';
-import 'fade_in.dart';
-import 'primary_button.dart';
-import 'round_button.dart';
-import 'counter.dart';
+import '../components/fade_in.dart';
+import '../components/primary_button.dart';
+import '../components/round_button.dart';
+import '../components/counter.dart';
 import '../../blocs/timer_bloc.dart';
 import '../../helpers/local_notification.dart';
 

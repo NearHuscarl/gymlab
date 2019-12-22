@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../components/gym_icons.dart';
-import '../components/muscle_options.dart';
-import '../components/timer_section.dart';
-import '../screens/meal_screen.dart';
+import 'meal_screen.dart';
 import '../router.dart';
+import '../layouts/muscle_options.dart';
+import '../layouts/timer_section.dart';
+import '../components/gym_icons.dart';
 import '../../blocs/home_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
