@@ -33,7 +33,7 @@ class PaleoMeal extends StatelessWidget {
       image: MealImage(
         title: 'Paleo',
         image: 'assets/images/meals/paleo.jpg',
-        imageBrightness: Brightness.light,
+        imageBrightness: Brightness.dark,
       ),
       body: <Widget>[
         MealParagraph(description),

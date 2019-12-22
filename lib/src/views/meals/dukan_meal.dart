@@ -39,7 +39,7 @@ class DukanMeal extends StatelessWidget {
       image: MealImage(
         title: 'Dukan',
         image: 'assets/images/meals/dukan.jpg',
-        imageBrightness: Brightness.dark,
+        imageBrightness: Brightness.light,
       ),
       body: <Widget>[
         MealParagraph(description),

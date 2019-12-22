@@ -31,7 +31,7 @@ class VeganMeal extends StatelessWidget {
       image: MealImage(
         title: 'Vegan',
         image: 'assets/images/meals/vegan.jpg',
-        imageBrightness: Brightness.dark,
+        imageBrightness: Brightness.light,
       ),
       body: <Widget>[
         MealParagraph(description),

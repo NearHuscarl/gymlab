@@ -41,7 +41,7 @@ class LowCarbMeal extends StatelessWidget {
       image: MealImage(
         title: 'Low-Carb',
         image: 'assets/images/meals/lowCarb.jpg',
-        imageBrightness: Brightness.light,
+        imageBrightness: Brightness.dark,
       ),
       body: <Widget>[
         MealParagraph(description),

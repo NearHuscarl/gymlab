@@ -35,7 +35,7 @@ class ZoneMeal extends StatelessWidget {
       image: MealImage(
         title: 'Zone',
         image: 'assets/images/meals/zone.jpg',
-        imageBrightness: Brightness.light,
+        imageBrightness: Brightness.dark,
       ),
       body: <Widget>[
         MealParagraph(description),
