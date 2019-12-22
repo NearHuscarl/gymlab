@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -8,19 +7,22 @@ import 'exercise_provider.query.dart';
 import '../../models/exercise_summary.dart';
 import '../../models/exercise_detail.dart';
 import '../../models/exercise_stats.dart';
+import '../../models/exercise_period_stats.dart';
+
+ExerciseSummary _fromRawQuery(Map<String, dynamic> map) {
+  final jsonMap = map.map((k, v) {
+    if (k == 'equipments') return MapEntry(k, v.split(','));
+    return MapEntry(k, v);
+  });
+  return ExerciseSummary.fromJson(jsonMap);
+}
 
 Future<ExerciseSummaries> _computeExerciseSummariesResult(
   List<Map<String, dynamic>> result,
 ) async {
   return ExerciseSummaries(
       exercises: result.isNotEmpty
-          ? result.map((m) {
-              final jsonMap = m.map((k, v) {
-                if (k == 'equipments') return MapEntry(k, v.split(','));
-                return MapEntry(k, v);
-              });
-              return ExerciseSummary.fromJson(jsonMap);
-            }).toList()
+          ? result.map((m) => _fromRawQuery(m)).toList()
           : <ExerciseSummary>[]);
 }
 
@@ -54,6 +56,13 @@ Future<ExerciseStats> _computeStatisticResult(
   List<Map<String, dynamic>> result,
 ) async {
   return result.isNotEmpty ? ExerciseStats.fromJson(result.first) : null;
+}
+
+Future<ExercisePeriodStats> _computeExercisePeriodStatsResult(
+  Map<String, dynamic> result,
+) async {
+  result['exercises'] = result['exercises'].map((m) => _fromRawQuery(m)).toList();
+  return result.isNotEmpty ? ExercisePeriodStats.fromJson(result) : null;
 }
 
 class ExerciseProvider {
@@ -159,5 +168,24 @@ class ExerciseProvider {
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  Future<ExercisePeriodStats> getExercisePeriodStats(
+    String dateFrom,
+    String dateTo,
+  ) async {
+    final db = await database;
+    final res = await db.rawQuery(
+      ExerciseQuery.selectExercisePeriodStatsQuery,
+      [dateFrom, dateTo],
+    );
+
+    final result = Map<String, dynamic>();
+
+    result['dateFrom'] = dateFrom;
+    result['dateTo'] = dateTo;
+    result['exercises'] = res;
+
+    return compute(_computeExercisePeriodStatsResult, result);
   }
 }

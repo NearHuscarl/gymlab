@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:rxdart/rxdart.dart';
 import '../repositories/exercise_repository.dart';
 import '../helpers/disposable.dart';
@@ -24,7 +23,7 @@ class ProgressEditorBloc extends Disposable {
     _date.sink.add(date);
     final stats = await _repository.getStatistic(
       exerciseId,
-      DateFormat('yyyy-MM-dd').format(date),
+      date.toIsoDate(),
     );
 
     _statsRaw = stats == null

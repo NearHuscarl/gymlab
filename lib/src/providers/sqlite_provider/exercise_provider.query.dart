@@ -100,4 +100,26 @@ ON $statisticTable.exerciseId = $exerciseTable.id
 WHERE exerciseId = ?
 AND date(date) = ?
 ''';
+
+  static final String selectExercisePeriodStatsQuery = '''
+SELECT ${summaryColumns.join(', ')}
+FROM $exerciseTable
+
+LEFT JOIN $exerciseMuscleTable
+ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+
+LEFT JOIN $favoriteTable
+ON $exerciseTable.id = $favoriteTable.exerciseId
+
+LEFT JOIN $exerciseEquipmentTable
+ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
+
+LEFT JOIN $statisticTable
+ON $exerciseTable.id = $statisticTable.exerciseId
+
+WHERE date($statisticTable.date) >= ?
+AND date($statisticTable.date) <= ?
+
+GROUP BY id
+''';
 }

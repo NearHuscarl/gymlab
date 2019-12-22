@@ -10,9 +10,9 @@ import '../meals/ultraLowFat_meal.dart';
 import '../meals/atkins_meal.dart';
 import '../meals/intermittentFasting_meal.dart';
 import '../router.dart';
-import 'meals.dart';
+import '../meals/meals.dart';
 
-class MealScreen extends StatelessWidget {
+class MealSection extends StatelessWidget {
   Widget _getPage(String mealId) {
     switch (mealId) {
       case 'paleo':

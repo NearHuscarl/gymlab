@@ -2,6 +2,7 @@ import '../providers/sqlite_provider/exercise_provider.dart';
 import '../models/exercise_summary.dart';
 import '../models/exercise_detail.dart';
 import '../models/exercise_stats.dart';
+import '../models/exercise_period_stats.dart';
 
 class ExerciseRepository {
   Future<ExerciseSummaries> getSummariesByMuscleCategory(String muscle) =>
@@ -25,4 +26,8 @@ class ExerciseRepository {
   Future<void> updateStatistic(
           int exerciseId, String date, List<Map<String, dynamic>> data) =>
       ExerciseProvider.db.updateStatistic(exerciseId, date, data);
+
+  Future<ExercisePeriodStats> getExercisePeriodStats(
+          String dateFrom, String dateTo) =>
+      ExerciseProvider.db.getExercisePeriodStats(dateFrom, dateTo);
 }

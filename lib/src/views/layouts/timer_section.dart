@@ -147,9 +147,10 @@ class _TimerSectionState extends State<TimerSection> {
     );
   }
 
+  static const _counterButtonGap = 3.0;
   Widget _buildSetCounterButton(int seconds) {
     return Padding(
-      padding: const EdgeInsets.all(3),
+      padding: const EdgeInsets.all(_counterButtonGap),
       child: StreamBuilder<TimerStatus>(
         stream: _bloc.status,
         initialData: TimerStatus.stop,
@@ -170,9 +171,14 @@ class _TimerSectionState extends State<TimerSection> {
     const paddingValue = 14.0;
     const padding = const EdgeInsets.all(paddingValue);
     final size = MediaQuery.of(context).size;
+    const rowCount = 2;
     const columnCount = 3;
 
-    final itemHeight = (size.height * (2 / 7) - kBottomNavigationBarHeight) / 2;
+    final itemHeight = ((size.height - kBottomNavigationBarHeight) * (2 / 7) -
+            (paddingValue * 2) -
+            (rowCount * _counterButtonGap * 2)) /
+        rowCount;
+
     final itemWidth = size.width / columnCount;
     final children = [
       _buildSetCounterButton(20),

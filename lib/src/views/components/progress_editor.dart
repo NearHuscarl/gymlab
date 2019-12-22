@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../blocs/progress_editor_bloc.dart';
 import '../../helpers/dart_helper.dart';
+import '../../helpers/constants.dart';
 
 class ProgressEditor extends StatefulWidget {
   ProgressEditor({Key key, this.expand}) : super(key: key);
@@ -113,8 +114,8 @@ class ProgressEditorState extends State<ProgressEditor>
     final date = await showDatePicker(
       context: context,
       initialDate: initialDate,
-      firstDate: now.subtract(Duration(days: 365 * 5)),
-      lastDate: now,
+      firstDate: Constants.startDateLimit,
+      lastDate: Constants.endDateLimit,
     );
     _setDate(date);
   }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'meal_screen.dart';
 import '../router.dart';
 import '../layouts/muscle_options.dart';
 import '../layouts/timer_section.dart';
+import '../layouts/statistic_section.dart';
+import '../layouts/meal_section.dart';
 import '../components/gym_icons.dart';
 import '../../blocs/home_bloc.dart';
 
@@ -42,10 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child = TimerSection();
             break;
           case HomePageSection.statistics:
-            child = TimerSection();
+            child = StatisticSection();
             break;
           case HomePageSection.meal:
-            child = MealScreen();
+            child = MealSection();
             break;
           default:
             child = Center(
