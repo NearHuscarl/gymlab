@@ -43,7 +43,7 @@ class MealImage extends StatelessWidget {
             ),
             displayText
                 ? FractionallySizedBox(
-                    widthFactor: .75,
+                    widthFactor: .6,
                     alignment: Alignment.centerLeft,
                     child: Container(
                       alignment: Alignment.centerLeft,
@@ -52,7 +52,9 @@ class MealImage extends StatelessWidget {
                         vertical: 6.0,
                       ),
                       child: Text(
-                        title,
+                        // replace with non-breaking hyphen unicode character,
+                        // text will now not break at hyphen
+                        title.replaceAll('-', '\u2011'),
                         style:
                             theme.textTheme.display1.copyWith(color: fontColor),
                       ),
