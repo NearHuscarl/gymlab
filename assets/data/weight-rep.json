@@ -1,5 +1,5213 @@
 [
     {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-09-30 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-09-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 12.5
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-09-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 104,
+        "exerciseName": "Chest Press Machine",
+        "date": "2019-09-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 20
+            },
+            {
+                "rep": 8,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 257,
+        "exerciseName": "Barbell Shoulder Press, Wide Grip",
+        "date": "2019-09-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 8,
+                "weight": 5
+            },
+            {
+                "rep": 6,
+                "weight": 5
+            },
+            {
+                "rep": 8,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 262,
+        "exerciseName": "Dumbbell Lateral Raise",
+        "date": "2019-09-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 4
+            },
+            {
+                "rep": 10,
+                "weight": 4
+            },
+            {
+                "rep": 10,
+                "weight": 4
+            }
+        ]
+    },
+    {
+        "exerciseId": 10011,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+        "date": "2019-09-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-09-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 15,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 182,
+        "exerciseName": "Machine Row, Medium Grip",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 168,
+        "exerciseName": "Assisted Pull Up Machine",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 20
+            },
+            {
+                "rep": 5,
+                "weight": 35
+            },
+            {
+                "rep": 5,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 123,
+        "exerciseName": "Dip, Machine Assisted",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 20
+            },
+            {
+                "rep": 5,
+                "weight": 35
+            },
+            {
+                "rep": 5,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 38,
+        "exerciseName": "Dumbbell Biceps Curl, Standing, Underhand Grip",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 144,
+        "exerciseName": "Pushups",
+        "date": "2019-10-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 15
+            },
+            {
+                "rep": 20
+            },
+            {
+                "rep": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-05 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-10-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 30
+            },
+            {
+                "rep": 20,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2019-10-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 35
+            },
+            {
+                "rep": 20,
+                "weight": 40
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-10-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 30
+            },
+            {
+                "rep": 20,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-10-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 20
+            },
+            {
+                "rep": 20,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2019-10-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 50
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-06 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-10-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 86,
+        "exerciseName": "Incline Bench Press, Normal Grip",
+        "date": "2019-10-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 8,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 114,
+        "exerciseName": "Chest Fly Machine, Straight Arm",
+        "date": "2019-10-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 10011,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+        "date": "2019-10-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-10-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-07 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-10-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 30
+            },
+            {
+                "rep": 20,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-10-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 25,
+                "weight": 30
+            },
+            {
+                "rep": 25,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2019-10-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 40
+            },
+            {
+                "rep": 20,
+                "weight": 45
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-10-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 10
+            },
+            {
+                "rep": 20,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2019-10-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 25,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-08 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 182,
+        "exerciseName": "Machine Row, Medium Grip",
+        "date": "2019-10-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 172,
+        "exerciseName": "Cable Lat Pulldown, Normal Underhand Grip",
+        "date": "2019-10-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 8,
+                "weight": 30
+            },
+            {
+                "rep": 8,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 125,
+        "exerciseName": "Dip, Freestyle",
+        "date": "2019-10-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-10-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-10-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 6,
+                "weight": 7.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 59,
+        "exerciseName": "Dumbbell Biceps Curl, On Knee, Underhand Grip",
+        "date": "2019-10-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 144,
+        "exerciseName": "Pushups",
+        "date": "2019-10-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 20
+            },
+            {
+                "rep": 20
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-10 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-10-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 14
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-10-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 104,
+        "exerciseName": "Chest Press Machine",
+        "date": "2019-10-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 8
+            },
+            {
+                "rep": 10,
+                "weight": 13
+            },
+            {
+                "rep": 10,
+                "weight": 18
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-10-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 144,
+        "exerciseName": "Pushups",
+        "date": "2019-10-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 15
+            },
+            {
+                "rep": 15
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-10-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-12 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-10-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 30
+            },
+            {
+                "rep": 20,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-10-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 25,
+                "weight": 35
+            },
+            {
+                "rep": 25,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2019-10-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 55
+            },
+            {
+                "rep": 20,
+                "weight": 60
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-10-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 20
+            },
+            {
+                "rep": 20,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2019-10-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 40,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-13 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 172,
+        "exerciseName": "Cable Lat Pulldown, Normal Underhand Grip",
+        "date": "2019-10-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-10-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 182,
+        "exerciseName": "Machine Row, Medium Grip",
+        "date": "2019-10-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 20
+            },
+            {
+                "rep": 8,
+                "weight": 20
+            },
+            {
+                "rep": 8,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 125,
+        "exerciseName": "Dip, Freestyle",
+        "date": "2019-10-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 8
+            },
+            {
+                "rep": 8
+            },
+            {
+                "rep": 8
+            },
+            {
+                "rep": 8
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-10-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10010,
+        "exerciseName": "Dumbbell Biceps Curl, Standing, Alternating, Underhand Grip",
+        "date": "2019-10-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 62,
+        "exerciseName": "Cable Biceps Curl, Underhand Grip",
+        "date": "2019-10-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-14 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 99,
+        "exerciseName": "Incline Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-10-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 99,
+        "exerciseName": "Weight Plate Pinches",
+        "date": "2019-10-14 17:10:00.000",
+        "data": [
+            {
+                "duration": 60,
+                "weight": 20
+            },
+            {
+                "duration": 45,
+                "weight": 20
+            },
+            {
+                "duration": 45,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10004,
+        "exerciseName": "Plate Pinch Carry",
+        "date": "2019-10-14 17:10:00.000",
+        "data": [
+            {
+                "duration": 60,
+                "weight": 10
+            },
+            {
+                "duration": 60,
+                "weight": 10
+            },
+            {
+                "duration": 60,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10005,
+        "exerciseName": "Reverse Grip Barbell Curl",
+        "date": "2019-10-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 20
+            },
+            {
+                "rep": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10006,
+        "exerciseName": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+        "date": "2019-10-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10007,
+        "exerciseName": "Standing Palms-Up Barbell Wrist Curl",
+        "date": "2019-10-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 259,
+        "exerciseName": "Dumbbell Shoulder Press, Military Seated",
+        "date": "2019-10-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 7,
+                "weight": 12.5
+            },
+            {
+                "rep": 7,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-16 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-10-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 10000,
+        "exerciseName": "Incline Chest Press Machine",
+        "date": "2019-10-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 19
+            }
+        ]
+    },
+    {
+        "exerciseId": 10001,
+        "exerciseName": "Decline Chest Press Machine",
+        "date": "2019-10-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 15,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 259,
+        "exerciseName": "Dumbbell Shoulder Press, Military Seated",
+        "date": "2019-10-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 9,
+                "weight": 12.5
+            },
+            {
+                "rep": 8,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 258,
+        "exerciseName": "Machine Shoulder Press",
+        "date": "2019-10-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 9,
+                "weight": 12.5
+            },
+            {
+                "rep": 8,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10011,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+        "date": "2019-10-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 10003,
+        "exerciseName": "Weight Plate Pinches",
+        "date": "2019-10-16 17:10:00.000",
+        "data": [
+            {
+                "duration": 50,
+                "weight": 20
+            },
+            {
+                "duration": 50,
+                "weight": 20
+            },
+            {
+                "duration": 50,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-19 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-10-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 30
+            },
+            {
+                "rep": 20,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-10-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 35
+            },
+            {
+                "rep": 20,
+                "weight": 40
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2019-10-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 50
+            },
+            {
+                "rep": 20,
+                "weight": 60
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-10-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 10
+            },
+            {
+                "rep": 20,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2019-10-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 30,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-10-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 114,
+        "exerciseName": "Chest Fly Machine, Straight Arm",
+        "date": "2019-10-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 104,
+        "exerciseName": "Chest Press Machine",
+        "date": "2019-10-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 257,
+        "exerciseName": "Barbell Shoulder Press, Wide Grip",
+        "date": "2019-10-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 8,
+                "weight": 5
+            },
+            {
+                "rep": 8,
+                "weight": 5
+            },
+            {
+                "rep": 8,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 259,
+        "exerciseName": "Dumbbell Shoulder Press, Military Seated",
+        "date": "2019-10-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 8,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10011,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+        "date": "2019-10-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-10-24 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 125,
+        "exerciseName": "Dip, Freestyle",
+        "date": "2019-10-24 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-10-24 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 12,
+                "weight": 12.5
+            },
+            {
+                "rep": 12,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 86,
+        "exerciseName": "Incline Bench Press, Normal Grip",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 6,
+                "weight": 12.5
+            },
+            {
+                "rep": 6,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 99,
+        "exerciseName": "Incline Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 6,
+                "weight": 15
+            },
+            {
+                "rep": 6,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 89,
+        "exerciseName": "Decline Bench Press, Normal Grip",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 8,
+                "weight": 10
+            },
+            {
+                "rep": 8,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 109,
+        "exerciseName": "Dumbbell Fly",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 4,
+                "weight": 5
+            },
+            {
+                "rep": 4,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10011,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 4,
+                "weight": 20
+            },
+            {
+                "rep": 4,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 258,
+        "exerciseName": "Machine Shoulder Press",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 10
+            },
+            {
+                "rep": 5,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 257,
+        "exerciseName": "Barbell Shoulder Press, Wide Grips",
+        "date": "2019-10-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 5
+            },
+            {
+                "rep": 5,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-10-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 114,
+        "exerciseName": "Chest Fly Machine, Straight Arm",
+        "date": "2019-10-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 259,
+        "exerciseName": "Dumbbell Shoulder Press, Military Seated",
+        "date": "2019-10-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 262,
+        "exerciseName": "Dumbbell Lateral Raise",
+        "date": "2019-10-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 257,
+        "exerciseName": "Dumbbell Lateral Raise",
+        "date": "2019-10-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 257,
+        "exerciseName": "Weight Plate Pinches",
+        "date": "2019-10-28 17:10:00.000",
+        "data": [
+            {
+                "duration": 45,
+                "weight": 20
+            },
+            {
+                "duration": 45,
+                "weight": 20
+            },
+            {
+                "duration": 20,
+                "weight": 45
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-10-30 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-10-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-10-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 35
+            },
+            {
+                "rep": 20,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2019-10-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 50
+            },
+            {
+                "rep": 20,
+                "weight": 50
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-10-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 10
+            },
+            {
+                "rep": 20,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2019-10-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 30,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-10-31 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 168,
+        "exerciseName": "Assisted Pull Up Machine",
+        "date": "2019-10-31 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 40
+            },
+            {
+                "rep": 10,
+                "weight": 40
+            }
+        ]
+    },
+    {
+        "exerciseId": 184,
+        "exerciseName": "Dumbbell Row, Single Arm, Neutral Grip",
+        "date": "2019-10-31 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-10-31 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 5
+            },
+            {
+                "rep": 20,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-01 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-11-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 114,
+        "exerciseName": "Chest Fly Machine, Straight Arm",
+        "date": "2019-11-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 104,
+        "exerciseName": "Chest Press Machine",
+        "date": "2019-11-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 10011,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+        "date": "2019-11-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 25
+            },
+            {
+                "rep": 5,
+                "weight": 25
+            },
+            {
+                "rep": 5,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 10012,
+        "exerciseName": "Standing Overhead Barbell Triceps Extension",
+        "date": "2019-11-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 0
+            },
+            {
+                "rep": 5,
+                "weight": 0
+            },
+            {
+                "rep": 5,
+                "weight": 0
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-11-01 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 182,
+        "exerciseName": "Machine Row, Medium Grip",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 0
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 8,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10011,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip, Rope Attachment",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 8,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 41,
+        "exerciseName": "EZ-Bar Biceps Curl, Preacher, Underhand Grip",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-11-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-03 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-11-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 35
+            },
+            {
+                "rep": 20,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-11-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 35
+            },
+            {
+                "rep": 20,
+                "weight": 40
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2019-11-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 50
+            },
+            {
+                "rep": 20,
+                "weight": 55
+            }
+        ]
+    },
+    {
+        "exerciseId": 10014,
+        "exerciseName": "Dumbbell Walking Lunge",
+        "date": "2019-11-03 17:10:00.000",
+        "data": [
+            {
+                "weight": 10
+            },
+            {
+                "weight": 10
+            },
+            {
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-04 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-11-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 5,
+                "weight": 17.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 104,
+        "exerciseName": "Chest Press Machine",
+        "date": "2019-11-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 7,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 104,
+        "exerciseName": "Machine Shoulder Press",
+        "date": "2019-11-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 9,
+                "weight": 10
+            },
+            {
+                "rep": 9,
+                "weight": 10
+            },
+            {
+                "rep": 6,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 257,
+        "exerciseName": "Barbell Shoulder Press, Wide Grip",
+        "date": "2019-11-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 2.5
+            },
+            {
+                "rep": 5,
+                "weight": 2.5
+            },
+            {
+                "rep": 5,
+                "weight": 2.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 262,
+        "exerciseName": "Dumbbell Lateral Raise",
+        "date": "2019-11-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 262,
+        "exerciseName": "Decline Situps",
+        "date": "2019-11-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-05 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-11-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 35
+            },
+            {
+                "rep": 20,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-11-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 35
+            },
+            {
+                "rep": 20,
+                "weight": 40
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2019-11-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 55
+            },
+            {
+                "rep": 20,
+                "weight": 60
+            }
+        ]
+    },
+    {
+        "exerciseId": 10014,
+        "exerciseName": "Dumbbell Walking Lunge",
+        "date": "2019-11-05 17:10:00.000",
+        "data": [
+            {
+                "weight": 10
+            },
+            {
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2019-11-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 30,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10003,
+        "exerciseName": "Weight Plate Pinches",
+        "date": "2019-11-05 17:10:00.000",
+        "data": [
+            {
+                "duration": 60,
+                "weight": 20
+            },
+            {
+                "duration": 60,
+                "weight": 20
+            },
+            {
+                "duration": 60,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 86,
+        "exerciseName": "Incline Bench Press, Normal Grip",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 89,
+        "exerciseName": "Decline Bench Press, Normal Grip",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10010,
+        "exerciseName": "Dumbbell Biceps Curl, Standing, Alternating, Underhand Grip",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 59,
+        "exerciseName": "Dumbbell Biceps Curl, On Knee, Underhand Grip",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 259,
+        "exerciseName": "Dumbbell Shoulder Press, Military Seated",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-11-06 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-07 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-11-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 212,
+        "exerciseName": "Barbell Deadlift",
+        "date": "2019-11-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 0
+            },
+            {
+                "rep": 5,
+                "weight": 0
+            },
+            {
+                "rep": 5,
+                "weight": 0
+            }
+        ]
+    },
+    {
+        "exerciseId": 184,
+        "exerciseName": "Dumbbell Row, Single Arm, Neutral Grip",
+        "date": "2019-11-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 125,
+        "exerciseName": "Dip, Freestyle",
+        "date": "2019-11-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-11-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-11-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 40
+            },
+            {
+                "rep": 10,
+                "weight": 40
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10014,
+        "exerciseName": "Dumbbell Walking Lunge",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "weight": 10
+            },
+            {
+                "weight": 10
+            },
+            {
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10015,
+        "exerciseName": "Hack Squats",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10017,
+        "exerciseName": "Hack Calf Raise",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10006,
+        "exerciseName": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 15
+            },
+            {
+                "rep": 15
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10007,
+        "exerciseName": "Standing Palms-Up Barbell Wrist Curl",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 20
+            },
+            {
+                "rep": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10005,
+        "exerciseName": "Reverse Grip Barbell Curl",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10,
+        "exerciseName": "Plank",
+        "date": "2019-11-08 17:10:00.000",
+        "data": [
+            {
+                "duration": 60
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 18
+            }
+        ]
+    },
+    {
+        "exerciseId": 86,
+        "exerciseName": "Incline Bench Press, Normal Grip",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 89,
+        "exerciseName": "Decline Bench Press, Normal Grip",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 13
+            },
+            {
+                "rep": 10,
+                "weight": 13
+            },
+            {
+                "rep": 10,
+                "weight": 13
+            }
+        ]
+    },
+    {
+        "exerciseId": 99,
+        "exerciseName": "Incline Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 109,
+        "exerciseName": "Dumbbell Fly",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 5
+            },
+            {
+                "rep": 5,
+                "weight": 5
+            },
+            {
+                "rep": 5,
+                "weight": 7.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 259,
+        "exerciseName": "Dumbbell Shoulder Press, Military Seated",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 262,
+        "exerciseName": "Dumbbell Lateral Raise",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "rep": 5,
+                "weight": 5
+            },
+            {
+                "rep": 5,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-11-09 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-10 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-11-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 8,
+                "weight": 36
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-11-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 10008,
+        "exerciseName": "Machine Lat Pulldown",
+        "date": "2019-11-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 23
+            }
+        ]
+    },
+    {
+        "exerciseId": 184,
+        "exerciseName": "Dumbbell Row, Single Arm, Neutral Grip",
+        "date": "2019-11-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-11-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 5,
+                "weight": 7
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 28,
+        "exerciseName": "Leg Raise, Straight Legs",
+        "date": "2019-11-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 15
+            },
+            {
+                "rep": 15
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 125,
+        "exerciseName": "Dip, Freestyle",
+        "date": "2019-11-10 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 55
+            },
+            {
+                "rep": 10,
+                "weight": 60
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 15,
+                "weight": 60
+            },
+            {
+                "rep": 15,
+                "weight": 60
+            },
+            {
+                "rep": 10,
+                "weight": 65
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 35,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10006,
+        "exerciseName": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 15
+            },
+            {
+                "rep": 15
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10007,
+        "exerciseName": "Standing Palms-Up Barbell Wrist Curl",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 15
+            },
+            {
+                "rep": 15
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10005,
+        "exerciseName": "Reverse Grip Barbell Curl",
+        "date": "2019-11-12 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-13 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-11-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 7,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 125,
+        "exerciseName": "Dip, Freestyle",
+        "date": "2019-11-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 8
+            },
+            {
+                "rep": 8
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 184,
+        "exerciseName": "Dumbbell Row, Single Arm, Neutral Grip",
+        "date": "2019-11-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-11-13 17:10:00.000",
+        "data": [
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 10,
+        "exerciseName": "Plank",
+        "date": "2019-11-13 17:10:00.000",
+        "data": [
+            {
+                "duration": 60
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-14 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-11-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-11-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 40
+            },
+            {
+                "rep": 10,
+                "weight": 40
+            },
+            {
+                "rep": 10,
+                "weight": 40
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-11-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 10017,
+        "exerciseName": "Hack Calf Raise",
+        "date": "2019-11-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 30,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10006,
+        "exerciseName": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+        "date": "2019-11-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 5
+            },
+            {
+                "rep": 20,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10007,
+        "exerciseName": "Standing Palms-Up Barbell Wrist Curl",
+        "date": "2019-11-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 5
+            },
+            {
+                "rep": 20,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 144,
+        "exerciseName": "Pushups",
+        "date": "2019-11-14 17:10:00.000",
+        "data": [
+            {
+                "rep": 20
+            },
+            {
+                "rep": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-16 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-11-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 13
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 17
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-11-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 17.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10001,
+        "exerciseName": "Decline Chest Press Machine",
+        "date": "2019-11-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 13
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 114,
+        "exerciseName": "Chest Fly Machine, Straight Arm",
+        "date": "2019-11-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-11-16 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-19 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-11-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 8,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 182,
+        "exerciseName": "Machine Row, Medium Grip",
+        "date": "2019-11-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 8,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10008,
+        "exerciseName": "Machine Lat Pulldown",
+        "date": "2019-11-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 8,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-11-19 17:10:00.000",
+        "data": [
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-20 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-11-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-11-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 55
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-11-20 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 10014,
+        "exerciseName": "Dumbbell Walking Lunge",
+        "date": "2019-11-20 17:10:00.000",
+        "data": [
+            {
+                "weight": 10
+            },
+            {
+                "weight": 10
+            },
+            {
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-25 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-11-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-11-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 10000,
+        "exerciseName": "Incline Chest Press Machine",
+        "date": "2019-11-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 14
+            },
+            {
+                "rep": 10,
+                "weight": 14
+            },
+            {
+                "rep": 10,
+                "weight": 16
+            }
+        ]
+    },
+    {
+        "exerciseId": 10001,
+        "exerciseName": "Decline Chest Press Machine",
+        "date": "2019-11-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 14
+            },
+            {
+                "rep": 10,
+                "weight": 14
+            },
+            {
+                "rep": 10,
+                "weight": 14
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-11-25 17:10:00.000",
+        "data": [
+            {
+                "rep": 15,
+                "weight": 25
+            },
+            {
+                "rep": 15,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-11-26 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-11-26 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-11-26 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 8,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 182,
+        "exerciseName": "Machine Row, Medium Grip",
+        "date": "2019-11-26 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 8,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 10008,
+        "exerciseName": "Machine Lat Pulldown",
+        "date": "2019-11-26 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 8,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-11-27 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-11-27 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-11-27 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10014,
+        "exerciseName": "Dumbbell Walking Lunge",
+        "date": "2019-11-27 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2019-11-27 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-11-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 36
+            },
+            {
+                "rep": 10,
+                "weight": 36
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-11-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 10008,
+        "exerciseName": "Machine Lat Pulldown",
+        "date": "2019-11-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 125,
+        "exerciseName": "Dip, Freestyle",
+        "date": "2019-11-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-11-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 7
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 7
+            }
+        ]
+    },
+    {
+        "exerciseId": 10010,
+        "exerciseName": "Dumbbell Biceps Curl, Standing, Alternating, Underhand Grip",
+        "date": "2019-11-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-11-28 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-11-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-11-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 104,
+        "exerciseName": "Chest Press Machine",
+        "date": "2019-11-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 114,
+        "exerciseName": "Chest Fly Machine, Straight Arm",
+        "date": "2019-11-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-11-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-11-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-11-30 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-12-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 212,
+        "exerciseName": "Barbell Deadlift",
+        "date": "2019-12-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 0
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10009,
+        "exerciseName": "Reverse Grip Bent-Over Rows",
+        "date": "2019-12-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 40,
+        "exerciseName": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+        "date": "2019-12-02 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 8,
+                "weight": 7.5
+            },
+            {
+                "rep": 8,
+                "weight": 7.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-12-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 95,
+        "exerciseName": "Dumbbell Bench Press, Narrow Grip",
+        "date": "2019-12-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 104,
+        "exerciseName": "Chest Press Machine",
+        "date": "2019-12-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 17.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 114,
+        "exerciseName": "Chest Fly Machine, Straight Arm",
+        "date": "2019-12-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-12-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 322,
+        "exerciseName": "Dumbbell Triceps Kickback, Bench, Neutral Grip",
+        "date": "2019-12-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 28,
+        "exerciseName": "Leg Raise, Straight Legs",
+        "date": "2019-12-03 17:10:00.000",
+        "data": [
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            },
+            {
+                "rep": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-12-04 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 182,
+        "exerciseName": "Machine Row, Medium Grip",
+        "date": "2019-12-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 36
+            },
+            {
+                "rep": 10,
+                "weight": 36
+            },
+            {
+                "rep": 10,
+                "weight": 36
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-12-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 36
+            },
+            {
+                "rep": 10,
+                "weight": 36
+            },
+            {
+                "rep": 8,
+                "weight": 36
+            },
+            {
+                "rep": 12,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 10008,
+        "exerciseName": "Machine Lat Pulldown",
+        "date": "2019-12-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 27
+            },
+            {
+                "rep": 10,
+                "weight": 27
+            }
+        ]
+    },
+    {
+        "exerciseId": 184,
+        "exerciseName": "Dumbbell Row, Single Arm, Neutral Grip",
+        "date": "2019-12-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            },
+            {
+                "rep": 10,
+                "weight": 12.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10010,
+        "exerciseName": "Dumbbell Biceps Curl, Standing, Alternating, Underhand Grip",
+        "date": "2019-12-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 10
+            }
+        ]
+    },
+    {
+        "exerciseId": 62,
+        "exerciseName": "Cable Biceps Curl, Underhand Grip",
+        "date": "2019-12-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            },
+            {
+                "rep": 10,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-12-04 17:10:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-12-07 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2019-12-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2019-12-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2019-12-07 17:10:00.000",
+        "data": [
+            {
+                "weight": 20
+            },
+            {
+                "weight": 25
+            },
+            {
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 10014,
+        "exerciseName": "Dumbbell Walking Lunge",
+        "date": "2019-12-07 17:10:00.000",
+        "data": [
+            {
+                "weight": 5
+            },
+            {
+                "weight": 10
+            },
+            {
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 10003,
+        "exerciseName": "Weight Plate Pinches",
+        "date": "2019-12-07 17:10:00.000",
+        "data": [
+            {
+                "duration": 60,
+                "weight": 20
+            },
+            {
+                "duration": 60,
+                "weight": 20
+            },
+            {
+                "duration": 60,
+                "weight": 20
+            }
+        ]
+    },
+    {
+        "exerciseId": 10005,
+        "exerciseName": "Reverse Grip Barbell Curl",
+        "date": "2019-12-07 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 2.5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
         "exerciseId": 95,
         "exerciseName": "Dumbbell Bench Press, Narrow Grip",
         "date": "2019-12-08 17:10:00.000",
