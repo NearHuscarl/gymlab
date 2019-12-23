@@ -8,13 +8,31 @@ import '../../models/exercise_summary.dart';
 import '../../models/exercise_detail.dart';
 import '../../models/exercise_stats.dart';
 import '../../models/exercise_period_stats.dart';
+import '../../models/exercise_heatmap.dart';
 
-ExerciseSummary _fromRawQuery(Map<String, dynamic> map) {
-  final jsonMap = map.map((k, v) {
-    if (k == 'equipments') return MapEntry(k, v.split(','));
-    return MapEntry(k, v);
+/// ```
+/// 'calves|secondary,cardio|secondary,quads|primary'
+/// -> [{'calves: 'secondary}, ...]
+/// ```
+Iterable<Map<String, String>> _parseMuscle(String muscleInfos) {
+  return muscleInfos.split(',').map((m) {
+    final muscleInfo = m.split('|');
+    if (muscleInfo.length == 2)
+      return {
+        'muscle': muscleInfo[0],
+        'target': muscleInfo[1],
+      };
+    return {};
   });
-  return ExerciseSummary.fromJson(jsonMap);
+}
+
+ExerciseSummary _parseSummary(Map<String, dynamic> m) {
+  return ExerciseSummary.fromJson(
+    m.map((k, v) {
+      if (k == 'equipments') return MapEntry(k, v.split(','));
+      return MapEntry(k, v);
+    }),
+  );
 }
 
 Future<ExerciseSummaries> _computeExerciseSummariesResult(
@@ -22,34 +40,26 @@ Future<ExerciseSummaries> _computeExerciseSummariesResult(
 ) async {
   return ExerciseSummaries(
       exercises: result.isNotEmpty
-          ? result.map((m) => _fromRawQuery(m)).toList()
+          ? result.map((m) => _parseSummary(m)).toList()
           : <ExerciseSummary>[]);
+}
+
+ExerciseDetail _parseDetail(Map<String, dynamic> m) {
+  return ExerciseDetail.fromJson(m.map((k, v) {
+    if (k == 'equipments') {
+      return MapEntry(k, v.split(','));
+    }
+    if (k == 'muscles') {
+      return MapEntry(k, _parseMuscle(v));
+    }
+    return MapEntry(k, v);
+  }));
 }
 
 Future<ExerciseDetail> _computeExerciseDetailResult(
   List<Map<String, dynamic>> result,
 ) async {
-  return result.isNotEmpty
-      ? ExerciseDetail.fromJson(result.first.map((k, v) {
-          if (k == 'equipments') {
-            return MapEntry(k, v.split(','));
-          }
-          if (k == 'muscles') {
-            return MapEntry(
-                k,
-                v.split(',').map((m) {
-                  final muscleInfo = m.split('|');
-                  if (muscleInfo.length == 2)
-                    return {
-                      'muscle': muscleInfo[0],
-                      'target': muscleInfo[1],
-                    };
-                  return {};
-                }));
-          }
-          return MapEntry(k, v);
-        }))
-      : null;
+  return result.isNotEmpty ? _parseDetail(result.first) : null;
 }
 
 Future<ExerciseStats> _computeStatisticResult(
@@ -58,11 +68,28 @@ Future<ExerciseStats> _computeStatisticResult(
   return result.isNotEmpty ? ExerciseStats.fromJson(result.first) : null;
 }
 
+ExerciseHeatMapItem _parseHeatMapItem(Map<String, dynamic> m) {
+  return ExerciseHeatMapItem.fromJson(m.map((k, v) {
+    if (k == 'muscles') {
+      return MapEntry(k, _parseMuscle(v));
+    }
+    return MapEntry(k, v);
+  }));
+}
+
 Future<ExercisePeriodStats> _computeExercisePeriodStatsResult(
   Map<String, dynamic> result,
 ) async {
-  result['exercises'] = result['exercises'].map((m) => _fromRawQuery(m)).toList();
+  result['exercises'] = result['exercises'].map((m) => _parseSummary(m)).toList();
   return result.isNotEmpty ? ExercisePeriodStats.fromJson(result) : null;
+}
+
+Future<ExerciseHeatMap> _computeHeatMapResult(
+  Map<String, dynamic> result,
+) async {
+  result['exercises'] =
+      result['exercises'].map((m) => _parseHeatMapItem(m)).toList();
+  return result.isNotEmpty ? ExerciseHeatMap.fromJson(result) : null;
 }
 
 class ExerciseProvider {
@@ -187,5 +214,24 @@ class ExerciseProvider {
     result['exercises'] = res;
 
     return compute(_computeExercisePeriodStatsResult, result);
+  }
+
+  Future<ExerciseHeatMap> getExerciseHeatMapStats(
+    String dateFrom,
+    String dateTo,
+  ) async {
+    final db = await database;
+    final res = await db.rawQuery(
+      ExerciseQuery.selectExerciseHeatMapQuery,
+      [dateFrom, dateTo],
+    );
+
+    final result = Map<String, dynamic>();
+
+    result['dateFrom'] = dateFrom;
+    result['dateTo'] = dateTo;
+    result['exercises'] = res;
+
+    return compute(_computeHeatMapResult, result);
   }
 }

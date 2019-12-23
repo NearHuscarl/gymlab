@@ -1,5 +1,5 @@
-import 'package:gymlab/src/helpers/enum.dart';
 import 'package:quiver/core.dart';
+import '../helpers/enum.dart';
 
 enum Muscle {
   abs,

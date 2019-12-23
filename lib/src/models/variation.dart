@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:gymlab/src/helpers/enum.dart';
 import 'package:quiver/core.dart';
+import '../helpers/enum.dart';
 
 enum GripType {
   /// Underhand grip is when your palms are facing towards you as you grip the

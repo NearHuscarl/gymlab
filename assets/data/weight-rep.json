@@ -1181,7 +1181,7 @@
         ]
     },
     {
-        "exerciseId": 99,
+        "exerciseId": 10003,
         "exerciseName": "Weight Plate Pinches",
         "date": "2019-10-14 17:10:00.000",
         "data": [
@@ -1941,7 +1941,7 @@
         ]
     },
     {
-        "exerciseId": 257,
+        "exerciseId": 10003,
         "exerciseName": "Weight Plate Pinches",
         "date": "2019-10-28 17:10:00.000",
         "data": [
@@ -2311,8 +2311,8 @@
         ]
     },
     {
-        "exerciseId": 169,
-        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "exerciseId": 10008,
+        "exerciseName": "Machine Lat Pulldown",
         "date": "2019-11-02 17:10:00.000",
         "data": [
             {
@@ -2540,7 +2540,7 @@
         ]
     },
     {
-        "exerciseId": 104,
+        "exerciseId": 258,
         "exerciseName": "Machine Shoulder Press",
         "date": "2019-11-04 17:10:00.000",
         "data": [
@@ -2601,7 +2601,7 @@
         ]
     },
     {
-        "exerciseId": 262,
+        "exerciseId": 9,
         "exerciseName": "Decline Situps",
         "date": "2019-11-04 17:10:00.000",
         "data": [
@@ -4634,29 +4634,6 @@
             {
                 "rep": 10,
                 "weight": 35
-            }
-        ]
-    },
-    {
-        "exerciseId": 300,
-        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
-        "date": "2019-11-30 17:10:00.000",
-        "data": [
-            {
-                "rep": 10,
-                "weight": 25
-            },
-            {
-                "rep": 10,
-                "weight": 30
-            },
-            {
-                "rep": 10,
-                "weight": 30
-            },
-            {
-                "rep": 10,
-                "weight": 30
             }
         ]
     },

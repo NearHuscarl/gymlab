@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:gymlab/src/helpers/enum.dart';
-
 import 'exercise_summary.dart';
 import 'muscle_info.dart';
 import 'variation.dart';
+import '../helpers/enum.dart';
 
 class ExerciseDetail {
   ExerciseDetail({

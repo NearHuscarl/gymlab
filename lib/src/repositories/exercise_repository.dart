@@ -2,6 +2,7 @@ import '../providers/sqlite_provider/exercise_provider.dart';
 import '../models/exercise_summary.dart';
 import '../models/exercise_detail.dart';
 import '../models/exercise_stats.dart';
+import '../models/exercise_heatmap.dart';
 import '../models/exercise_period_stats.dart';
 
 class ExerciseRepository {
@@ -30,4 +31,8 @@ class ExerciseRepository {
   Future<ExercisePeriodStats> getExercisePeriodStats(
           String dateFrom, String dateTo) =>
       ExerciseProvider.db.getExercisePeriodStats(dateFrom, dateTo);
+
+  Future<ExerciseHeatMap> getExerciseHeatMapStats(
+          String dateFrom, String dateTo) =>
+      ExerciseProvider.db.getExerciseHeatMapStats(dateFrom, dateTo);
 }

@@ -128,7 +128,7 @@ const idMissingLargeImages = {
   81,
   87,
 };
-String getImage(id, index, {large: false}) {
+String getImage(int id, int index, {bool large: false}) {
   // TODO: missing large images in some exercises, fallback to small image (đụ má thằng Phúc)
   if (idMissingLargeImages.contains(id)) {
     large = false;

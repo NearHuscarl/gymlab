@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gymlab/src/helpers/app_colors.dart';
+import '../../helpers/app_colors.dart';
 
 class ChartIndicator extends StatelessWidget {
   final Color color;
@@ -31,9 +31,7 @@ class ChartIndicator extends StatelessWidget {
             color: color,
           ),
         ),
-        const SizedBox(
-          width: 4,
-        ),
+        const SizedBox(width: 4),
         Text(
           text,
           style: TextStyle(

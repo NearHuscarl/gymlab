@@ -29,6 +29,15 @@ class ExerciseQuery {
     'keywords',
     'IFNULL(favorite, 0) as favorite',
   ];
+  static const List<String> heatMapItemColumns = [
+    'id',
+    'name',
+    'date(date) as date',
+    'imageCount',
+    'thumbnailImageIndex',
+    "GROUP_CONCAT(DISTINCT muscleId || '|' || target) as muscles",
+    'IFNULL(favorite, 0) as favorite',
+  ];
 
   static final String selectSummariesByMuscleQuery = '''
 SELECT ${summaryColumns.join(', ')}
@@ -113,6 +122,24 @@ ON $exerciseTable.id = $favoriteTable.exerciseId
 
 LEFT JOIN $exerciseEquipmentTable
 ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
+LEFT JOIN $statisticTable
+ON $exerciseTable.id = $statisticTable.exerciseId
+
+WHERE date($statisticTable.date) >= ?
+AND date($statisticTable.date) <= ?
+
+GROUP BY id
+''';
+
+  static final String selectExerciseHeatMapQuery = '''
+SELECT ${heatMapItemColumns.join(', ')}
+FROM $exerciseTable
+
+LEFT JOIN $exerciseMuscleTable
+ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+
+LEFT JOIN $favoriteTable
+ON $exerciseTable.id = $favoriteTable.exerciseId
 
 LEFT JOIN $statisticTable
 ON $exerciseTable.id = $statisticTable.exerciseId

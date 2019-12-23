@@ -5,10 +5,9 @@ import '../helpers/dart_helper.dart';
 import '../helpers/disposable.dart';
 import '../models/exercise_period_stats.dart';
 
-class StatisticsBloc extends Disposable {
-  StatisticsBloc() {
+class MuscleStatisticsBloc extends Disposable {
+  MuscleStatisticsBloc() {
     _dateRange = BehaviorSubject<List<DateTime>>();
-    _state = BehaviorSubject<ExercisePeriodStats>();
   }
 
   static final initialDateRange = [
@@ -18,7 +17,6 @@ class StatisticsBloc extends Disposable {
 
   ExerciseRepository _repository = ExerciseRepository();
 
-  BehaviorSubject<ExercisePeriodStats> _state;
   BehaviorSubject<List<DateTime>> _dateRange;
 
   Observable<List<DateTime>> get dateRange => _dateRange.stream;
@@ -31,7 +29,6 @@ class StatisticsBloc extends Disposable {
 
   void dispose() {
     _dateRange.close();
-    _state.close();
   }
 
   Stream<StatisticsState> _mapInputToState(List<DateTime> dateRange) async* {

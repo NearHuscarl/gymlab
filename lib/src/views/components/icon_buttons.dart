@@ -31,14 +31,17 @@ class FavoriteButton extends StatelessWidget {
   FavoriteButton({
     this.onPressed,
     this.favorite = false,
+    this.color,
   });
 
   final VoidCallback onPressed;
   final bool favorite;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      color: color,
       icon: AnimatedCrossFade(
         duration: iconButtonFadeDuration,
         firstChild: Icon(Icons.star),

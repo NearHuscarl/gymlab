@@ -1,4 +1,4 @@
-import 'package:gymlab/src/models/exercise_summary.dart';
+import '../models/exercise_summary.dart';
 
 class ExercisePeriodStats {
   ExercisePeriodStats({
