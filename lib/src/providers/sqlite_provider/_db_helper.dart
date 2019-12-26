@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 import '../../helpers/logger.dart';
 
 class DbHelper {
-  static String get dbName => kDebugMode ? 'data.test.sqlite' : 'data.sqlite';
+  static String get dbName => kReleaseMode ? 'data.sqlite' : 'data.test.sqlite';
 
   // /data/user/0/com.example.gymlab/app_flutter/data.sqlite
   static Future<void> setupDbFile() async {
