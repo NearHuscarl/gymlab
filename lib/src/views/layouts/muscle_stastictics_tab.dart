@@ -3,14 +3,12 @@ import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:date_range_picker/date_range_picker.dart' as DateRangePicker;
+import '../components/labeled_radio.dart';
 import '../components/loading_indicator.dart';
 import '../components/chart_indicator.dart';
 import '../../blocs/muscle_statistics_bloc.dart';
-import '../../models/exercise_period_stats.dart';
-import '../../models/muscle_info.dart';
 import '../../helpers/constants.dart';
 import '../../helpers/dart_helper.dart';
-import '../../helpers/enum.dart';
 
 class MuscleStatisticTab extends StatefulWidget {
   @override
@@ -23,7 +21,8 @@ class _MuscleStatisticTabState extends State<MuscleStatisticTab> {
   @override
   void initState() {
     super.initState();
-    _bloc = MuscleStatisticsBloc()..setDate(MuscleStatisticsBloc.initialDateRange);
+    _bloc = MuscleStatisticsBloc()
+      ..setDate(MuscleStatisticsBloc.initialDateRange);
   }
 
   @override
@@ -64,6 +63,30 @@ class _MuscleStatisticTabState extends State<MuscleStatisticTab> {
                 style: TextStyle(color: theme.accentColor),
               ),
               onPressed: () => _selectDate(dateRange[0], dateRange[1]),
+            );
+          },
+        ),
+        StreamBuilder<MuscleFilter>(
+          stream: _bloc.muscleFilter,
+          initialData: MuscleStatisticsBloc.initialMuscleFilter,
+          builder: (context, snapshot) {
+            final muscleFilter = snapshot.data;
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                LabeledRadio(
+                  label: 'Primary only',
+                  value: MuscleFilter.primaryOnly,
+                  groupValue: muscleFilter,
+                  onChanged: (value) => _bloc.setPrimaryMuscleOnly(value),
+                ),
+                LabeledRadio(
+                  label: 'Primary and secondary',
+                  value: MuscleFilter.primaryAndSecodary,
+                  groupValue: muscleFilter,
+                  onChanged: (value) => _bloc.setPrimaryMuscleOnly(value),
+                ),
+              ],
             );
           },
         ),
@@ -132,33 +155,7 @@ class _MuscleStatisticTabState extends State<MuscleStatisticTab> {
     Colors.blueGrey,
   ];
 
-  Widget _statisticsResultWidget(ExercisePeriodStats data) {
-    final muscleCount = Map<Muscle, int>();
-    final exercises = data.exercises;
-
-    exercises.forEach((e) {
-      muscleCount.update(e.muscle, (total) => total + 1, ifAbsent: () => 1);
-    });
-    final entryList = <MapEntry<String, double>>[];
-    muscleCount.forEach((k, v) {
-      entryList.add(
-        MapEntry(EnumHelper.parseWord(k), v / exercises.length * 100),
-      );
-    });
-    entryList.sort((e1, e2) => (e2.value - e1.value).toInt());
-
-    // if there are more than 5 items to display on the chart, group the sixth
-    // one in Other label
-    final primaryCount = min(entryList.length, 5);
-    final primaryEntries = entryList.take(primaryCount).toList();
-    final otherEntries = entryList.sublist(primaryCount, entryList.length);
-    final otherEntriesPercentage =
-        otherEntries.fold(0.0, (total, e) => total + e.value);
-
-    if (otherEntriesPercentage > 0) {
-      primaryEntries.add(MapEntry('Other', otherEntriesPercentage));
-    }
-
+  Widget _statisticsResultWidget(List<MapEntry<String, double>> chartData) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -184,7 +181,7 @@ class _MuscleStatisticTabState extends State<MuscleStatisticTab> {
               borderData: FlBorderData(show: false),
               startDegreeOffset: -90,
               sectionsSpace: 5,
-              sections: _showingChartSections(primaryEntries)),
+              sections: _showingChartSections(chartData)),
         ),
         SizedBox(height: 20),
         SizedBox(
@@ -195,7 +192,7 @@ class _MuscleStatisticTabState extends State<MuscleStatisticTab> {
             runAlignment: WrapAlignment.center,
             spacing: 12,
             runSpacing: 45,
-            children: primaryEntries.mapIndex((e, i) {
+            children: chartData.mapIndex((e, i) {
               return ChartIndicator(
                 color: _chartColors[i % _chartColors.length],
                 text: e.key,

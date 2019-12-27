@@ -110,24 +110,41 @@ WHERE exerciseId = ?
 AND date(date) = ?
 ''';
 
-  static final String selectExercisePeriodStatsQuery = '''
-SELECT ${summaryColumns.join(', ')}
-FROM $exerciseTable
+  static final String selectMuscleGroupCountQuery = '''
+SELECT CountAll.muscle, muscleCount, IFNULL(primaryMuscleCount, 0) AS primaryMuscleCount FROM (
+	SELECT muscleId as muscle, COUNT(muscleId) AS muscleCount
+	FROM $exerciseTable
 
-LEFT JOIN $exerciseMuscleTable
-ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+	INNER JOIN $exerciseMuscleTable
+	ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
 
-LEFT JOIN $favoriteTable
-ON $exerciseTable.id = $favoriteTable.exerciseId
+	INNER JOIN $statisticTable
+	ON $exerciseTable.id = $statisticTable.exerciseId
 
-LEFT JOIN $exerciseEquipmentTable
-ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
-LEFT JOIN $statisticTable
-ON $exerciseTable.id = $statisticTable.exerciseId
+	WHERE date($statisticTable.date) BETWEEN ? AND ?
 
-WHERE date($statisticTable.date) BETWEEN ? AND ?
+	GROUP BY muscleId
+) AS CountAll
 
-GROUP BY id
+LEFT JOIN (
+	SELECT muscleId as muscle, COUNT(muscleId) AS primaryMuscleCount
+	FROM $exerciseTable
+
+	INNER JOIN $exerciseMuscleTable
+	ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+
+	INNER JOIN $statisticTable
+	ON $exerciseTable.id = $statisticTable.exerciseId
+
+	WHERE date($statisticTable.date) BETWEEN ? AND ?
+	AND $exerciseMuscleTable.target = 'primary'
+
+	GROUP BY muscleId
+) AS CountPrimary
+
+ON CountAll.muscle = CountPrimary.muscle
+
+ORDER BY primaryMuscleCount DESC
 ''';
 
   static final String selectExerciseHeatMapQuery = '''

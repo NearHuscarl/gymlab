@@ -3,7 +3,7 @@ import '../models/exercise_summary.dart';
 import '../models/exercise_detail.dart';
 import '../models/exercise_stats.dart';
 import '../models/exercise_heatmap.dart';
-import '../models/exercise_period_stats.dart';
+import '../models/muscle_stats.dart';
 
 class ExerciseRepository {
   Future<ExerciseSummaries> getSummariesByMuscleCategory(String muscle) =>
@@ -28,9 +28,9 @@ class ExerciseRepository {
           int exerciseId, String date, List<Map<String, dynamic>> data) =>
       ExerciseProvider.db.updateStatistic(exerciseId, date, data);
 
-  Future<ExercisePeriodStats> getExercisePeriodStats(
+  Future<MuscleStats> getMuscleGroupCount(
           String dateFrom, String dateTo) =>
-      ExerciseProvider.db.getExercisePeriodStats(dateFrom, dateTo);
+      ExerciseProvider.db.getMuscleGroupCount(dateFrom, dateTo);
 
   Future<ExerciseHeatMap> getExerciseHeatMapStats(
           String dateFrom, String dateTo) =>

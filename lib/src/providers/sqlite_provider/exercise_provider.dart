@@ -7,7 +7,7 @@ import 'exercise_provider.query.dart';
 import '../../models/exercise_summary.dart';
 import '../../models/exercise_detail.dart';
 import '../../models/exercise_stats.dart';
-import '../../models/exercise_period_stats.dart';
+import '../../models/muscle_stats.dart';
 import '../../models/exercise_heatmap.dart';
 
 /// ```
@@ -77,11 +77,10 @@ ExerciseHeatMapItem _parseHeatMapItem(Map<String, dynamic> m) {
   }));
 }
 
-Future<ExercisePeriodStats> _computeExercisePeriodStatsResult(
+Future<MuscleStats> _computeMuscleGroupCountResult(
   Map<String, dynamic> result,
 ) async {
-  result['exercises'] = result['exercises'].map((m) => _parseSummary(m)).toList();
-  return result.isNotEmpty ? ExercisePeriodStats.fromJson(result) : null;
+  return result.isNotEmpty ? MuscleStats.fromJson(result) : null;
 }
 
 Future<ExerciseHeatMap> _computeHeatMapResult(
@@ -197,23 +196,23 @@ class ExerciseProvider {
     );
   }
 
-  Future<ExercisePeriodStats> getExercisePeriodStats(
+  Future<MuscleStats> getMuscleGroupCount(
     String dateFrom,
     String dateTo,
   ) async {
     final db = await database;
     final res = await db.rawQuery(
-      ExerciseQuery.selectExercisePeriodStatsQuery,
-      [dateFrom, dateTo],
+      ExerciseQuery.selectMuscleGroupCountQuery,
+      [dateFrom, dateTo, dateFrom, dateTo],
     );
 
     final result = Map<String, dynamic>();
 
     result['dateFrom'] = dateFrom;
     result['dateTo'] = dateTo;
-    result['exercises'] = res;
+    result['muscles'] = res;
 
-    return compute(_computeExercisePeriodStatsResult, result);
+    return compute(_computeMuscleGroupCountResult, result);
   }
 
   Future<ExerciseHeatMap> getExerciseHeatMapStats(
