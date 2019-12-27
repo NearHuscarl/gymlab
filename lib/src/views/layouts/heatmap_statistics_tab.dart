@@ -154,7 +154,7 @@ class _HeatMapStatisticTabState extends State<HeatMapStatisticTab>
   }
 
   Widget _buildEventsMarker(DateTime date, List events) {
-    final eventLengthFactor = min(events.length, 10);
+    final clampedEventLength = min(events.length, 10) - 1;
     final colors = [
       Colors.indigo.shade50,
       Colors.indigo.shade100,
@@ -172,7 +172,7 @@ class _HeatMapStatisticTabState extends State<HeatMapStatisticTab>
       duration: const Duration(milliseconds: 300),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        color: colors[eventLengthFactor],
+        color: colors[clampedEventLength],
         border: Border.all(
           color: Colors.amber.shade700,
           width: 3,
