@@ -5066,6 +5066,7 @@
             }
         ]
     },
+    // Breakpoint
     {
         "exerciseId": 252,
         "exerciseName": "Running",
@@ -5120,12 +5121,15 @@
         "date": "2019-12-07 17:10:00.000",
         "data": [
             {
+                "rep": 10,
                 "weight": 20
             },
             {
-                "weight": 25
+                "rep": 10,
+                "weight": 20
             },
             {
+                "rep": 10,
                 "weight": 25
             }
         ]
@@ -5142,7 +5146,7 @@
                 "weight": 10
             },
             {
-                "weight": 25
+                "weight": 10
             }
         ]
     },
@@ -5605,6 +5609,118 @@
             {
                 "rep": 10,
                 "weight": 0
+            }
+        ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-12-25 16:23:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 169,
+        "exerciseName": "Cable Lat Pulldown, Wide Grip",
+        "date": "2019-12-25 16:23:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 36
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 191,
+        "exerciseName": "Seated Cable Rows, Middle",
+        "date": "2019-12-25 16:23:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 10008,
+        "exerciseName": "Machine Lat Pulldown",
+        "date": "2019-12-25 16:23:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            },
+            {
+                "rep": 10,
+                "weight": 25
+            }
+        ]
+    },
+    {
+        "exerciseId": 10010,
+        "exerciseName": "Dumbbell Biceps Curl, Standing, Alternating, Underhand Grip",
+        "date": "2019-12-25 16:23:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            },
+            {
+                "rep": 10,
+                "weight": 7.5
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-12-25 16:23:00.000",
+        "data": [
+            {
+                "rep": 30
             }
         ]
     }
