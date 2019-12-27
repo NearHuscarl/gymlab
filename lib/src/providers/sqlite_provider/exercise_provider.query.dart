@@ -35,7 +35,7 @@ class ExerciseQuery {
     'date(date) as date',
     'imageCount',
     'thumbnailImageIndex',
-    "GROUP_CONCAT(DISTINCT muscleId || '|' || target) as muscles",
+    'muscles',
     'IFNULL(favorite, 0) as favorite',
   ];
 
@@ -125,8 +125,7 @@ ON $exerciseTable.id = $exerciseEquipmentTable.exerciseId
 LEFT JOIN $statisticTable
 ON $exerciseTable.id = $statisticTable.exerciseId
 
-WHERE date($statisticTable.date) >= ?
-AND date($statisticTable.date) <= ?
+WHERE date($statisticTable.date) BETWEEN ? AND ?
 
 GROUP BY id
 ''';
@@ -135,8 +134,12 @@ GROUP BY id
 SELECT ${heatMapItemColumns.join(', ')}
 FROM $exerciseTable
 
-LEFT JOIN $exerciseMuscleTable
-ON $exerciseTable.id = $exerciseMuscleTable.exerciseId
+LEFT JOIN (
+	SELECT exerciseId, GROUP_CONCAT(DISTINCT muscleId || '|' || target) as muscles
+	FROM $exerciseMuscleTable
+	GROUP BY exerciseId
+) AS Muscles
+ON $exerciseTable.id = Muscles.exerciseId
 
 LEFT JOIN $favoriteTable
 ON $exerciseTable.id = $favoriteTable.exerciseId
@@ -144,9 +147,6 @@ ON $exerciseTable.id = $favoriteTable.exerciseId
 LEFT JOIN $statisticTable
 ON $exerciseTable.id = $statisticTable.exerciseId
 
-WHERE date($statisticTable.date) >= ?
-AND date($statisticTable.date) <= ?
-
-GROUP BY id
+WHERE date($statisticTable.date) BETWEEN ? AND ?
 ''';
 }

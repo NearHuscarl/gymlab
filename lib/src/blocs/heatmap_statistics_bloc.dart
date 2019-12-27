@@ -51,11 +51,12 @@ class HeatMapStatisticsBloc extends Disposable {
         dateTo.toIsoDate(),
       );
       final events = Map<DateTime, List<ExerciseHeatMapItem>>();
+
       result.exercises.forEach((e) {
         events.update(
           DateTime.parse(e.date),
           (l) => l..add(e),
-          ifAbsent: () => List<ExerciseHeatMapItem>(),
+          ifAbsent: () => [e],
         );
       });
 
