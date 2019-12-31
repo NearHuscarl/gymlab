@@ -5723,5 +5723,113 @@
                 "rep": 30
             }
         ]
-    }
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2019-12-30 16:23:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 83,
+        "exerciseName": "Bench Press, Normal Grip",
+        "date": "2019-12-30 16:23:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 13
+            },
+            {
+                "rep": 10,
+                "weight": 13
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            }
+        ]
+    },
+    {
+        "exerciseId": 10002,
+        "exerciseName": "Lying Chest Press Machine",
+        "date": "2019-12-30 16:23:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 10
+            },
+            {
+                "rep": 10,
+                "weight": 15
+            },
+            {
+                "rep": 10,
+                "weight": 18
+            },
+            {
+                "rep": 10,
+                "weight": 18
+            }
+        ]
+    },
+    {
+        "exerciseId": 114,
+        "exerciseName": "Chest Fly Machine, Straight Arm",
+        "date": "2019-12-30 16:23:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 300,
+        "exerciseName": "Cable Triceps Pushdown, Overhand Grip",
+        "date": "2019-12-30 16:23:00.000",
+        "data": [
+            {
+                "rep": 15,
+                "weight": 25
+            },
+            {
+                "rep": 15,
+                "weight": 25
+            },
+            {
+                "rep": 15,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 9,
+        "exerciseName": "Decline Situps",
+        "date": "2019-12-30 16:23:00.000",
+        "data": [
+            {
+                "rep": 30
+            }
+        ]
+    },\
 ]
