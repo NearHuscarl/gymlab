@@ -80,13 +80,12 @@ class _HeatMapStatisticTabState extends State<HeatMapStatisticTab>
 
   Widget _buildTableCalendarWithBuilders(
       Map<DateTime, List<ExerciseHeatMapItem>> events) {
-    return HeatMap(
+    return HeatMap<ExerciseHeatMapItem>(
       onVisibleDaysChanged: (first, last, format) {
         _bloc.setVisibleDateRange(first, last);
       },
       events: events,
-      onDaySelected: (date, events) =>
-          _bloc.setSelectedExercises(List<ExerciseHeatMapItem>.from(events)),
+      onDaySelected: (date, events) => _bloc.setSelectedExercises(events),
       colorRange: (count) => colors[min(count, 10) - 1],
     );
   }
