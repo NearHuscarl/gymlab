@@ -3,7 +3,7 @@ import re
 
 SCRIPT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 LARGE_IMAGE_PATH = os.path.normpath(
-    os.path.join(SCRIPT_DIRECTORY, '../assets/images/exercise_large'))
+    os.path.join(SCRIPT_DIRECTORY, '../assets/images/exercises'))
 SMALL_IMAGE_PATH = os.path.normpath(
     os.path.join(SCRIPT_DIRECTORY, '../assets/images/exercise_small'))
 

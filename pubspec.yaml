@@ -60,8 +60,7 @@ flutter:
   assets:
    - assets/data/
    - assets/images/
-   - assets/images/exercise_small/
-   - assets/images/exercise_large/
+   - assets/images/exercises/
    - assets/images/meals/
    - assets/images/muscles/
    - assets/images/variations/

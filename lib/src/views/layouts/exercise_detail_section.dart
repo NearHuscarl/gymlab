@@ -56,7 +56,7 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
         tag: Constants.exercisePreviewTag(exercise.id),
         images: List<int>.generate(exercise.imageCount, (i) => i)
             .map((index) =>
-                AssetImage(getImage(exercise.id, index, large: true)))
+                AssetImage(getImage(exercise.id, index)))
             .toList(),
         defaultIndex: exercise.thumbnailImageIndex,
       ),
@@ -79,7 +79,7 @@ class _ExerciseDetailSectionState extends State<ExerciseDetailSection> {
               tag: Constants.exercisePreviewTag(exercise.id),
               images: List<int>.generate(exercise.imageCount, (i) => i)
                   .map((index) =>
-                      AssetImage(getImage(exercise.id, index, large: true)))
+                      AssetImage(getImage(exercise.id, index)))
                   .toList(),
               defaultIndex: exercise.thumbnailImageIndex,
               filterQuality: FilterQuality.high,

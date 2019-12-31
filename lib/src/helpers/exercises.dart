@@ -1,9 +1,8 @@
-import 'package:flutter/rendering.dart';
-
 import 'enum.dart';
 import '../blocs/equipment_filter_bloc.dart';
 import '../models/exercise_summary.dart';
 import '../models/variation.dart';
+import 'logger.dart';
 
 /// filter exercise by [name] and [keywords] with the given [searchTerms] which is a
 /// list of words that the user typed in.
@@ -128,16 +127,17 @@ const idMissingLargeImages = {
   81,
   87,
 };
-String getImage(int id, int index, {bool large: false}) {
-  // TODO: missing large images in some exercises, fallback to small image (đụ má thằng Phúc)
+String getImage(int id, int index) {
+  // TODO: missing large images in some exercises (đụ má thằng Phúc)
   if (idMissingLargeImages.contains(id)) {
-    large = false;
+    L.warning('Missing image for exercise $id');
+    return 'assets/images/exercise_placeholder.jpg';
   }
 
   // TODO: add images for custom exercises and remove this
   if (id >= 10000)
-    return 'assets/images/exercise_placeholder_${large ? 'large' : 'small'}.jpg';
-  return 'assets/images/exercise_${large ? 'large' : 'small'}/exercise_workout_$id\_$index.jpg';
+    return 'assets/images/exercise_placeholder.jpg';
+  return 'assets/images/exercises/exercise_workout_$id\_$index.jpg';
 }
 
 String getGripWidthImage(
