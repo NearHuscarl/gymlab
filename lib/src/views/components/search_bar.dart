@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import '../../helpers/app_colors.dart';
 
 class SearchBar extends StatefulWidget {
   SearchBar({this.expand, this.onTextChanged});
@@ -61,7 +62,7 @@ class _SearchBarState extends State<SearchBar>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final content = Container(
-      color: theme.primaryColor.withOpacity(.75),
+      color: theme.primaryColor.darken(),
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: <Widget>[
@@ -83,19 +84,7 @@ class _SearchBarState extends State<SearchBar>
 
     return SlideTransition(
       position: _slideAnimation,
-      child: Stack(
-        children: <Widget>[
-          Container(height: 50),
-          Positioned.fill(
-            child: ClipRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                child: content,
-              ),
-            ),
-          ),
-        ],
-      ),
+      child: content,
     );
   }
 }

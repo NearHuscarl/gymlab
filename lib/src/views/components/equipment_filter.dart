@@ -118,7 +118,7 @@ class _EquipmentFilterState extends State<EquipmentFilter>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final backgroundColor = theme.primaryColor.withOpacity(.85);
+    final backgroundColor = theme.primaryColor.darken();
     final actions = Wrap(
       spacing: 6.0,
       children: <Widget>[
