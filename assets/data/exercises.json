@@ -3046,9 +3046,8 @@
   {
     "id": 50,
     "name": "Dumbbell Biceps Curl, Incline, Alternating, Overhand Grip",
-    "description": "Sit down on an inclined bench and hold one dumbbell in each hand in an overhand grip with your palms facing down.\nRaise both dumbbells until they reach shoulder level and lower them back down without jerking your upper body.",
+    "description": "Sit down on an inclined bench and hold one dumbbell in each hand in an overhand grip with your palms facing down.\nStart by raising one dumbbell until they reach shoulder level and lower them back down without jerking your upper body.",
     "equipments": [
-      "dumbbell",
       "dumbbell",
       "kettlebell"
     ],
