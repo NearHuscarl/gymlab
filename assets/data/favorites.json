@@ -1,4 +1,8 @@
 {
+  "252": {
+    "name": "Running",
+    "favorite": true
+  },
   "83": {
     "name": "Bench Press, Normal Grip",
     "favorite": true
@@ -9,6 +13,10 @@
   },
   "89": {
     "name": "Decline Bench Press, Normal Grip",
+    "favorite": true
+  },
+  "95": {
+    "name": "Dumbbell Bench Press, Narrow Grip",
     "favorite": true
   },
   "104": {
@@ -31,6 +39,14 @@
     "name": "Machine Shoulder Press",
     "favorite": true
   },
+  "40": {
+    "name": "EZ-Bar Biceps Curl, Underhand Wide Grip",
+    "favorite": true
+  },
+  "62": {
+    "name": "Cable Biceps Curl, Underhand Grip",
+    "favorite": true
+  },
   "169": {
     "name": "Cable Lat Pulldown, Wide Grip",
     "favorite": true
@@ -39,8 +55,16 @@
     "name": "Seated Cable Rows, Middle",
     "favorite": true
   },
+  "184": {
+    "name": "Dumbbell Row, Single Arm, Neutral Grip",
+    "favorite": true
+  },
   "9": {
     "name": "Decline Situps",
+    "favorite": true
+  },
+  "28": {
+    "name": "Leg Raise, Straight Legs",
     "favorite": true
   },
   "233": {

@@ -588,5 +588,41 @@
       ]
     },
     "keywords": ["calves"]
+  },
+  {
+    "id": 10018,
+    "name": "Dumbbell Biceps Curl, Seated, Alternating, Neutral Grip",
+    "description": "Sit down on a bench and hold one dumbbell in each hand in a neutral grip with your palms facing each other.\nStart by raising one dumbbell until it reaches shoulder level and lower it back down without jerking your upper body. Switch sides and repeat.",
+    "equipments": [
+      "dumbbell",
+      "kettlebell"
+    ],
+    "imageCount": 2,
+    "thumbnailImageIndex": 0,
+    "muscles": [
+      {
+        "muscle": "biceps",
+        "target": "primary"
+      }
+    ],
+    "type": "weight",
+    "variation": {
+      "repetitionsSpeed": [
+        "11",
+        "22",
+        "24"
+      ],
+      "gripType": [
+        "neutral"
+      ],
+      "weightType": [
+        "dumbbell",
+        "kettlebell"
+      ]
+    },
+    "keywords": [
+      "arm curl",
+      "hammer curl"
+    ]
   }
 ]
