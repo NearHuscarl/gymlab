@@ -15,7 +15,7 @@ class DbHelper {
 
     L.debug('init database');
 
-    if (kDebugMode) {
+    if (!kReleaseMode) {
       try {
         L.warning('detele database');
         await File(dbPath).delete();
