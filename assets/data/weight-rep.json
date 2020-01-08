@@ -6133,5 +6133,175 @@
                 "weight": 30
             }
         ]
+    },
+    {
+        "exerciseId": 252,
+        "exerciseName": "Running",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "duration": 600
+            }
+        ]
+    },
+    {
+        "exerciseId": 157,
+        "exerciseName": "Hamstring Pullback Machine",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            },
+            {
+                "rep": 10,
+                "weight": 35
+            }
+        ]
+    },
+    {
+        "exerciseId": 233,
+        "exerciseName": "Leg Raise Machine",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 45
+            },
+            {
+                "rep": 10,
+                "weight": 45
+            },
+            {
+                "rep": 10,
+                "weight": 45
+            },
+            {
+                "rep": 10,
+                "weight": 45
+            }
+        ]
+    },
+    {
+        "exerciseId": 234,
+        "exerciseName": "Leg Press Machine",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 50
+            },
+            {
+                "rep": 10,
+                "weight": 55
+            },
+            {
+                "rep": 10,
+                "weight": 60
+            }
+        ]
+    },
+    {
+        "exerciseId": 10013,
+        "exerciseName": "Narrow Stance Leg Press",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            },
+            {
+                "rep": 10,
+                "weight": 30
+            }
+        ]
+    },
+    {
+        "exerciseId": 10016,
+        "exerciseName": "Dumbbell Calf Raise",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 40,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10006,
+        "exerciseName": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 20,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10007,
+        "exerciseName": "Standing Palms-Up Barbell Wrist Curl",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 15,
+                "weight": 5
+            },
+            {
+                "rep": 15,
+                "weight": 5
+            },
+            {
+                "rep": 10,
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "exerciseId": 10005,
+        "exerciseName": "Reverse Grip Barbell Curl",
+        "date": "2020-01-05 17:10:00.000",
+        "data": [
+            {
+                "rep": 10,
+                "weight": 0
+            },
+            {
+                "rep": 10,
+                "weight": 0
+            },
+            {
+                "rep": 10,
+                "weight": 0
+            }
+        ]
     }
 ]
