@@ -22,7 +22,7 @@ class _MuscleStatisticTabState extends State<MuscleStatisticTab> {
   void initState() {
     super.initState();
     _bloc = MuscleStatisticsBloc()
-      ..setDate(MuscleStatisticsBloc.initialDateRange);
+      ..setDate(MuscleStatisticsBloc.initialDateOption);
   }
 
   @override
@@ -31,38 +31,51 @@ class _MuscleStatisticTabState extends State<MuscleStatisticTab> {
     _bloc.dispose();
   }
 
-  Future<void> _selectDate(DateTime initialStart, DateTime initialEnd) async {
-    final picked = await DateRangePicker.showDatePicker(
-      context: context,
-      initialFirstDate: initialStart,
-      initialLastDate: initialEnd,
-      firstDate: Constants.startDateLimit,
-      lastDate: Constants.endDateLimit,
-    );
-
-    if (picked != null && picked.length == 2) {
-      _bloc.setDate(picked);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Column(
       children: <Widget>[
-        SizedBox(height: 10),
-        StreamBuilder<List<DateTime>>(
-          stream: _bloc.dateRange,
-          initialData: MuscleStatisticsBloc.initialDateRange,
+        StreamBuilder<DateOption>(
+          stream: _bloc.dateOption,
+          initialData: MuscleStatisticsBloc.initialDateOption,
           builder: (context, snapshot) {
-            final dateRange = snapshot.data;
-            return FlatButton(
-              child: Text(
-                '${dateRange[0].toDisplayDate()} → ${dateRange[1].toDisplayDate()}',
-                style: TextStyle(color: theme.accentColor),
+            final dateOption = snapshot.data;
+            final dateDropdown = Theme(
+              data: theme.copyWith(
+                buttonTheme: theme.buttonTheme.copyWith(alignedDropdown: true),
               ),
-              onPressed: () => _selectDate(dateRange[0], dateRange[1]),
+              child: Container(
+                color: theme.accentColor.withOpacity(.15),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<DateOption>(
+                    value: dateOption,
+                    icon: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: theme.accentColor.withOpacity(.75),
+                    ),
+                    elevation: 6,
+                    isExpanded: true,
+                    style: TextStyle(color: theme.accentColor),
+                    underline: Container(height: 2, color: theme.accentColor),
+                    onChanged: (newValue) {
+                      _bloc.setDate(newValue);
+                    },
+                    items: DateOption.values
+                        .map<DropdownMenuItem<DateOption>>((DateOption value) {
+                      return DropdownMenuItem<DateOption>(
+                        value: value,
+                        child: Text(dateOptionMessage[value]),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+            );
+            return Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
+              child: dateDropdown,
             );
           },
         ),

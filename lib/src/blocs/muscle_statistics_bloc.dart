@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 import '../repositories/exercise_repository.dart';
 import '../helpers/dart_helper.dart';
@@ -12,31 +11,52 @@ enum MuscleFilter {
   primaryOnly,
   primaryAndSecodary,
 }
+enum DateOption {
+  today,
+  oneWeekAgo,
+  oneMonthAgo,
+  sixMonthsAgo,
+  oneYearAgo,
+}
+final dateOptionMessage = {
+  DateOption.today: 'Today',
+  DateOption.oneWeekAgo: '1 week ago',
+  DateOption.oneMonthAgo: '1 month ago',
+  DateOption.sixMonthsAgo: '6 months ago',
+  DateOption.oneYearAgo: '1 year ago',
+};
+final dateOptionTime = {
+  DateOption.today: (DateTime today) => today.subtract(Duration(hours: 24)),
+  DateOption.oneWeekAgo: (DateTime today) =>
+      today.subtract(Duration(hours: 24 * 7)),
+  DateOption.oneMonthAgo: (DateTime today) => DateTime(
+      today.year, today.month - 1, today.day, today.hour, today.minute),
+  DateOption.sixMonthsAgo: (DateTime today) => DateTime(
+      today.year, today.month - 6, today.day, today.hour, today.minute),
+  DateOption.oneYearAgo: (DateTime today) => DateTime(
+      today.year, today.month - 12, today.day, today.hour, today.minute),
+};
 
 class MuscleStatisticsBloc extends Disposable {
   MuscleStatisticsBloc() {
-    _dateRange = BehaviorSubject<List<DateTime>>();
+    _dateOption = BehaviorSubject<DateOption>();
     _muscleFilter = BehaviorSubject<MuscleFilter>();
   }
 
-  static final initialDateRange = [
-    DateTime.now().subtract(Duration(days: 14)),
-    DateTime.now(),
-  ];
+  static final initialDateOption = DateOption.oneMonthAgo;
   static final initialMuscleFilter = MuscleFilter.primaryOnly;
 
   ExerciseRepository _repository = ExerciseRepository();
 
-  BehaviorSubject<List<DateTime>> _dateRange;
+  BehaviorSubject<DateOption> _dateOption;
   BehaviorSubject<MuscleFilter> _muscleFilter;
 
-  Observable<List<DateTime>> get dateRange =>
-      _dateRange.stream.startWith(initialDateRange);
+  Observable<DateOption> get dateOption =>
+      _dateOption.stream.startWith(initialDateOption);
   Observable<MuscleFilter> get muscleFilter =>
       _muscleFilter.stream.startWith(initialMuscleFilter);
-  Observable<StatisticsState> get _state => dateRange
-      .distinct((dateRange1, dateRange2) => listEquals(dateRange1, dateRange2))
-      .switchMap(_mapInputToState);
+  Observable<StatisticsState> get _state =>
+      dateOption.distinct().switchMap(_mapInputToState);
 
   Observable<StatisticsState> get state =>
       Observable.combineLatest2<StatisticsState, MuscleFilter, StatisticsState>(
@@ -53,20 +73,20 @@ class MuscleStatisticsBloc extends Disposable {
         },
       );
 
-  Function get setDate => _dateRange.sink.add;
+  Function get setDate => _dateOption.sink.add;
   Function get setPrimaryMuscleOnly => _muscleFilter.sink.add;
 
   void dispose() {
-    _dateRange.close();
+    _dateOption.close();
     _muscleFilter.close();
   }
 
-  Stream<StatisticsState> _mapInputToState(List<DateTime> dateRange) async* {
+  Stream<StatisticsState> _mapInputToState(DateOption dateOption) async* {
     yield StatisticsLoading();
 
     try {
-      final dateFrom = dateRange[0];
-      final dateTo = dateRange[1];
+      final dateTo = DateTime.now();
+      final dateFrom = dateOptionTime[dateOption](dateTo);
       final stats = await _repository.getMuscleGroupCount(
         dateFrom.toIsoDate(),
         dateTo.toIsoDate(),
