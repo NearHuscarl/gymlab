@@ -86,9 +86,11 @@ packages:
   flutter_staggered_animations:
     dependency: "direct main"
     description:
-      name: flutter_staggered_animations
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: develop
+      resolved-ref: f3f24d087d182bad69bdcef42b43687fd78798cb
+      url: "git@github.com:uhm0311/flutter_staggered_animations.git"
+    source: git
     version: "0.1.2"
   flutter_svg:
     dependency: "direct main"
